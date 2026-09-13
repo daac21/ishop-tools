@@ -36,20 +36,23 @@ let APPLECARE_DATA = null;
 // Se edita solo este archivo (datos/switchup_modelos.json) para
 // agregar/quitar modelos del apartado, sin tocar precios.
 let SWITCHUP_MODELOS = null;
+let FINANCIAMIENTO_DATA = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a, s] = await Promise.all([
+    const [t, p, a, s, f] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/switchup_modelos.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/financiamiento.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
     APPLECARE_DATA = a;
     SWITCHUP_MODELOS = s;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s }));
+    FINANCIAMIENTO_DATA = f;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -58,11 +61,13 @@ async function loadAllData() {
       PRECIOS_IPHONE = data.precios_iphone || {};
       APPLECARE_DATA = data.applecare || {};
       SWITCHUP_MODELOS = data.switchup_modelos || [];
+      FINANCIAMIENTO_DATA = data.financiamiento || {};
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
       APPLECARE_DATA = {};
       SWITCHUP_MODELOS = [];
+      FINANCIAMIENTO_DATA = {};
     }
   }
 }
@@ -167,6 +172,10 @@ function buildScreen(entry) {
     el.appendChild(buildSwitchSelect(entry.path));
   } else if (entry.screen === "switchResult") {
     el.appendChild(buildSwitchResult(entry.newModel, entry.newCapacity));
+  } else if (entry.screen === "financeSelect") {
+    el.appendChild(buildFinanceSelect(entry.path, entry.planType));
+  } else if (entry.screen === "financeResult") {
+    el.appendChild(buildFinanceResult(entry.model, entry.capacity, entry.planType));
   } else if (entry.screen === "tool") {
     const meta = MENU.find(m => m.id === entry.id);
     el.appendChild(buildPlaceholder(entry.title, meta ? meta.icon : "🔧",
@@ -205,6 +214,10 @@ function buildHome() {
       } else if (item.id === "switchup") {
         if (!PRECIOS_IPHONE) await dataReady;
         navigate({ screen: "switchSelect", path: [], title: item.label });
+      } else if (item.id === "forlife" || item.id === "getac") {
+        if (!FINANCIAMIENTO_DATA) await dataReady;
+        const planType = item.id === "forlife" ? "IFL" : "GET";
+        navigate({ screen: "financeSelect", path: [], planType, title: item.label });
       } else {
         navigate({ screen: "tool", id: item.id, title: item.label });
       }
@@ -664,6 +677,112 @@ function buildPlanTabs(options, base, extraOpts = {}) {
   wrap.appendChild(tabs);
   wrap.appendChild(panels);
   renderPanel(0);
+  return wrap;
+}
+
+// ---- For Life + AC / GET + AC ----
+const FINANCE_CONFIG = {
+  IFL: { label: "iPhone For Life", phase1: 10, phase2Start: 11, phase2End: 24, phase2Months: 14, residualMonth: 25 },
+  GET: { label: "GET",             phase1: 13, phase2Start: 14, phase2End: 20, phase2Months: 7,  residualMonth: 21 },
+};
+
+function buildFinanceSelect(path, planType) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+
+  if (path.length === 0) {
+    heading.innerHTML = `<h2>Elige el iPhone</h2>`;
+    wrap.appendChild(heading);
+    const list = document.createElement("div");
+    list.className = "sub-list";
+    const models = FINANCIAMIENTO_DATA ? Object.keys(FINANCIAMIENTO_DATA) : [];
+    if (models.length === 0) {
+      wrap.appendChild(buildPlaceholder("Sin datos", "💳", "Aún no hay planes cargados en datos/financiamiento.json."));
+      return wrap;
+    }
+    models.forEach(model => {
+      const btn = document.createElement("button");
+      btn.className = "sub-btn";
+      btn.innerHTML = `<span>${model}</span><span class="chev"></span>`;
+      btn.addEventListener("click", () => {
+        navigate({ screen: "financeSelect", path: [model], planType, title: model });
+      });
+      list.appendChild(btn);
+    });
+    wrap.appendChild(list);
+    return wrap;
+  }
+
+  const model = path[0];
+  const caps = FINANCIAMIENTO_DATA?.[model] || {};
+  heading.innerHTML = `<h2>${model}</h2>`;
+  wrap.appendChild(heading);
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(caps).forEach(cap => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${cap}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "financeResult", model, capacity: cap, planType, title: cap });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildFinanceResult(model, capacity, planType) {
+  const wrap = document.createElement("div");
+  const cfg = FINANCE_CONFIG[planType];
+  const finData = FINANCIAMIENTO_DATA?.[model]?.[capacity]?.[planType];
+  const ac = APPLECARE_DATA?.[model] || {};
+
+  const banner = document.createElement("div");
+  banner.className = "trade-banner";
+  banner.innerHTML = `<span>${cfg.label}</span><strong>${model} ${capacity}</strong>`;
+  wrap.appendChild(banner);
+
+  if (!finData) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "💳", "Aún no hay plan " + cfg.label + " cargado para este equipo."));
+    return wrap;
+  }
+
+  const cols = [
+    { label: "AppleCare+", extra: ac.APPLECARE },
+    { label: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
+  ];
+
+  const grid = document.createElement("div");
+  grid.className = "finance-columns";
+
+  cols.forEach(col => {
+    const card = document.createElement("div");
+    card.className = "finance-col";
+
+    if (col.extra === null || col.extra === undefined) {
+      card.innerHTML = `<h4>${col.label}</h4><p class="pending">AppleCare+ pendiente</p>`;
+      grid.appendChild(card);
+      return;
+    }
+
+    const phase1Amount = finData.monthly + col.extra / cfg.phase1;
+    const phase2Amount = finData.monthly;
+    const residual = finData.residual;
+    const total = phase1Amount * cfg.phase1 + phase2Amount * cfg.phase2Months + residual;
+
+    card.innerHTML = `
+      <h4>${col.label}</h4>
+      <div class="finance-row"><span>Mes 1–${cfg.phase1}</span><strong>${money(phase1Amount)}</strong></div>
+      <div class="finance-row"><span>Mes ${cfg.phase1 + 1}–${cfg.phase2End}</span><strong>${money(phase2Amount)}</strong></div>
+      <div class="finance-row"><span>Mes ${cfg.residualMonth} (saldo)</span><strong>${money(residual)}</strong></div>
+      <div class="finance-row total"><span>Total</span><strong>${money(total)}</strong></div>
+    `;
+    grid.appendChild(card);
+  });
+
+  wrap.appendChild(grid);
   return wrap;
 }
 
