@@ -1,4 +1,4 @@
-const CACHE_NAME = "ishop-tools-v2";
+const CACHE_NAME = "ishop-tools-v3";
 const ASSETS = [
   "./index.html",
   "./style.css",
@@ -27,7 +27,16 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  // Red primero: si hay internet, siempre trae la versión más nueva
+  // (precios, modelos, etc.) y actualiza la copia guardada en el celular.
+  // Si no hay internet, usa esa copia guardada como respaldo.
   event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request))
+    fetch(event.request)
+      .then(response => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
