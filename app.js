@@ -419,7 +419,7 @@ function filteredModelKeys(node, path) {
   return Object.keys(node);
 }
 
-// ---- Resultado de cotización Trade In (3 opciones x 6 plazos) ----
+// ---- Resultado de cotización Trade In (3 opciones x plazos) ----
 function buildQuoteResult(tradeIn, newModel, newCapacity) {
   const wrap = document.createElement("div");
   const newPrice = PRECIOS_IPHONE?.[newModel]?.[newCapacity] ?? null;
@@ -428,16 +428,31 @@ function buildQuoteResult(tradeIn, newModel, newCapacity) {
 
   const banner = document.createElement("div");
   banner.className = "trade-banner";
-  banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>${money(newPrice)} − ${money(tradeIn.value)} (Trade In) = ${money(base)}</strong>`;
   wrap.appendChild(banner);
 
+  // El recuadro se actualiza según la pestaña activa: equipo − Trade In
+  // [+ AppleCare+ seleccionado] = total.
+  function updateBanner(opt) {
+    if (newPrice === null) {
+      banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>Precio pendiente de cargar</strong>`;
+      return;
+    }
+    let html = `<span>${newModel} ${newCapacity}</span><strong>${money(newPrice)} − ${money(tradeIn.value)} (Trade In) = ${money(base)}`;
+    if (opt && opt.extra !== null && opt.extra !== undefined && opt.extra > 0) {
+      html += ` + ${money(opt.extra)} ${opt.shortLabel} = ${money(base + opt.extra)}</strong>`;
+    } else {
+      html += `</strong>`;
+    }
+    banner.innerHTML = html;
+  }
+
   const options = [
-    { key: "solo", label: "Solo equipo", extra: 0 },
-    { key: "ac", label: "Equipo + AppleCare+", extra: ac.APPLECARE },
-    { key: "acrp", label: "Equipo + AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
+    { key: "solo", label: "Solo equipo", shortLabel: "Equipo", extra: 0 },
+    { key: "ac", label: "Equipo + AppleCare+", shortLabel: "AppleCare+", extra: ac.APPLECARE },
+    { key: "acrp", label: "Equipo + AppleCare+ R y P", shortLabel: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
   ];
 
-  wrap.appendChild(buildPlanTabs(options, base));
+  wrap.appendChild(buildPlanTabs(options, base, { onSelect: updateBanner }));
   return wrap;
 }
 
