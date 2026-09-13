@@ -32,18 +32,24 @@ const COVERAGE_CATEGORIES = [
 let TRADEIN_DATA = null;
 let PRECIOS_IPHONE = null;
 let APPLECARE_DATA = null;
+// Lista de modelos que se muestran en Switch Up (y en qué orden).
+// Se edita solo este archivo (datos/switchup_modelos.json) para
+// agregar/quitar modelos del apartado, sin tocar precios.
+let SWITCHUP_MODELOS = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a] = await Promise.all([
+    const [t, p, a, s] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/switchup_modelos.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
     APPLECARE_DATA = a;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a }));
+    SWITCHUP_MODELOS = s;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -51,10 +57,12 @@ async function loadAllData() {
       TRADEIN_DATA = data.tradein || {};
       PRECIOS_IPHONE = data.precios_iphone || {};
       APPLECARE_DATA = data.applecare || {};
+      SWITCHUP_MODELOS = data.switchup_modelos || [];
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
       APPLECARE_DATA = {};
+      SWITCHUP_MODELOS = [];
     }
   }
 }
@@ -468,7 +476,12 @@ function buildSwitchSelect(path) {
       list.appendChild(btn);
     });
   } else {
-    Object.keys(node).forEach(key => {
+    // En el primer nivel de Switch Up (elegir modelo) solo se muestran
+    // los modelos definidos en datos/switchup_modelos.json, en ese orden.
+    const keys = (path.length === 0 && Array.isArray(SWITCHUP_MODELOS))
+      ? SWITCHUP_MODELOS.filter(m => Object.prototype.hasOwnProperty.call(node, m))
+      : Object.keys(node);
+    keys.forEach(key => {
       const btn = document.createElement("button");
       btn.className = "sub-btn";
       btn.innerHTML = `<span>${key}</span><span class="chev"></span>`;
@@ -490,20 +503,36 @@ function buildSwitchResult(newModel, newCapacity) {
 
   const banner = document.createElement("div");
   banner.className = "trade-banner";
-  banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>${money(newPrice)} + ${money(MEMBRESIA_SWITCH)} membresía = ${money(base)}</strong>`;
   wrap.appendChild(banner);
+
+  // El recuadro superior se actualiza según la opción (AppleCare+ / R y P)
+  // que esté activa en las pestañas: equipo + membresía [+ AppleCare+] = total.
+  function updateBanner(opt) {
+    if (newPrice === null) {
+      banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>Precio pendiente de cargar</strong>`;
+      return;
+    }
+    let html = `<span>${newModel} ${newCapacity}</span><strong>${money(newPrice)} + ${money(MEMBRESIA_SWITCH)} membresía`;
+    if (opt && opt.extra !== null && opt.extra !== undefined) {
+      html += ` + ${money(opt.extra)} ${opt.label} = ${money(base + opt.extra)}</strong>`;
+    } else {
+      html += ` = ${money(base)}</strong>`;
+    }
+    banner.innerHTML = html;
+  }
 
   const options = [
     { key: "ac", label: "AppleCare+", extra: ac.APPLECARE },
     { key: "acrp", label: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
   ];
 
-  wrap.appendChild(buildPlanTabs(options, base));
+  wrap.appendChild(buildPlanTabs(options, base, { onSelect: updateBanner, phonePrice: newPrice }));
   return wrap;
 }
 
 // ---- Componente reutilizable: pestañas de opción + chips de meses ----
-function buildPlanTabs(options, base) {
+function buildPlanTabs(options, base, extraOpts = {}) {
+  const { onSelect, phonePrice } = extraOpts;
   const wrap = document.createElement("div");
 
   const tabs = document.createElement("div");
@@ -515,6 +544,7 @@ function buildPlanTabs(options, base) {
   function renderPanel(idx) {
     panels.innerHTML = "";
     const opt = options[idx];
+    if (typeof onSelect === "function") onSelect(opt);
     const chipsRow = document.createElement("div");
     chipsRow.className = "month-chips";
     let selectedMonths = MESES[0];
@@ -568,6 +598,25 @@ function buildPlanTabs(options, base) {
       note.className = "plan-note";
       note.textContent = "* A 15 meses, AppleCare+ se financia solo en los primeros 10 meses.";
       panels.appendChild(note);
+
+      // Recuadro de promoción: 50% del equipo + 50% del AppleCare+ seleccionado,
+      // aplicable dentro de los primeros 13 meses. Solo aplica donde se
+      // conoce el precio del equipo solo (phonePrice), es decir, Switch Up.
+      if (phonePrice !== undefined && phonePrice !== null) {
+        const promoBox = document.createElement("div");
+        promoBox.className = "plan-result";
+        promoBox.style.marginTop = "10px";
+        promoBox.innerHTML = `
+          <div class="plan-phase"><span>50% del equipo</span><strong>${money(phonePrice * 0.5)}</strong></div>
+          <div class="plan-phase"><span>50% de ${opt.label}</span><strong>${money(opt.extra * 0.5)}</strong></div>
+        `;
+        panels.appendChild(promoBox);
+
+        const promoNote = document.createElement("p");
+        promoNote.className = "plan-note";
+        promoNote.textContent = "50% aplicable dentro de los primeros 13 meses.";
+        panels.appendChild(promoNote);
+      }
     }
   }
 
