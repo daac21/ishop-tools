@@ -1,0 +1,160 @@
+{
+  "iPhone SE3": {
+    "64 GB": null,
+    "128 GB": null,
+    "256 GB": null
+  },
+  "iPhone 12": {
+    "64 GB": null,
+    "128 GB": null,
+    "256 GB": null
+  },
+  "iPhone 12 MINI": {
+    "64 GB": null,
+    "128 GB": null,
+    "256 GB": null
+  },
+  "iPhone 12 PRO": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 12 PRO MAX": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 13": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 13 MINI": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 13 PRO": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null,
+    "1 TB": null
+  },
+  "iPhone 13 PRO MAX": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null,
+    "1 TB": null
+  },
+  "iPhone 14": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 14 PLUS": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 14 PRO": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null,
+    "1 TB": null
+  },
+  "iPhone 14 PRO MAX": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null,
+    "1 TB": null
+  },
+  "iPhone 15": {
+    "128 GB": 14999.0,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 15 PLUS": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 15 PRO": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null,
+    "1 TB": null
+  },
+  "iPhone 15 PRO MAX": {
+    "256 GB": null,
+    "512 GB": null,
+    "1 TB": null
+  },
+  "iPhone 16": {
+    "128 GB": 18999.0,
+    "256 GB": null,
+    "512 GB": null
+  },
+  "iPhone 16 PLUS": {
+    "128 GB": 19999.0,
+    "256 GB": 22499.0,
+    "512 GB": null
+  },
+  "iPhone 16 PRO": {
+    "128 GB": null,
+    "256 GB": null,
+    "512 GB": null,
+    "1 TB": null
+  },
+  "iPhone 16 PRO MAX": {
+    "256 GB": null,
+    "512 GB": null,
+    "1 TB": null
+  },
+  "iPhone 16e": {
+    "128 GB": 14799.0,
+    "256 GB": null,
+    "512 GB": 18269.1
+  },
+  "iPhone 17e": {
+    "256 GB": 16999.0,
+    "512 GB": 21999.0
+  },
+  "iPhone 17": {
+    "256 GB": 21999.0,
+    "512 GB": 26999.0
+  },
+  "iPhone 17 PRO": {
+    "256 GB": 28499.0,
+    "512 GB": 33499.0,
+    "1 TB": 38499.0
+  },
+  "iPhone 17 PRO MAX": {
+    "256 GB": 30999.0,
+    "512 GB": 35999.0,
+    "1 TB": 40999.0,
+    "2 TB": 50999.0
+  },
+  "iPhone Air": {
+    "256 GB": 22499.0,
+    "512 GB": 27499.0,
+    "1 TB": 32499.0
+  },
+  "iPhone 18 PRO MAX": {
+    "256 GB": 31999.0,
+    "512 GB": 36999.0,
+    "1 TB": 46999.0,
+    "2 TB": 61999.0
+  },
+  "iPhone 18 PRO": {
+    "256 GB": 29999.0,
+    "512 GB": 34999.0,
+    "1 TB": 44999.0,
+    "2 TB": 59999.0
+  },
+  "iPhone Duo": {
+    "256 GB": 47999.0,
+    "512 GB": 52999.0,
+    "1 TB": 62999.0,
+    "2 TB": 77999.0
+  }
+}

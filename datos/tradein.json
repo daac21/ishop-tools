@@ -1,0 +1,451 @@
+{
+  "iPhone": {
+    "iPhone SE3": {
+      "64 GB": { "ÓPTIMO": "$2,000", "BATERÍA": "$501", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB": { "ÓPTIMO": "$2,000", "BATERÍA": "$501", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$3,000", "BATERÍA": "$1,501", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 12": {
+      "64 GB": { "ÓPTIMO": "$3,000", "BATERÍA": "$1,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "$2,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "$2,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 12 MINI": {
+      "64 GB": { "ÓPTIMO": "$3,000", "BATERÍA": "$1,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "$2,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "$2,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 12 PRO": {
+      "128 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "$3,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "$3,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "$4,051", "PANTALLA": "No aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 12 PRO MAX": {
+      "128 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "$3,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "$4,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "$5,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 13": {
+      "128 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "$3,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "$4,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "$5,051", "PANTALLA": "$701", "B Y P": "No Aplica" }
+    },
+    "iPhone 13 MINI": {
+      "128 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "$3,051", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "$4,051", "PANTALLA": "$801", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$6,051", "PANTALLA": "$2,801", "B Y P": "$852" }
+    },
+    "iPhone 13 PRO": {
+      "128 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "$5,051", "PANTALLA": "$701", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$6,051", "PANTALLA": "$1,701", "B Y P": "$No Aplica" },
+      "512 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$6,051", "PANTALLA": "$1,701", "B Y P": "$No Aplica" },
+      "1 TB": { "ÓPTIMO": "$10,000", "BATERÍA": "$8,051", "PANTALLA": "$3,701", "B Y P": "$1,752" }
+    },
+    "iPhone 13 PRO MAX": {
+      "128 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "$5,051", "PANTALLA": "N/A", "B Y P": "N/A" },
+      "256 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$6,051", "PANTALLA": "$601", "B Y P": "N/A" },
+      "512 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "$7,051", "PANTALLA": "$1,601", "B Y P": "N/A" },
+      "1 TB": { "ÓPTIMO": "$10,000", "BATERÍA": "$8,051", "PANTALLA": "$2,601", "B Y P": "$652" }
+    },
+    "iPhone 14": {
+      "128 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "$3,851", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "$4,851", "PANTALLA": "$701", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$5,851", "PANTALLA": "$1,701", "B Y P": "N/A" }
+    },
+    "iPhone 14 PLUS": {
+      "128 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "$3,851", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "$4,851", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$5,851", "PANTALLA": "$601", "B Y P": "No Aplica" }
+    },
+    "iPhone 14 PRO": {
+      "128 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$5,851", "PANTALLA": "$601", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "$6,851", "PANTALLA": "$1,601", "B Y P": "N/A" },
+      "512 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "$7,851", "PANTALLA": "$2,601", "B Y P": "$452" },
+      "1 TB": { "ÓPTIMO": "$11,000", "BATERÍA": "$8,851", "PANTALLA": "$3,601", "B Y P": "$1,452" }
+    },
+    "iPhone 14 PRO MAX": {
+      "128 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "$6,851", "PANTALLA": "$501", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "$7,851", "PANTALLA": "$1,501", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "$7,851", "PANTALLA": "$1,501", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$12,000", "BATERÍA": "$9,851", "PANTALLA": "$3,501", "B Y P": "$1,352" }
+    },
+    "iPhone 15": {
+      "128 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "$4,851", "PANTALLA": "$701", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$5,851", "PANTALLA": "$1,701", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "$7,851", "PANTALLA": "$3,701", "B Y P": "$1,552" }
+    },
+    "iPhone 15 PLUS": {
+      "128 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "$5,851", "PANTALLA": "$601", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "$7,851", "PANTALLA": "$2,601", "B Y P": "$452" },
+      "512 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "$9,851", "PANTALLA": "$4,601", "B Y P": "$2,452" }
+    },
+    "iPhone 15 PRO": {
+      "128 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "$6,851", "PANTALLA": "$1,601", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "$7,851", "PANTALLA": "$2,601", "B Y P": "$452" },
+      "512 GB": { "ÓPTIMO": "$11,000", "BATERÍA": "$8,851", "PANTALLA": "$3,601", "B Y P": "$1,452" },
+      "1 TB": { "ÓPTIMO": "$13,000", "BATERÍA": "$10,851", "PANTALLA": "$5,601", "B Y P": "$3,452" }
+    },
+    "iPhone 15 PRO MAX": {
+      "256 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "$7,851", "PANTALLA": "$1,501", "B Y P": "N/A" },
+      "512 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "$9,851", "PANTALLA": "$3,501", "B Y P": "$1,352" },
+      "1 TB": { "ÓPTIMO": "$14,000", "BATERÍA": "$11,851", "PANTALLA": "$5,501", "B Y P": "$3,352" }
+    },
+    "iPhone 16": {
+      "128 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "$7,851", "PANTALLA": "$3,701", "B Y P": "$1,552" },
+      "256 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "$9,851", "PANTALLA": "$5,701", "B Y P": "$3,552" },
+      "512 GB": { "ÓPTIMO": "$14,000", "BATERÍA": "$11,851", "PANTALLA": "$8,701", "B Y P": "$5,552" }
+    },
+    "iPhone 16 PLUS": {
+      "128 GB": { "ÓPTIMO": "$11,000", "BATERÍA": "$8,851", "PANTALLA": "$3,601", "B Y P": "$1,452" },
+      "256 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "$9,851", "PANTALLA": "$4,601", "B Y P": "$2,452" },
+      "512 GB": { "ÓPTIMO": "$14,000", "BATERÍA": "$11,851", "PANTALLA": "$6,601", "B Y P": "$4,452" }
+    },
+    "iPhone 16 PRO": {
+      "128 GB": { "ÓPTIMO": "$11,000", "BATERÍA": "$8,401", "PANTALLA": "$3,601", "B Y P": "$1,002" },
+      "256 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "$9,401", "PANTALLA": "$4,601", "B Y P": "$2,002" },
+      "512 GB": { "ÓPTIMO": "$13,000", "BATERÍA": "$10,401", "PANTALLA": "$5,601", "B Y P": "$3,002" },
+      "1 TB": { "ÓPTIMO": "$15,000", "BATERÍA": "$12,401", "PANTALLA": "$7,601", "B Y P": "$5,002" }
+    },
+    "iPhone 16 PRO MAX": {
+      "256 GB": { "ÓPTIMO": "$14,000", "BATERÍA": "$11,401", "PANTALLA": "$5,501", "B Y P": "$2,902" },
+      "512 GB": { "ÓPTIMO": "$15,000", "BATERÍA": "$12,401", "PANTALLA": "$6,501", "B Y P": "$3,902" },
+      "1 TB": { "ÓPTIMO": "$18,000", "BATERÍA": "$15,401", "PANTALLA": "$9,501", "B Y P": "$6,902" }
+    },
+    "iPhone 16e": {
+      "128 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 17e": {
+      "256 GB": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 17": {
+      "256 GB": { "ÓPTIMO": "$14,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$17,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 17 PRO": {
+      "256 GB": { "ÓPTIMO": "$21,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$25,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$28,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone 17 PRO MAX": {
+      "256 GB": { "ÓPTIMO": "$23,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$26,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$30,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$33,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPhone Air": {
+      "256 GB": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$17,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    }
+  },
+  "iPad": {
+    "iPad 8ª gen": {
+      "32 GB": { "ÓPTIMO": "$2,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "32 GB +Cell": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad 9ª gen": {
+      "64 GB": { "ÓPTIMO": "$2,700", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad 10ª gen": {
+      "64 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad 11ª gen A16": {
+      "128 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad mini 5ª gen": {
+      "64 GB": { "ÓPTIMO": "$2,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad mini 6ª gen": {
+      "64 GB": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Mini A17 Pro": {
+      "128 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 3ª gen 10.5\"": {
+      "64 GB": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 4ª gen 10.9\"": {
+      "64 GB": { "ÓPTIMO": "$3,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 11\" M2 (2022)": {
+      "128 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 5ª gen 10.9\"": {
+      "64 GB": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 13\" M2 (2022)": {
+      "128 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$14,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$16,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 11\" 3ª gen": {
+      "128 GB": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 11\" 4ª gen": {
+      "128 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 12.9\" 3ª gen": {
+      "64 GB": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 12.9\" 4ª gen": {
+      "64 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "64 GB +Cell": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 12.9\" 5ª gen": {
+      "128 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB +Cell": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 12.9\" 6ª gen": {
+      "128 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB +Cell": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 11\" M3 (2024)": {
+      "128 GB": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$14,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 13\" M3 (2024)": {
+      "128 GB": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$14,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$16,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$17,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 11\" M4": {
+      "128 GB": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$17,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$17,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$23,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Air 13\" M4": {
+      "128 GB": { "ÓPTIMO": "$16,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB": { "ÓPTIMO": "$18,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$23,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "128 GB +Cell": { "ÓPTIMO": "$18,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$22,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$25,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 11\" M4 (2024)": {
+      "256 GB": { "ÓPTIMO": "$12,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$14,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$14,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$16,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$18,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB +Cell": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 11\" M5": {
+      "256 GB": { "ÓPTIMO": "$17,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$18,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$23,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$24,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$25,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB +Cell": { "ÓPTIMO": "$26,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 13\" M4 (2024)": {
+      "256 GB": { "ÓPTIMO": "$15,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$17,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$17,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$19,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$20,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$23,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$22,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB +Cell": { "ÓPTIMO": "$27,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    },
+    "iPad Pro 13\" M5": {
+      "256 GB": { "ÓPTIMO": "$22,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "256 GB +Cell": { "ÓPTIMO": "$25,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB": { "ÓPTIMO": "$25,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "512 GB +Cell": { "ÓPTIMO": "$25,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB": { "ÓPTIMO": "$28,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "1 TB +Cell": { "ÓPTIMO": "$30,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB": { "ÓPTIMO": "$33,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" },
+      "2 TB +Cell": { "ÓPTIMO": "$35,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }
+    }
+  },
+  "Apple Watch": {
+    "SE 3ª gen": {
+      "40 MM": { "Aluminio": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "40 MM +Cell": { "Aluminio": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "44 MM": { "Aluminio": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "44 MM +Cell": { "Aluminio": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "SE 2ª gen": {
+      "40 MM": { "Aluminio": { "ÓPTIMO": "$1,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "40 MM +Cell": { "Aluminio": { "ÓPTIMO": "$1,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "44 MM": { "Aluminio": { "ÓPTIMO": "$1,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "44 MM +Cell": { "Aluminio": { "ÓPTIMO": "$2,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "Series 7": {
+      "41 MM": { "Aluminio": { "ÓPTIMO": "$2,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "41 MM +Cell": { "Aluminio": { "ÓPTIMO": "$2,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Acero": { "ÓPTIMO": "$2,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "45 MM": { "Aluminio": { "ÓPTIMO": "$2,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "45 MM +Cell": { "Aluminio": { "ÓPTIMO": "$2,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Acero": { "ÓPTIMO": "$2,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "Series 8": {
+      "41 MM": { "Aluminio": { "ÓPTIMO": "$2,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "41 MM +Cell": { "Aluminio": { "ÓPTIMO": "$2,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Acero": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "45 MM": { "Aluminio": { "ÓPTIMO": "$2,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "45 MM +Cell": { "Aluminio": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Acero": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "Series 9": {
+      "41 MM": { "Aluminio": { "ÓPTIMO": "$2,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "41 MM +Cell": { "Aluminio": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Acero": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "45 MM": { "Aluminio": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "45 MM +Cell": { "Aluminio": { "ÓPTIMO": "$3,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Acero": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "Series 10": {
+      "42 MM": { "Aluminio": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "42 MM +Cell": { "Aluminio": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Titanio": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "46 MM": { "Aluminio": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "46 MM +Cell": { "Aluminio": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Titanio": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "Series 11": {
+      "42 MM": { "Aluminio": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "42 MM +Cell": { "Aluminio": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Titanio": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "46 MM": { "Aluminio": { "ÓPTIMO": "$5,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "46 MM +Cell": { "Aluminio": { "ÓPTIMO": "$7,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "Titanio": { "ÓPTIMO": "$8,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "Ultra": {
+      "49 MM": { "Titanio": { "ÓPTIMO": "$4,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "Ultra 3": {
+      "49 MM": { "Titanio": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "Ultra 2": {
+      "49 MM": { "Titanio": { "ÓPTIMO": "$6,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    }
+  },
+  "Mac": {
+    "MacBook Air 13 M1": {
+      "256 GB": { "8 GB RAM": { "ÓPTIMO": "$5,750", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "MacBook Air 13 M2": {
+      "256 GB": { "8 GB RAM": { "ÓPTIMO": "$6,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "16 GB RAM": { "ÓPTIMO": "$9,280", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "512 GB": { "8 GB RAM": { "ÓPTIMO": "$9,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "MacBook Air 15 M2": {
+      "256 GB": { "8 GB RAM": { "ÓPTIMO": "$10,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "512 GB": { "8 GB RAM": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "MacBook Air 13 M3": {
+      "256 GB": { "8 GB RAM": { "ÓPTIMO": "$7,500", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "512 GB": { "8 GB RAM": { "ÓPTIMO": "$9,200", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "16 GB RAM": { "ÓPTIMO": "$10,950", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    },
+    "MacBook Air 15 M3": {
+      "256 GB": { "8 GB RAM": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "16 GB RAM": { "ÓPTIMO": "$11,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } },
+      "512 GB": { "8 GB RAM": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" }, "16 GB RAM": { "ÓPTIMO": "$13,000", "BATERÍA": "No Aplica", "PANTALLA": "No Aplica", "B Y P": "No Aplica" } }
+    }
+  }
+}

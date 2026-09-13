@@ -1,0 +1,122 @@
+{
+  "iPhone SE3": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 12": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 12 MINI": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 12 PRO": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 12 PRO MAX": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 13": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 13 MINI": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 13 PRO": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 13 PRO MAX": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 14": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 14 PLUS": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 14 PRO": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 14 PRO MAX": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 15": {
+    "APPLECARE": 3699.0,
+    "ROBO_PERDIDA": 5299.0
+  },
+  "iPhone 15 PLUS": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 15 PRO": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 15 PRO MAX": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 16": {
+    "APPLECARE": 3699.0,
+    "ROBO_PERDIDA": 5299.0
+  },
+  "iPhone 16 PLUS": {
+    "APPLECARE": 4299.0,
+    "ROBO_PERDIDA": 5899.0
+  },
+  "iPhone 16 PRO": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 16 PRO MAX": {
+    "APPLECARE": null,
+    "ROBO_PERDIDA": null
+  },
+  "iPhone 16e": {
+    "APPLECARE": 2999.0,
+    "ROBO_PERDIDA": 4599.0
+  },
+  "iPhone 17e": {
+    "APPLECARE": 2999.0,
+    "ROBO_PERDIDA": 4599.0
+  },
+  "iPhone 17": {
+    "APPLECARE": 3699.0,
+    "ROBO_PERDIDA": 5299.0
+  },
+  "iPhone 17 PRO": {
+    "APPLECARE": 4799.0,
+    "ROBO_PERDIDA": 6399.0
+  },
+  "iPhone 17 PRO MAX": {
+    "APPLECARE": 4799.0,
+    "ROBO_PERDIDA": 6399.0
+  },
+  "iPhone Air": {
+    "APPLECARE": 4799.0,
+    "ROBO_PERDIDA": 6399.0
+  },
+  "iPhone Duo": {
+    "APPLECARE": 6999.0,
+    "ROBO_PERDIDA": 8599.0
+  },
+  "iPhone 18 PRO MAX": {
+    "APPLECARE": 4799.0,
+    "ROBO_PERDIDA": 6399.0
+  },
+  "iPhone 18 PRO": {
+    "APPLECARE": 4799.0,
+    "ROBO_PERDIDA": 6399.0
+  }
+}
