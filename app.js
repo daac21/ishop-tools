@@ -71,7 +71,7 @@ const dataReady = loadAllData();
 // ---- Estado de navegación ----
 // Cada entrada: { screen: "home" | "tool" | "coverageDetail" | "tradeNode" | "quoteSelectNew" | "quoteResult" | "switchResult", ...params, title }
 let stack = [{ screen: "home", title: "iShop Tools" }];
-const MESES = [3, 6, 10, 12, 13, 15];
+const MESES = [3, 6, 9, 10, 12, 13, 15];
 const MEMBRESIA_SWITCH = 399;
 
 function money(n) {
@@ -86,16 +86,18 @@ function parsePesoValue(str) {
   return parseFloat(clean);
 }
 
-// base se reparte en 15 meses siempre; extra (AppleCare) solo en los primeros 10
-function computePlan(base, extra, months) {
+// base se reparte en 15 meses siempre; extra (AppleCare) solo dentro de
+// los primeros acMonths (10, 12 o 13, elegible por el usuario)
+function computePlan(base, extra, months, acMonths) {
   if (base === null || base === undefined) return null;
   const safeExtra = extra || 0;
-  if (months === 15) {
+  if (months === 15 && safeExtra > 0) {
+    const acM = acMonths || 10;
     return {
-      split: safeExtra > 0,
-      phase1: { months: 10, amount: base / 15 + safeExtra / 10 },
-      phase2: { months: 5, amount: base / 15 },
-      single: base / 15 + (safeExtra > 0 ? 0 : 0),
+      split: true,
+      acMonths: acM,
+      phase1: { months: acM, amount: base / 15 + safeExtra / acM },
+      phase2: { months: 15 - acM, amount: base / 15 },
     };
   }
   return { split: false, amount: (base + safeExtra) / months };
@@ -401,7 +403,7 @@ function buildQuoteSelectNew(path, tradeIn) {
       list.appendChild(btn);
     });
   } else {
-    Object.keys(node).forEach(key => {
+    filteredModelKeys(node, path).forEach(key => {
       const btn = document.createElement("button");
       btn.className = "sub-btn";
       btn.innerHTML = `<span>${key}</span><span class="chev"></span>`;
@@ -422,6 +424,16 @@ function getNodeAtPathIn(root, path) {
     node = node[key];
   }
   return node;
+}
+
+// En el primer nivel (elegir modelo) se muestra solo la lista corta de
+// datos/switchup_modelos.json, en ese orden. Se usa tanto en Trade In
+// como en Switch Up para elegir el iPhone nuevo.
+function filteredModelKeys(node, path) {
+  if (path.length === 0 && Array.isArray(SWITCHUP_MODELOS)) {
+    return SWITCHUP_MODELOS.filter(m => Object.prototype.hasOwnProperty.call(node, m));
+  }
+  return Object.keys(node);
 }
 
 // ---- Resultado de cotización Trade In (3 opciones x 6 plazos) ----
@@ -476,12 +488,7 @@ function buildSwitchSelect(path) {
       list.appendChild(btn);
     });
   } else {
-    // En el primer nivel de Switch Up (elegir modelo) solo se muestran
-    // los modelos definidos en datos/switchup_modelos.json, en ese orden.
-    const keys = (path.length === 0 && Array.isArray(SWITCHUP_MODELOS))
-      ? SWITCHUP_MODELOS.filter(m => Object.prototype.hasOwnProperty.call(node, m))
-      : Object.keys(node);
-    keys.forEach(key => {
+    filteredModelKeys(node, path).forEach(key => {
       const btn = document.createElement("button");
       btn.className = "sub-btn";
       btn.innerHTML = `<span>${key}</span><span class="chev"></span>`;
@@ -549,30 +556,52 @@ function buildPlanTabs(options, base, extraOpts = {}) {
     chipsRow.className = "month-chips";
     let selectedMonths = MESES[0];
 
+    // Solo visible cuando el plazo elegido es 15 meses y la opción incluye
+    // AppleCare+: permite elegir en cuántos meses (10, 12 o 13) se financia.
+    const acChipsRow = document.createElement("div");
+    acChipsRow.className = "month-chips";
+    acChipsRow.hidden = true;
+    let selectedAcMonths = 10;
+    [10, 12, 13].forEach(m => {
+      const chip = document.createElement("button");
+      chip.className = "chip" + (m === selectedAcMonths ? " active" : "");
+      chip.textContent = "AC " + m + " msi";
+      chip.addEventListener("click", () => {
+        selectedAcMonths = m;
+        acChipsRow.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        renderResult();
+      });
+      acChipsRow.appendChild(chip);
+    });
+
     const resultBox = document.createElement("div");
     resultBox.className = "plan-result";
 
     function renderResult() {
       if (base === null || base === undefined) {
         resultBox.innerHTML = `<p class="pending">Precio del equipo pendiente de cargar.</p>`;
+        acChipsRow.hidden = true;
         return;
       }
       if (opt.extra === null) {
         resultBox.innerHTML = `<p class="pending">Precio de AppleCare+ pendiente de cargar.</p>`;
+        acChipsRow.hidden = true;
         return;
       }
-      const plan = computePlan(base, opt.extra, selectedMonths);
+      acChipsRow.hidden = !(selectedMonths === 15 && opt.extra > 0);
+      const plan = computePlan(base, opt.extra, selectedMonths, selectedAcMonths);
       if (!plan) {
         resultBox.innerHTML = `<p class="pending">Precio pendiente de cargar.</p>`;
         return;
       }
       if (plan.split) {
         resultBox.innerHTML = `
-          <div class="plan-phase"><span>Meses 1–10</span><strong>${money(plan.phase1.amount)}/mes</strong></div>
-          <div class="plan-phase"><span>Meses 11–15</span><strong>${money(plan.phase2.amount)}/mes</strong></div>
+          <div class="plan-phase"><span>Mes 1 a ${plan.acMonths} (con AppleCare+)</span><strong>${money(plan.phase1.amount)}/mes</strong></div>
+          <div class="plan-phase"><span>Mes ${plan.acMonths + 1} a 15 (solo iPhone)</span><strong>${money(plan.phase2.amount)}/mes</strong></div>
         `;
       } else {
-        resultBox.innerHTML = `<div class="plan-phase"><span>${selectedMonths} meses</span><strong>${money(plan.amount ?? plan.phase1?.amount)}/mes</strong></div>`;
+        resultBox.innerHTML = `<div class="plan-phase"><span>${selectedMonths} meses</span><strong>${money(plan.amount)}/mes</strong></div>`;
       }
     }
 
@@ -590,13 +619,14 @@ function buildPlanTabs(options, base, extraOpts = {}) {
     });
 
     panels.appendChild(chipsRow);
+    panels.appendChild(acChipsRow);
     panels.appendChild(resultBox);
     renderResult();
 
     if (opt.extra) {
       const note = document.createElement("p");
       note.className = "plan-note";
-      note.textContent = "* A 15 meses, AppleCare+ se financia solo en los primeros 10 meses.";
+      note.textContent = "* A 15 meses, el AppleCare+ se financia solo dentro de los meses que elijas (10, 12 o 13).";
       panels.appendChild(note);
 
       // Recuadro de promoción: 50% del equipo + 50% del AppleCare+ seleccionado,
