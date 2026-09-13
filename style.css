@@ -381,3 +381,48 @@ html,body{
   text-align:center;
   margin:0;
 }
+
+/* ---- For Life + AC / GET + AC: dos columnas lado a lado ---- */
+.finance-columns{
+  display:flex;
+  gap:10px;
+}
+.finance-col{
+  flex:1;
+  min-width:0;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px 12px;
+}
+.finance-col h4{
+  margin:0 0 10px;
+  font-size:13px;
+  font-weight:700;
+  text-align:center;
+  color:var(--accent);
+}
+.finance-row{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  padding:8px 0;
+  border-bottom:1px solid var(--border);
+  font-size:11px;
+  color:var(--text-secondary);
+}
+.finance-row strong{
+  font-size:15px;
+  color:var(--text);
+  font-weight:700;
+}
+.finance-row.total{
+  border-bottom:none;
+  margin-top:4px;
+  padding-top:10px;
+  border-top:2px solid var(--text);
+}
+.finance-row.total strong{
+  font-size:17px;
+  color:var(--accent);
+}
