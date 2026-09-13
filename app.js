@@ -292,8 +292,6 @@ function buildTradeNode(path) {
 
     const list = document.createElement("div");
     list.className = "sub-list";
-    let selectedValue = null;
-    let selectedLabel = null;
 
     PRICE_ROWS.forEach(row => {
       const raw = node[row.key] ?? "N/A";
@@ -307,36 +305,21 @@ function buildTradeNode(path) {
         </span>
         <span style="font-weight:650;">${raw}</span>
       `;
+      // Redirección inmediata a elegir el iPhone nuevo. Solo aplica en la
+      // categoría iPhone (isIphone) — iPad/Mac/Apple Watch no cotizan aquí.
       if (isIphone && numeric !== null) {
         item.addEventListener("click", () => {
-          list.querySelectorAll(".sub-btn").forEach(b => b.classList.remove("selected"));
-          item.classList.add("selected");
-          selectedValue = numeric;
-          selectedLabel = row.label;
-          quoteBtn.hidden = false;
-          quoteBtn.textContent = `Cotizar con valor de ${row.label} (${money(numeric)})`;
+          navigate({
+            screen: "quoteSelectNew",
+            path: [],
+            tradeIn: { model: path[1], capacity: path[2], value: numeric, condition: row.label },
+            title: "Equipo nuevo",
+          });
         });
       }
       list.appendChild(item);
     });
     wrap.appendChild(list);
-
-    if (isIphone) {
-      const quoteBtn = document.createElement("button");
-      quoteBtn.className = "primary-btn";
-      quoteBtn.textContent = "Selecciona una condición para cotizar";
-      quoteBtn.hidden = true;
-      quoteBtn.style.marginTop = "18px";
-      quoteBtn.addEventListener("click", () => {
-        navigate({
-          screen: "quoteSelectNew",
-          path: [],
-          tradeIn: { model: path[1], capacity: path[2], value: selectedValue, condition: selectedLabel },
-          title: "Equipo nuevo",
-        });
-      });
-      wrap.appendChild(quoteBtn);
-    }
     return wrap;
   }
 
