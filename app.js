@@ -26,16 +26,39 @@ const COVERAGE_CATEGORIES = [
   { id: "watch",  label: "Apple Watch" },
 ];
 
-// ---- Datos de Trade In / precios / AppleCare+ ----
+// ---- Datos: se leen de datos/*.json (ese mismo repo de GitHub).
+// Cada vez que subas un cambio a GitHub, Netlify republica solo y la app
+// jala la versión nueva. Se guarda una copia en el teléfono por si no hay internet.
 let TRADEIN_DATA = null;
 let PRECIOS_IPHONE = null;
 let APPLECARE_DATA = null;
-const dataReady = Promise.all([
-  fetch("datos/tradein.json").then(r => r.json()).then(d => TRADEIN_DATA = d).catch(() => TRADEIN_DATA = {}),
-  fetch("datos/precios_iphone.json").then(r => r.json()).then(d => PRECIOS_IPHONE = d).catch(() => PRECIOS_IPHONE = {}),
-  fetch("datos/applecare.json").then(r => r.json()).then(d => APPLECARE_DATA = d).catch(() => APPLECARE_DATA = {}),
-]);
-const tradeInReady = dataReady; // compat
+
+async function loadAllData() {
+  try {
+    const [t, p, a] = await Promise.all([
+      fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
+    ]);
+    TRADEIN_DATA = t;
+    PRECIOS_IPHONE = p;
+    APPLECARE_DATA = a;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a }));
+  } catch (e) {
+    const cached = localStorage.getItem("ishop_data_cache");
+    if (cached) {
+      const data = JSON.parse(cached);
+      TRADEIN_DATA = data.tradein || {};
+      PRECIOS_IPHONE = data.precios_iphone || {};
+      APPLECARE_DATA = data.applecare || {};
+    } else {
+      TRADEIN_DATA = {};
+      PRECIOS_IPHONE = {};
+      APPLECARE_DATA = {};
+    }
+  }
+}
+const dataReady = loadAllData();
 
 // ---- Estado de navegación ----
 // Cada entrada: { screen: "home" | "tool" | "coverageDetail" | "tradeNode" | "quoteSelectNew" | "quoteResult" | "switchResult", ...params, title }
@@ -500,6 +523,14 @@ function buildPlanTabs(options, base) {
     resultBox.className = "plan-result";
 
     function renderResult() {
+      if (base === null || base === undefined) {
+        resultBox.innerHTML = `<p class="pending">Precio del equipo pendiente de cargar.</p>`;
+        return;
+      }
+      if (opt.extra === null) {
+        resultBox.innerHTML = `<p class="pending">Precio de AppleCare+ pendiente de cargar.</p>`;
+        return;
+      }
       const plan = computePlan(base, opt.extra, selectedMonths);
       if (!plan) {
         resultBox.innerHTML = `<p class="pending">Precio pendiente de cargar.</p>`;
