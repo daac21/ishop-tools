@@ -218,10 +218,12 @@
     }
   },
   "Watch": {
-    "Apple Watch SE": {
+    "Apple Watch SE3": {
       "AppleCare+": {
         "precio": 999,
-        "deducibles": { "Daño accidental": 1249 },
+        "deducibles": {
+          "Daño accidental": 1249
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -230,10 +232,12 @@
         ]
       }
     },
-    "Apple Watch Series 11": {
+    "Apple Watch Series 12": {
       "AppleCare+": {
         "precio": 1749,
-        "deducibles": { "Daño accidental": 1249 },
+        "deducibles": {
+          "Daño accidental": 1249
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -242,10 +246,26 @@
         ]
       }
     },
-    "Apple Watch Ultra 3": {
+    "Apple Watch Ultra 4": {
       "AppleCare+": {
         "precio": 2099,
-        "deducibles": { "Daño accidental": 1449 },
+        "deducibles": {
+          "Daño accidental": 1449
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "Apple Watch Ultra Hermès": {
+      "AppleCare+": {
+        "precio": 3299,
+        "deducibles": {
+          "Daño accidental": 1449
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -259,7 +279,11 @@
     "iPad A16": {
       "AppleCare+": {
         "precio": 1799,
-        "deducibles": { "iPad": 799, "Apple Pencil": 559, "Magic Keyboard": 559 },
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -272,7 +296,11 @@
     "iPad mini A17 Pro": {
       "AppleCare+": {
         "precio": 1799,
-        "deducibles": { "iPad": 799, "Apple Pencil": 559, "Magic Keyboard": 559 },
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -285,7 +313,11 @@
     "iPad Air 11 M4": {
       "AppleCare+": {
         "precio": 1999,
-        "deducibles": { "iPad": 799, "Apple Pencil": 559, "Magic Keyboard": 559 },
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -298,7 +330,11 @@
     "iPad Air 13 M4": {
       "AppleCare+": {
         "precio": 2499,
-        "deducibles": { "iPad": 799, "Apple Pencil": 559, "Magic Keyboard": 559 },
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -311,7 +347,11 @@
     "iPad Pro 11 M5": {
       "AppleCare+": {
         "precio": 3699,
-        "deducibles": { "iPad": 799, "Apple Pencil": 559, "Magic Keyboard": 559 },
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -324,7 +364,11 @@
     "iPad Pro 13 M5": {
       "AppleCare+": {
         "precio": 4199,
-        "deducibles": { "iPad": 799, "Apple Pencil": 559, "Magic Keyboard": 559 },
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -339,7 +383,10 @@
     "Mac mini": {
       "AppleCare+": {
         "precio": 2299,
-        "deducibles": { "Pantalla o carcasa": 1899, "Otros daños": 6499 },
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -351,7 +398,10 @@
     "Mac Studio": {
       "AppleCare+": {
         "precio": 4199,
-        "deducibles": { "Pantalla o carcasa": 1899, "Otros daños": 6499 },
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -363,7 +413,10 @@
     "iMac": {
       "AppleCare+": {
         "precio": 4199,
-        "deducibles": { "Pantalla o carcasa": 1899, "Otros daños": 6499 },
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -375,7 +428,10 @@
     "MacBook Neo": {
       "AppleCare+": {
         "precio": 3299,
-        "deducibles": { "Pantalla o carcasa": 999, "Otros daños": 2999 },
+        "deducibles": {
+          "Pantalla o carcasa": 999,
+          "Otros daños": 2999
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -387,7 +443,10 @@
     "MacBook Air 13": {
       "AppleCare+": {
         "precio": 4799,
-        "deducibles": { "Pantalla o carcasa": 1899, "Otros daños": 6499 },
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -399,7 +458,10 @@
     "MacBook Air 15": {
       "AppleCare+": {
         "precio": 5299,
-        "deducibles": { "Pantalla o carcasa": 1899, "Otros daños": 6499 },
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -411,7 +473,10 @@
     "MacBook Pro 14": {
       "AppleCare+": {
         "precio": 6299,
-        "deducibles": { "Pantalla o carcasa": 1899, "Otros daños": 6499 },
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -423,7 +488,10 @@
     "MacBook Pro 16": {
       "AppleCare+": {
         "precio": 8799,
-        "deducibles": { "Pantalla o carcasa": 1899, "Otros daños": 6499 },
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -437,7 +505,9 @@
     "HomePod mini": {
       "AppleCare+": {
         "precio": 429,
-        "deducibles": { "Daño accidental": 879 },
+        "deducibles": {
+          "Daño accidental": 879
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -448,7 +518,9 @@
     "HomePod": {
       "AppleCare+": {
         "precio": 949,
-        "deducibles": { "Daño accidental": 879 },
+        "deducibles": {
+          "Daño accidental": 879
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -461,7 +533,9 @@
     "Apple TV": {
       "AppleCare+": {
         "precio": 799,
-        "deducibles": { "Daño accidental": 380 },
+        "deducibles": {
+          "Daño accidental": 380
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -474,7 +548,9 @@
     "AirPods 4": {
       "AppleCare+": {
         "precio": 649,
-        "deducibles": { "Daño accidental": 559 },
+        "deducibles": {
+          "Daño accidental": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reemplazo con productos o piezas originales Apple.",
@@ -486,7 +562,9 @@
     "AirPods Pro 3": {
       "AppleCare+": {
         "precio": 849,
-        "deducibles": { "Daño accidental": 559 },
+        "deducibles": {
+          "Daño accidental": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reemplazo con productos o piezas originales Apple.",
@@ -498,7 +576,9 @@
     "AirPods Max 2": {
       "AppleCare+": {
         "precio": 1299,
-        "deducibles": { "Daño accidental": 559 },
+        "deducibles": {
+          "Daño accidental": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reemplazo con productos o piezas originales Apple.",
@@ -510,7 +590,9 @@
     "Beats": {
       "AppleCare+": {
         "precio": 649,
-        "deducibles": { "Daño accidental": 559 },
+        "deducibles": {
+          "Daño accidental": 559
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reemplazo con productos o piezas originales Apple.",
