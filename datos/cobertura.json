@@ -22,22 +22,10 @@
         "Equipo incompleto (faltan piezas)"
       ],
       "cuotas": [
-        {
-          "label": "Pantalla",
-          "precio": "$559 MXN"
-        },
-        {
-          "label": "Cristal trasero",
-          "precio": "$559 MXN"
-        },
-        {
-          "label": "Cristal trasero + pantalla",
-          "precio": "$1,118 MXN"
-        },
-        {
-          "label": "Otros daños accidentales",
-          "precio": "$1,899 MXN"
-        }
+        { "label": "Pantalla", "precio": "$559 MXN" },
+        { "label": "Cristal trasero", "precio": "$559 MXN" },
+        { "label": "Cristal trasero + pantalla", "precio": "$1,118 MXN" },
+        { "label": "Otros daños accidentales", "precio": "$1,899 MXN" }
       ],
       "si_aplica": [
         "Se cayó de una mesa",
@@ -74,22 +62,10 @@
         "Información falsa en la reclamación"
       ],
       "cuotas": [
-        {
-          "label": "Pantalla",
-          "precio": "$559 MXN"
-        },
-        {
-          "label": "Cristal trasero",
-          "precio": "$559 MXN"
-        },
-        {
-          "label": "Otros daños",
-          "precio": "$1,899 MXN"
-        },
-        {
-          "label": "Robo o pérdida",
-          "precio": "$3,299 MXN"
-        }
+        { "label": "Pantalla", "precio": "$559 MXN" },
+        { "label": "Cristal trasero", "precio": "$559 MXN" },
+        { "label": "Otros daños", "precio": "$1,899 MXN" },
+        { "label": "Robo o pérdida", "precio": "$3,299 MXN" }
       ],
       "si_aplica": [
         "Robo en transporte público",
@@ -137,18 +113,9 @@
         "Fallas de Software Beta (cualquier software que no sea iPadOS)"
       ],
       "cuotas": [
-        {
-          "label": "Dispositivos de entrada (Apple Pencil / Pencil Pro)",
-          "precio": "$559 MXN"
-        },
-        {
-          "label": "Desperfecto físico — Air/Pro (M2-M5), iPad A16, mini A17 Pro",
-          "precio": "$1,899 MXN"
-        },
-        {
-          "label": "Desperfecto físico — resto de modelos",
-          "precio": "$799 MXN"
-        }
+        { "label": "Dispositivos de entrada (Apple Pencil / Pencil Pro)", "precio": "$559 MXN" },
+        { "label": "Desperfecto físico — Air/Pro (M2-M5), iPad A16, mini A17 Pro", "precio": "$1,899 MXN" },
+        { "label": "Desperfecto físico — resto de modelos", "precio": "$799 MXN" }
       ],
       "si_aplica": [
         "Se cayó de una mochila",
@@ -196,14 +163,8 @@
         "Fallas de Software Beta (anulan AC+ y Garantía Limitada)"
       ],
       "cuotas": [
-        {
-          "label": "Daño en carcasa o pantalla",
-          "precio": "$1,899 MXN"
-        },
-        {
-          "label": "Otros daños (cualquier otra pieza o más de 2 piezas)",
-          "precio": "$6,499 MXN"
-        }
+        { "label": "Daño en carcasa o pantalla", "precio": "$1,899 MXN" },
+        { "label": "Otros daños (cualquier otra pieza o más de 2 piezas)", "precio": "$6,499 MXN" }
       ],
       "si_aplica": [
         "Derrame de café",
@@ -251,14 +212,8 @@
         "Equipos modificados o reparados por terceros"
       ],
       "cuotas": [
-        {
-          "label": "Solo pantalla o carcasa",
-          "precio": "$999 MXN"
-        },
-        {
-          "label": "Cualquier otro daño accidental",
-          "precio": "$2,999 MXN"
-        }
+        { "label": "Solo pantalla o carcasa", "precio": "$999 MXN" },
+        { "label": "Cualquier otro daño accidental", "precio": "$2,999 MXN" }
       ],
       "si_aplica": [
         "Se cayó la Mac y se rompió la pantalla",
@@ -298,22 +253,10 @@
         "Fallas de Software Beta (cualquier software que no sea watchOS)"
       ],
       "cuotas": [
-        {
-          "label": "Apple Watch SE",
-          "precio": "$1,249 MXN"
-        },
-        {
-          "label": "Apple Watch Series 11",
-          "precio": "$1,249 MXN"
-        },
-        {
-          "label": "Apple Watch Ultra 3",
-          "precio": "$1,449 MXN"
-        },
-        {
-          "label": "Apple Watch Edition / Hermès / Hermès Ultra",
-          "precio": "$1,449 MXN"
-        }
+        { "label": "Apple Watch SE3", "precio": "$1,249 MXN" },
+        { "label": "Apple Watch Series 12", "precio": "$1,249 MXN" },
+        { "label": "Apple Watch Ultra 4", "precio": "$1,449 MXN" },
+        { "label": "Apple Watch Edition / Hermès / Hermès Ultra", "precio": "$1,449 MXN" }
       ],
       "si_aplica": [
         "Golpe contra pared",
@@ -354,14 +297,8 @@
         "Fraude"
       ],
       "cuotas": [
-        {
-          "label": "AirPods 4 (deducible daño accidental)",
-          "precio": "$559 MXN"
-        },
-        {
-          "label": "AirPods Pro 3 (deducible daño accidental)",
-          "precio": "$559 MXN"
-        }
+        { "label": "AirPods 4 (deducible daño accidental)", "precio": "$559 MXN" },
+        { "label": "AirPods Pro 3 (deducible daño accidental)", "precio": "$559 MXN" }
       ],
       "si_aplica": [
         "Problemas con cancelación de ruido",
@@ -401,14 +338,8 @@
         "Fraude"
       ],
       "cuotas": [
-        {
-          "label": "AirPods Max 2 (deducible daño accidental)",
-          "precio": "$559 MXN"
-        },
-        {
-          "label": "Beats (deducible daño accidental)",
-          "precio": "$559 MXN"
-        }
+        { "label": "AirPods Max 2 (deducible daño accidental)", "precio": "$559 MXN" },
+        { "label": "Beats (deducible daño accidental)", "precio": "$559 MXN" }
       ],
       "si_aplica": [
         "Problemas con cancelación de ruido",
@@ -460,14 +391,8 @@
         "Apple puede reparar o reemplazar el equipo"
       ],
       "cuotas": [
-        {
-          "label": "HomePod mini (deducible daño accidental)",
-          "precio": "$879 MXN"
-        },
-        {
-          "label": "HomePod (deducible daño accidental)",
-          "precio": "$879 MXN"
-        }
+        { "label": "HomePod mini (deducible daño accidental)", "precio": "$879 MXN" },
+        { "label": "HomePod (deducible daño accidental)", "precio": "$879 MXN" }
       ]
     }
   },
@@ -501,10 +426,7 @@
         "Apple puede reparar o reemplazar el equipo"
       ],
       "cuotas": [
-        {
-          "label": "Apple TV (deducible daño accidental)",
-          "precio": "$380 MXN"
-        }
+        { "label": "Apple TV (deducible daño accidental)", "precio": "$380 MXN" }
       ]
     }
   }
