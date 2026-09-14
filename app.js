@@ -50,10 +50,12 @@ let FINANCIAMIENTO_DATA = null;
 let COBERTURA_DATA = null;
 // Info comercial de AppleCare+ por categoría/equipo (precio, deducibles, beneficios)
 let APPLECARE_INFO = null;
+// Códigos de barras (EAN) -> producto + precios de AppleCare+ (Escáner)
+let ESCANER_DATA = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a, s, f, c, aci] = await Promise.all([
+    const [t, p, a, s, f, c, aci, esc] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
@@ -61,6 +63,7 @@ async function loadAllData() {
       fetch("datos/financiamiento.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/cobertura.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare_info.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/escaner.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
@@ -69,7 +72,8 @@ async function loadAllData() {
     FINANCIAMIENTO_DATA = f;
     COBERTURA_DATA = c;
     APPLECARE_INFO = aci;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci }));
+    ESCANER_DATA = esc;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci, escaner: esc }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -81,6 +85,7 @@ async function loadAllData() {
       FINANCIAMIENTO_DATA = data.financiamiento || {};
       COBERTURA_DATA = data.cobertura || {};
       APPLECARE_INFO = data.applecare_info || {};
+      ESCANER_DATA = data.escaner || {};
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
@@ -89,6 +94,7 @@ async function loadAllData() {
       FINANCIAMIENTO_DATA = {};
       COBERTURA_DATA = {};
       APPLECARE_INFO = {};
+      ESCANER_DATA = {};
     }
   }
 }
@@ -206,6 +212,10 @@ function buildScreen(entry) {
     el.appendChild(buildAcVariants(entry.category, entry.model));
   } else if (entry.screen === "acDetail") {
     el.appendChild(buildAcDetail(entry.category, entry.model, entry.variant));
+  } else if (entry.screen === "scannerScan") {
+    el.appendChild(buildScannerScan());
+  } else if (entry.screen === "scannerResult") {
+    el.appendChild(buildScannerResult(entry.code));
   } else if (entry.screen === "tool") {
     const meta = MENU.find(m => m.id === entry.id);
     el.appendChild(buildPlaceholder(entry.title, meta ? meta.icon : "🔧",
@@ -252,6 +262,9 @@ function buildHome() {
         if (!FINANCIAMIENTO_DATA) await dataReady;
         const planType = item.id === "forlife" ? "IFL" : "GET";
         navigate({ screen: "financeSelect", path: [], planType, title: item.label });
+      } else if (item.id === "scanner") {
+        if (!ESCANER_DATA) await dataReady;
+        navigate({ screen: "scannerScan", title: item.label });
       } else {
         navigate({ screen: "tool", id: item.id, title: item.label });
       }
@@ -824,6 +837,153 @@ function buildAcDetail(category, model, variant) {
       + Object.entries(info.deducibles).map(([k, v]) => `<div class="plan-phase"><span>${k}</span><strong>${money(v)}</strong></div>`).join("");
     wrap.appendChild(deduc);
   }
+
+  return wrap;
+}
+
+// ---- Escáner: cámara (BarcodeDetector) + búsqueda manual sobre datos/escaner.json ----
+let scannerStream = null;
+
+function stopScannerStream() {
+  if (scannerStream) {
+    scannerStream.getTracks().forEach(t => t.stop());
+    scannerStream = null;
+  }
+}
+
+function buildScannerScan() {
+  const wrap = document.createElement("div");
+
+  const heading = document.createElement("div");
+  heading.className = "home-heading";
+  heading.innerHTML = `<h2>Escáner</h2><p>Escanea el código de barras del equipo o de la caja de AppleCare+.</p>`;
+  wrap.appendChild(heading);
+
+  const camBox = document.createElement("div");
+  camBox.className = "scan-camera";
+  const video = document.createElement("video");
+  video.setAttribute("playsinline", "");
+  video.muted = true;
+  camBox.appendChild(video);
+  const frame = document.createElement("div");
+  frame.className = "scan-frame";
+  camBox.appendChild(frame);
+  const statusEl = document.createElement("p");
+  statusEl.className = "scan-status";
+  statusEl.textContent = "Iniciando cámara…";
+  wrap.appendChild(camBox);
+  wrap.appendChild(statusEl);
+
+  // Entrada manual, siempre disponible (funciona sin cámara o si el
+  // navegador no soporta lectura automática de códigos de barras).
+  const manualBox = document.createElement("div");
+  manualBox.className = "scan-manual";
+  manualBox.innerHTML = `
+    <input type="text" inputmode="numeric" placeholder="O escribe el código de barras" class="scan-input" />
+    <button class="primary-btn scan-manual-btn">Buscar</button>
+  `;
+  wrap.appendChild(manualBox);
+
+  const input = manualBox.querySelector(".scan-input");
+  const manualBtn = manualBox.querySelector(".scan-manual-btn");
+  function lookup(rawCode) {
+    const digits = (rawCode || "").replace(/\D/g, "");
+    let code = digits;
+    if (digits.length === 13 && digits[0] === "0") code = digits.slice(1);
+    if (!code || !ESCANER_DATA || !ESCANER_DATA[code]) {
+      statusEl.textContent = "Código no encontrado. Intenta de nuevo.";
+      return;
+    }
+    stopScannerStream();
+    navigate({ screen: "scannerResult", code, title: "Resultado" });
+  }
+  manualBtn.addEventListener("click", () => lookup(input.value));
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") lookup(input.value); });
+
+  // Cámara + lectura automática (si el navegador soporta BarcodeDetector)
+  let stopped = false;
+  async function startCamera() {
+    try {
+      scannerStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+      video.srcObject = scannerStream;
+      await video.play();
+    } catch (e) {
+      statusEl.textContent = "No se pudo abrir la cámara. Usa la búsqueda manual.";
+      return;
+    }
+
+    if (!("BarcodeDetector" in window)) {
+      statusEl.textContent = "Tu navegador no lee códigos automáticamente. Usa la búsqueda manual.";
+      return;
+    }
+
+    statusEl.textContent = "Apunta al código de barras…";
+    let detector;
+    try {
+      detector = new BarcodeDetector({ formats: ["ean_13", "upc_a", "code_128", "ean_8", "upc_e"] });
+    } catch (e) {
+      statusEl.textContent = "Tu navegador no lee códigos automáticamente. Usa la búsqueda manual.";
+      return;
+    }
+
+    async function tick() {
+      if (stopped) return;
+      try {
+        const codes = await detector.detect(video);
+        if (codes.length > 0) {
+          lookup(codes[0].rawValue);
+          return;
+        }
+      } catch (e) { /* frame no listo, seguir intentando */ }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  startCamera();
+
+  // Si el usuario navega a otra pantalla, apaga la cámara.
+  const stopOnLeave = () => { stopped = true; stopScannerStream(); };
+  backBtn.addEventListener("click", stopOnLeave, { once: true });
+  homeBtn.addEventListener("click", stopOnLeave, { once: true });
+
+  return wrap;
+}
+
+function buildScannerResult(code) {
+  const wrap = document.createElement("div");
+  const item = ESCANER_DATA?.[code];
+
+  if (!item) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "📷", "No se encontró información para el código " + code + "."));
+    return wrap;
+  }
+
+  const hasRobo = item.applecare_robo_perdida !== undefined && item.applecare_robo_perdida !== null;
+
+  const hero = document.createElement("div");
+  hero.className = "ac-hero";
+  hero.innerHTML = `
+    <span class="ac-hero-icon">📷</span>
+    <h2>${item.modelo}</h2>
+    <p class="ac-hero-sub">${[item.color, item.capacidad].filter(Boolean).join(" · ")}</p>
+    ${hasRobo ? `
+      <div class="ac-price-row">
+        <div class="ac-price-box"><span>AppleCare+</span><strong>${money(item.applecare)}</strong></div>
+        <div class="ac-price-box robo"><span>Robo y Extravío</span><strong>${money(item.applecare_robo_perdida)}</strong></div>
+      </div>
+    ` : `<div class="ac-price">${money(item.applecare)}</div>`}
+  `;
+  wrap.appendChild(hero);
+
+  const again = document.createElement("button");
+  again.className = "primary-btn";
+  again.style.marginTop = "4px";
+  again.textContent = "Escanear otro código";
+  again.addEventListener("click", () => {
+    stack.pop();
+    navigate({ screen: "scannerScan", title: "Escáner" });
+  });
+  wrap.appendChild(again);
 
   return wrap;
 }
