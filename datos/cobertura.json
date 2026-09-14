@@ -1,0 +1,127 @@
+{
+  "iPhone": {
+    "AppleCare+": {
+      "cubre": ["Pantalla rota", "Cristal trasero roto", "Daños accidentales", "Daños por líquidos", "Cámaras, bocinas y botones", "Fallas de hardware cubiertas por Apple", "Soporte técnico Apple"],
+      "no_cubre": ["Rayones superficiales", "Desgaste estético", "Daño intencional", "Fraude", "Número de serie alterado", "Modificaciones no autorizadas", "Fallas derivadas por software (Betas instaladas anulan la cobertura AC+)", "Mantenimientos", "Equipo incompleto (faltan piezas)"],
+      "cuotas": [
+        {"label": "Pantalla", "precio": "$559 MXN"},
+        {"label": "Cristal trasero", "precio": "$559 MXN"},
+        {"label": "Cristal trasero + pantalla", "precio": "$1,118 MXN"},
+        {"label": "Otros daños accidentales", "precio": "$1,899 MXN"}
+      ],
+      "si_aplica": ["Se cayó de una mesa", "Se cayó del coche", "Se mojó por una bebida", "Se cayó en el gimnasio", "Lo aplastaste accidentalmente"],
+      "rechazados": ["Daño provocado deliberadamente", "Reparaciones no autorizadas que impidan el servicio", "Fraude", "Contaminación biológica severa"],
+      "bateria": {"condicion": "Menos de 80% de capacidad máxima (con AppleCare+ activo)", "resultado": "Reemplazo cubierto sin costo adicional"},
+      "info": ["Daños accidentales ilimitados mientras el plan permanezca activo", "Cada evento requiere la cuota correspondiente"]
+    },
+    "AppleCare+ Robo y Pérdida": {
+      "cubre": ["Todo lo incluido en AppleCare+", "Robo", "Pérdida", "Reemplazo por robo o pérdida"],
+      "no_cubre": ["Robo o pérdida con Encontrar desactivado", "Fraude", "Información falsa en la reclamación"],
+      "cuotas": [
+        {"label": "Pantalla", "precio": "$559 MXN"},
+        {"label": "Cristal trasero", "precio": "$559 MXN"},
+        {"label": "Otros daños", "precio": "$1,899 MXN"},
+        {"label": "Robo o pérdida", "precio": "$3,299 MXN"}
+      ],
+      "si_aplica": ["Robo en transporte público", "Robo con violencia", "Extravío accidental", "Pérdida durante un viaje"],
+      "rechazados": ["Encontrar desactivado", "Información falsa", "Fraude"],
+      "info": ["Hasta 2 reclamaciones de robo o pérdida cada 12 meses", "Encontrar debe permanecer activado"],
+      "reclamo": ["Entrar a apple.com", "Iniciar sesión con tu Cuenta Apple", "Tener activado Encontrar", "Marcar el iPhone como perdido", "Seguir los pasos de la reclamación"]
+    }
+  },
+  "iPad": {
+    "AppleCare+": {
+      "cubre": ["Pantalla", "Cámaras", "Bocinas", "Micrófonos", "Puerto de carga", "Botones", "Daños accidentales", "Daños por líquidos", "Fallas de hardware"],
+      "no_cubre": ["Rayones superficiales", "Desgaste estético", "Daño intencional", "Fraude", "Mantenimientos preventivos", "Fallas de Software Beta (cualquier software que no sea iPadOS)"],
+      "cuotas": [
+        {"label": "Dispositivos de entrada (Apple Pencil / Pencil Pro)", "precio": "$559 MXN"},
+        {"label": "Desperfecto físico — Air/Pro (M2-M5), iPad A16, mini A17 Pro", "precio": "$1,899 MXN"},
+        {"label": "Desperfecto físico — resto de modelos", "precio": "$799 MXN"}
+      ],
+      "si_aplica": ["Se cayó de una mochila", "Pantalla rota", "Golpe accidental", "Carcasa doblada", "Derrame de líquidos"],
+      "rechazados": ["Daño deliberado", "Modificaciones no autorizadas", "Fraude"],
+      "bateria": {"condicion": "Menos de 80% de capacidad máxima", "resultado": "Reemplazo cubierto sin costo adicional"},
+      "info": ["Apple puede reparar o reemplazar el iPad", "Incluye soporte técnico Apple"]
+    }
+  },
+  "Mac": {
+    "AppleCare+": {
+      "cubre": ["Pantalla", "Teclado", "Trackpad", "Bocinas", "Cámaras", "Puertos", "Daños accidentales", "Daños por líquidos", "Fallas de hardware", "Daños por fallas eléctricas (AC+ únicamente)"],
+      "no_cubre": ["Rayones superficiales", "Desgaste estético", "Daño intencional", "Fraude", "Modificaciones no autorizadas", "Si la MacBook fue sumergida en líquido", "Fallas de Software Beta (anulan AC+ y Garantía Limitada)"],
+      "cuotas": [
+        {"label": "Daño en carcasa o pantalla", "precio": "$1,899 MXN"},
+        {"label": "Otros daños (cualquier otra pieza o más de 2 piezas)", "precio": "$6,499 MXN"}
+      ],
+      "si_aplica": ["Derrame de café", "Pantalla rota", "Caída de escritorio", "Golpe accidental", "Daño por líquido"],
+      "rechazados": ["Daño provocado deliberadamente", "Equipo alterado", "Fraude", "Contaminación biológica severa"],
+      "bateria": {"condicion": "Menos de 80% de capacidad original", "resultado": "Reemplazo cubierto sin costo adicional"},
+      "info": ["Apple puede reparar la MacBook", "Algunas reparaciones pueden requerir varios días", "A diferencia del iPhone, el AppleCare+ para MacBook nunca reemplaza el equipo — siempre es reparación de la misma unidad"]
+    }
+  },
+  "Mac Neo": {
+    "AppleCare+": {
+      "cubre": ["Pantalla", "Teclado", "Trackpad", "Bocinas", "Cámaras", "Puertos", "Componentes internos", "Daños por caídas", "Daños por líquidos", "Fallas de hardware", "Batería (si baja de 80%)"],
+      "no_cubre": ["Robo o pérdida", "Daños provocados intencionalmente", "Desgaste normal o rayones", "Equipos modificados o reparados por terceros"],
+      "cuotas": [
+        {"label": "Solo pantalla o carcasa", "precio": "$999 MXN"},
+        {"label": "Cualquier otro daño accidental", "precio": "$2,999 MXN"}
+      ],
+      "si_aplica": ["Se cayó la Mac y se rompió la pantalla", "Se derramó café o agua", "Dejó de cargar por una falla interna", "Se dañó un puerto por un accidente", "El teclado dejó de funcionar después de un derrame"],
+      "bateria": {"condicion": "Menos de 80% de capacidad original", "resultado": "Apple la reemplaza sin costo adicional"},
+      "info": ["Daños accidentales ilimitados mientras AppleCare+ esté vigente (pagando el deducible)", "Incluye soporte técnico especializado durante toda la vigencia", "Recomendable respaldar tu información antes de cualquier reparación"]
+    }
+  },
+  "Apple Watch": {
+    "AppleCare+": {
+      "cubre": ["Pantalla", "Corona Digital", "Sensores", "Bocina", "Micrófono", "Daños accidentales", "Daños por líquidos", "Fallas de hardware"],
+      "no_cubre": ["Rayones superficiales", "Desgaste estético", "Daño intencional", "Fraude", "Fallas de Software Beta (cualquier software que no sea watchOS)"],
+      "cuotas": [
+        {"label": "Apple Watch", "precio": "$1,249 MXN"},
+        {"label": "Apple Watch Ultra", "precio": "$1,499 MXN"},
+        {"label": "Apple Watch Edition / Hermès / Hermès Ultra", "precio": "$1,449 MXN"}
+      ],
+      "si_aplica": ["Golpe contra pared", "Caída accidental", "Pantalla estrellada", "Daño por líquido"],
+      "rechazados": ["Daño provocado deliberadamente", "Modificaciones no autorizadas", "Fraude"],
+      "bateria": {"condicion": "Menos de 80% de capacidad máxima", "resultado": "Reemplazo cubierto sin costo adicional"},
+      "info": ["Apple puede reparar o reemplazar el Apple Watch", "Incluye soporte técnico Apple"]
+    }
+  },
+  "AirPods Pro": {
+    "AppleCare+": {
+      "cubre": ["Todo lo incluido en AirPods", "Cancelación Activa de Ruido", "Modo Transparencia", "Audio Adaptativo", "Estuche MagSafe"],
+      "no_cubre": ["Robo", "Pérdida", "Daño intencional", "Fraude"],
+      "si_aplica": ["Problemas con cancelación de ruido", "Problemas de audio", "Problemas de batería", "Estuche dañado"],
+      "rechazados": ["Robo", "Extravío", "Fraude"],
+      "bateria": {"condicion": "Menos de 80% de capacidad máxima", "resultado": "Reemplazo cubierto sin costo adicional"},
+      "info": ["Apple puede reemplazar cada componente por separado"]
+    }
+  },
+  "AirPods Max": {
+    "AppleCare+": {
+      "cubre": ["Audio", "Bocinas", "Micrófonos", "Almohadillas", "Batería", "Daños accidentales", "Fallas de hardware"],
+      "no_cubre": ["Robo", "Pérdida", "Daño intencional", "Fraude"],
+      "si_aplica": ["Caída accidental", "Problemas de audio", "Problemas de batería", "Daño físico accidental"],
+      "rechazados": ["Robo", "Extravío", "Fraude"],
+      "bateria": {"condicion": "Menos de 80% de capacidad máxima", "resultado": "Reemplazo cubierto sin costo adicional"},
+      "info": ["Apple puede reparar o reemplazar los AirPods Max"]
+    }
+  },
+  "HomePod": {
+    "AppleCare+": {
+      "cubre": ["Bocinas", "Micrófonos", "Fuente de energía", "Daños accidentales", "Fallas de hardware"],
+      "no_cubre": ["Daño intencional", "Fraude", "Modificaciones no autorizadas"],
+      "si_aplica": ["Caída accidental", "Derrame de líquidos", "Problemas de audio", "Fallas de hardware"],
+      "rechazados": ["Daño provocado deliberadamente", "Modificaciones", "Fraude"],
+      "info": ["Incluye soporte técnico Apple", "Apple puede reparar o reemplazar el equipo"]
+    }
+  },
+  "Apple TV": {
+    "AppleCare+": {
+      "cubre": ["Apple TV", "Siri Remote", "Fuente de alimentación", "Daños accidentales", "Fallas de hardware"],
+      "no_cubre": ["Daño intencional", "Fraude", "Modificaciones no autorizadas"],
+      "si_aplica": ["Caída accidental", "Control remoto dañado", "Problemas de funcionamiento", "Daño físico accidental"],
+      "rechazados": ["Daño provocado deliberadamente", "Modificaciones", "Fraude"],
+      "info": ["Incluye soporte técnico Apple", "Apple puede reparar o reemplazar el equipo"]
+    }
+  }
+}
