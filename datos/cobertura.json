@@ -339,46 +339,11 @@
   "AirPods Pro": {
     "AppleCare+": {
       "cubre": [
-        "Todo lo incluido en AirPods",
-        "Cancelación Activa de Ruido",
+        "Todo lo incluido en AirPods / Audio",
+        "Cancelación Activa de Ruido (en modelos compatibles)",
         "Modo Transparencia",
         "Audio Adaptativo",
-        "Estuche MagSafe"
-      ],
-      "no_cubre": [
-        "Robo",
-        "Pérdida",
-        "Daño intencional",
-        "Fraude"
-      ],
-      "si_aplica": [
-        "Problemas con cancelación de ruido",
-        "Problemas de audio",
-        "Problemas de batería",
-        "Estuche dañado"
-      ],
-      "rechazados": [
-        "Robo",
-        "Extravío",
-        "Fraude"
-      ],
-      "bateria": {
-        "condicion": "Menos de 80% de capacidad máxima",
-        "resultado": "Reemplazo cubierto sin costo adicional"
-      },
-      "info": [
-        "Apple puede reemplazar cada componente por separado"
-      ]
-    }
-  },
-  "AirPods Max": {
-    "AppleCare+": {
-      "cubre": [
-        "Audio",
-        "Bocinas",
-        "Micrófonos",
-        "Almohadillas",
-        "Batería",
+        "Estuche MagSafe / Almohadillas",
         "Daños accidentales",
         "Fallas de hardware"
       ],
@@ -388,11 +353,21 @@
         "Daño intencional",
         "Fraude"
       ],
+      "cuotas": [
+        {
+          "label": "AirPods 4 (deducible daño accidental)",
+          "precio": "$559 MXN"
+        },
+        {
+          "label": "AirPods Pro 3 (deducible daño accidental)",
+          "precio": "$559 MXN"
+        }
+      ],
       "si_aplica": [
-        "Caída accidental",
+        "Problemas con cancelación de ruido",
         "Problemas de audio",
         "Problemas de batería",
-        "Daño físico accidental"
+        "Estuche dañado o caída accidental"
       ],
       "rechazados": [
         "Robo",
@@ -404,7 +379,54 @@
         "resultado": "Reemplazo cubierto sin costo adicional"
       },
       "info": [
-        "Apple puede reparar o reemplazar los AirPods Max"
+        "Apple puede reemplazar cada componente por separado o los equipos según aplique"
+      ]
+    }
+  },
+  "AirPods Max": {
+    "AppleCare+": {
+      "cubre": [
+        "Todo lo incluido en AirPods / Audio",
+        "Cancelación Activa de Ruido (en modelos compatibles)",
+        "Modo Transparencia",
+        "Audio Adaptativo",
+        "Estuche MagSafe / Almohadillas",
+        "Daños accidentales",
+        "Fallas de hardware"
+      ],
+      "no_cubre": [
+        "Robo",
+        "Pérdida",
+        "Daño intencional",
+        "Fraude"
+      ],
+      "cuotas": [
+        {
+          "label": "AirPods Max 2 (deducible daño accidental)",
+          "precio": "$559 MXN"
+        },
+        {
+          "label": "Beats (deducible daño accidental)",
+          "precio": "$559 MXN"
+        }
+      ],
+      "si_aplica": [
+        "Problemas con cancelación de ruido",
+        "Problemas de audio",
+        "Problemas de batería",
+        "Estuche dañado o caída accidental"
+      ],
+      "rechazados": [
+        "Robo",
+        "Extravío",
+        "Fraude"
+      ],
+      "bateria": {
+        "condicion": "Menos de 80% de capacidad máxima",
+        "resultado": "Reemplazo cubierto sin costo adicional"
+      },
+      "info": [
+        "Apple puede reemplazar cada componente por separado o los equipos según aplique"
       ]
     }
   },
