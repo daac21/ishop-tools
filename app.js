@@ -36,26 +36,17 @@ const AC_CATEGORY_META = {
   "AirPods":   { icon: "🎧", color: "#8e8e93" },
 };
 
-// ---- Datos: se leen de datos/*.json (ese mismo repo de GitHub).
-// Cada vez que subas un cambio a GitHub, Netlify republica solo y la app
-// jala la versión nueva. Se guarda una copia en el teléfono por si no hay internet.
 let TRADEIN_DATA = null;
 let PRECIOS_IPHONE = null;
 let APPLECARE_DATA = null;
-// Lista de modelos que se muestran en Switch Up (y en qué orden).
-// Se edita solo este archivo (datos/switchup_modelos.json) para
-// agregar/quitar modelos del apartado, sin tocar precios.
 let SWITCHUP_MODELOS = null;
 let FINANCIAMIENTO_DATA = null;
 let COBERTURA_DATA = null;
-// Info comercial de AppleCare+ por categoría/equipo (precio, deducibles, beneficios)
 let APPLECARE_INFO = null;
-// Códigos de barras (EAN) -> producto + precios de AppleCare+ (Escáner)
-let ESCANER_DATA = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a, s, f, c, aci, esc] = await Promise.all([
+    const [t, p, a, s, f, c, aci] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
@@ -63,7 +54,6 @@ async function loadAllData() {
       fetch("datos/financiamiento.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/cobertura.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare_info.json", { cache: "no-store" }).then(r => r.json()),
-      fetch("datos/escaner.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
@@ -72,8 +62,7 @@ async function loadAllData() {
     FINANCIAMIENTO_DATA = f;
     COBERTURA_DATA = c;
     APPLECARE_INFO = aci;
-    ESCANER_DATA = esc;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci, escaner: esc }));
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -85,7 +74,6 @@ async function loadAllData() {
       FINANCIAMIENTO_DATA = data.financiamiento || {};
       COBERTURA_DATA = data.cobertura || {};
       APPLECARE_INFO = data.applecare_info || {};
-      ESCANER_DATA = data.escaner || {};
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
@@ -94,14 +82,11 @@ async function loadAllData() {
       FINANCIAMIENTO_DATA = {};
       COBERTURA_DATA = {};
       APPLECARE_INFO = {};
-      ESCANER_DATA = {};
     }
   }
 }
 const dataReady = loadAllData();
 
-// ---- Estado de navegación ----
-// Cada entrada: { screen: "home" | "tool" | "coverageDetail" | "tradeNode" | "quoteSelectNew" | "quoteResult" | "switchResult", ...params, title }
 let stack = [{ screen: "home", title: "iShop Tools" }];
 const MESES = [3, 6, 9, 10, 12, 13, 15];
 const MEMBRESIA_SWITCH = 399;
@@ -118,8 +103,6 @@ function parsePesoValue(str) {
   return parseFloat(clean);
 }
 
-// base se reparte en 15 meses siempre; extra (AppleCare) solo dentro de
-// los primeros acMonths (10, 12 o 13, elegible por el usuario)
 function computePlan(base, extra, months, acMonths) {
   if (base === null || base === undefined) return null;
   const safeExtra = extra || 0;
@@ -164,7 +147,6 @@ function goHome() {
 backBtn.addEventListener("click", goBack);
 homeBtn.addEventListener("click", goHome);
 
-// ---- Render principal ----
 function render(isForward) {
   const entry = currentEntry();
   titleEl.textContent = entry.title;
@@ -178,7 +160,6 @@ function render(isForward) {
   screensEl.appendChild(node);
 }
 
-// ---- Construcción de cada tipo de pantalla ----
 function buildScreen(entry) {
   const el = document.createElement("div");
 
@@ -212,10 +193,6 @@ function buildScreen(entry) {
     el.appendChild(buildAcVariants(entry.category, entry.model));
   } else if (entry.screen === "acDetail") {
     el.appendChild(buildAcDetail(entry.category, entry.model, entry.variant));
-  } else if (entry.screen === "scannerScan") {
-    el.appendChild(buildScannerScan());
-  } else if (entry.screen === "scannerResult") {
-    el.appendChild(buildScannerResult(entry.code));
   } else if (entry.screen === "tool") {
     const meta = MENU.find(m => m.id === entry.id);
     el.appendChild(buildPlaceholder(entry.title, meta ? meta.icon : "🔧",
@@ -262,9 +239,6 @@ function buildHome() {
         if (!FINANCIAMIENTO_DATA) await dataReady;
         const planType = item.id === "forlife" ? "IFL" : "GET";
         navigate({ screen: "financeSelect", path: [], planType, title: item.label });
-      } else if (item.id === "scanner") {
-        if (!ESCANER_DATA) await dataReady;
-        navigate({ screen: "scannerScan", title: item.label });
       } else {
         navigate({ screen: "tool", id: item.id, title: item.label });
       }
@@ -430,7 +404,6 @@ function buildPlaceholder(title, emoji, message) {
   return wrap;
 }
 
-// ---- Trade In: navegación dinámica sobre tradein.json ----
 const PRICE_ROWS = [
   { key: "ÓPTIMO",   label: "Óptimo",   color: "#34c759" },
   { key: "BATERÍA",  label: "Batería",  color: "#ff9500" },
@@ -482,8 +455,6 @@ function buildTradeNode(path) {
         </span>
         <span style="font-weight:650;">${raw}</span>
       `;
-      // Redirección inmediata a elegir el iPhone nuevo. Solo aplica en la
-      // categoría iPhone (isIphone) — iPad/Mac/Apple Watch no cotizan aquí.
       if (isIphone && numeric !== null) {
         item.addEventListener("click", () => {
           navigate({
@@ -500,7 +471,6 @@ function buildTradeNode(path) {
     return wrap;
   }
 
-  // Nodo intermedio: mostrar lista de opciones (categoría, modelo, capacidad, etc.)
   const heading = document.createElement("div");
   heading.className = "section-heading";
   const label = path.length === 0 ? "Trade In" : path[path.length - 1];
@@ -522,7 +492,6 @@ function buildTradeNode(path) {
   return wrap;
 }
 
-// ---- Selección de equipo nuevo (Trade In) ----
 function buildQuoteSelectNew(path, tradeIn) {
   const node = getNodeAtPathIn(PRECIOS_IPHONE, path);
   const wrap = document.createElement("div");
@@ -586,9 +555,6 @@ function getNodeAtPathIn(root, path) {
   return node;
 }
 
-// En el primer nivel (elegir modelo) se muestra solo la lista corta de
-// datos/switchup_modelos.json, en ese orden. Se usa tanto en Trade In
-// como en Switch Up para elegir el iPhone nuevo.
 function filteredModelKeys(node, path) {
   if (path.length === 0 && Array.isArray(SWITCHUP_MODELOS)) {
     return SWITCHUP_MODELOS.filter(m => Object.prototype.hasOwnProperty.call(node, m));
@@ -596,7 +562,6 @@ function filteredModelKeys(node, path) {
   return Object.keys(node);
 }
 
-// ---- Resultado de cotización Trade In (3 opciones x plazos) ----
 function buildQuoteResult(tradeIn, newModel, newCapacity) {
   const wrap = document.createElement("div");
   const newPrice = PRECIOS_IPHONE?.[newModel]?.[newCapacity] ?? null;
@@ -607,8 +572,6 @@ function buildQuoteResult(tradeIn, newModel, newCapacity) {
   banner.className = "trade-banner";
   wrap.appendChild(banner);
 
-  // El recuadro se actualiza según la pestaña activa: equipo − Trade In
-  // [+ AppleCare+ seleccionado] = total.
   function updateBanner(opt) {
     if (newPrice === null) {
       banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>Precio pendiente de cargar</strong>`;
@@ -630,10 +593,82 @@ function buildQuoteResult(tradeIn, newModel, newCapacity) {
   ];
 
   wrap.appendChild(buildPlanTabs(options, base, { onSelect: updateBanner }));
+
+  if (newPrice !== null) {
+    wrap.appendChild(buildTradeInAltFinancing(tradeIn, newModel, newCapacity, newPrice, ac));
+  }
+
   return wrap;
 }
 
-// ---- Switch Up ----
+function buildTradeInAltFinancing(tradeIn, newModel, newCapacity, newPrice, ac) {
+  const wrap = document.createElement("div");
+  wrap.style.marginTop = "18px";
+
+  const label = document.createElement("p");
+  label.className = "plan-note";
+  label.style.margin = "0 0 8px 2px";
+  label.textContent = "¿Prefieres verlo en otra forma de pago?";
+  wrap.appendChild(label);
+
+  const select = document.createElement("select");
+  select.className = "alt-finance-select";
+  select.innerHTML = `
+    <option value="">Elegir…</option>
+    <option value="IFL">iPhone For Life + AC</option>
+    <option value="GET">GET + AC</option>
+    <option value="switchup">Switch Up</option>
+  `;
+  wrap.appendChild(select);
+
+  const resultArea = document.createElement("div");
+  resultArea.style.marginTop = "12px";
+  wrap.appendChild(resultArea);
+
+  select.addEventListener("change", () => {
+    resultArea.innerHTML = "";
+    if (!select.value) return;
+
+    if (select.value === "switchup") {
+      const switchBase = newPrice + MEMBRESIA_SWITCH - tradeIn.value;
+      const banner = document.createElement("div");
+      banner.className = "trade-banner";
+      banner.innerHTML = `<span>Switch Up con Trade In</span><strong>${money(newPrice)} + ${money(MEMBRESIA_SWITCH)} − ${money(tradeIn.value)} (Trade In) = ${money(switchBase)}</strong>`;
+      resultArea.appendChild(banner);
+
+      const options = [
+        { key: "ac", label: "AppleCare+", extra: ac.APPLECARE },
+        { key: "acrp", label: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
+      ];
+      resultArea.appendChild(buildPlanTabs(options, switchBase));
+      return;
+    }
+
+    const cfg = FINANCE_CONFIG[select.value];
+    const finData = FINANCIAMIENTO_DATA?.[newModel]?.[newCapacity]?.[select.value];
+    if (!finData) {
+      resultArea.appendChild(buildPlaceholder("Sin datos", "💳", "Aún no hay plan " + cfg.label + " cargado para este equipo."));
+      return;
+    }
+
+    const totalMsi = cfg.phase1 + cfg.phase2Months;
+    const descuentoMensual = tradeIn.value / totalMsi;
+    const discountedFinData = {
+      monthly: Math.max(0, finData.monthly - descuentoMensual),
+      residual: finData.residual,
+    };
+
+    const banner = document.createElement("div");
+    banner.className = "trade-banner";
+    banner.innerHTML = `<span>${cfg.label} con Trade In</span><strong>${money(finData.monthly)}/mes − ${money(descuentoMensual)} (Trade In ÷ ${totalMsi} msi) = ${money(discountedFinData.monthly)}/mes</strong>`;
+    resultArea.appendChild(banner);
+
+    resultArea.appendChild(buildFinanceColumnsGrid(discountedFinData, ac, cfg));
+  });
+
+  return wrap;
+}
+
 function buildSwitchSelect(path) {
   const node = getNodeAtPathIn(PRECIOS_IPHONE, path);
   const wrap = document.createElement("div");
@@ -687,8 +722,6 @@ function buildSwitchResult(newModel, newCapacity) {
   banner.className = "trade-banner";
   wrap.appendChild(banner);
 
-  // El recuadro superior se actualiza según la opción (AppleCare+ / R y P)
-  // que esté activa en las pestañas: equipo + membresía [+ AppleCare+] = total.
   function updateBanner(opt) {
     if (newPrice === null) {
       banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>Precio pendiente de cargar</strong>`;
@@ -712,7 +745,6 @@ function buildSwitchResult(newModel, newCapacity) {
   return wrap;
 }
 
-// ---- AppleCare+ (datos/applecare_info.json): categoría → equipo → variante → detalle ----
 function buildAcCategories() {
   const wrap = document.createElement("div");
   const heading = document.createElement("div");
@@ -803,8 +835,6 @@ function buildAcDetail(category, model, variant) {
     return wrap;
   }
 
-  // Algunos equipos (iPhone) traen el precio de Robo y Extravío dentro de
-  // la misma variante "AppleCare+" — se muestran los 2 precios lado a lado.
   const roboPrice = info["Robo y Extravío"];
   const hasRobo = roboPrice !== undefined && roboPrice !== null;
 
@@ -841,154 +871,6 @@ function buildAcDetail(category, model, variant) {
   return wrap;
 }
 
-// ---- Escáner: cámara (BarcodeDetector) + búsqueda manual sobre datos/escaner.json ----
-let scannerStream = null;
-
-function stopScannerStream() {
-  if (scannerStream) {
-    scannerStream.getTracks().forEach(t => t.stop());
-    scannerStream = null;
-  }
-}
-
-function buildScannerScan() {
-  const wrap = document.createElement("div");
-
-  const heading = document.createElement("div");
-  heading.className = "home-heading";
-  heading.innerHTML = `<h2>Escáner</h2><p>Escanea el código de barras del equipo o de la caja de AppleCare+.</p>`;
-  wrap.appendChild(heading);
-
-  const camBox = document.createElement("div");
-  camBox.className = "scan-camera";
-  const video = document.createElement("video");
-  video.setAttribute("playsinline", "");
-  video.muted = true;
-  camBox.appendChild(video);
-  const frame = document.createElement("div");
-  frame.className = "scan-frame";
-  camBox.appendChild(frame);
-  const statusEl = document.createElement("p");
-  statusEl.className = "scan-status";
-  statusEl.textContent = "Iniciando cámara…";
-  wrap.appendChild(camBox);
-  wrap.appendChild(statusEl);
-
-  // Entrada manual, siempre disponible (funciona sin cámara o si el
-  // navegador no soporta lectura automática de códigos de barras).
-  const manualBox = document.createElement("div");
-  manualBox.className = "scan-manual";
-  manualBox.innerHTML = `
-    <input type="text" inputmode="numeric" placeholder="O escribe el código de barras" class="scan-input" />
-    <button class="primary-btn scan-manual-btn">Buscar</button>
-  `;
-  wrap.appendChild(manualBox);
-
-  const input = manualBox.querySelector(".scan-input");
-  const manualBtn = manualBox.querySelector(".scan-manual-btn");
-  function lookup(rawCode) {
-    const digits = (rawCode || "").replace(/\D/g, "");
-    let code = digits;
-    if (digits.length === 13 && digits[0] === "0") code = digits.slice(1);
-    if (!code || !ESCANER_DATA || !ESCANER_DATA[code]) {
-      statusEl.textContent = "Código no encontrado. Intenta de nuevo.";
-      return;
-    }
-    stopScannerStream();
-    navigate({ screen: "scannerResult", code, title: "Resultado" });
-  }
-  manualBtn.addEventListener("click", () => lookup(input.value));
-  input.addEventListener("keydown", (e) => { if (e.key === "Enter") lookup(input.value); });
-
-  // Cámara + lectura automática (si el navegador soporta BarcodeDetector)
-  let stopped = false;
-  async function startCamera() {
-    try {
-      scannerStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
-      video.srcObject = scannerStream;
-      await video.play();
-    } catch (e) {
-      statusEl.textContent = "No se pudo abrir la cámara. Usa la búsqueda manual.";
-      return;
-    }
-
-    if (!("BarcodeDetector" in window)) {
-      statusEl.textContent = "Tu navegador no lee códigos automáticamente. Usa la búsqueda manual.";
-      return;
-    }
-
-    statusEl.textContent = "Apunta al código de barras…";
-    let detector;
-    try {
-      detector = new BarcodeDetector({ formats: ["ean_13", "upc_a", "code_128", "ean_8", "upc_e"] });
-    } catch (e) {
-      statusEl.textContent = "Tu navegador no lee códigos automáticamente. Usa la búsqueda manual.";
-      return;
-    }
-
-    async function tick() {
-      if (stopped) return;
-      try {
-        const codes = await detector.detect(video);
-        if (codes.length > 0) {
-          lookup(codes[0].rawValue);
-          return;
-        }
-      } catch (e) { /* frame no listo, seguir intentando */ }
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-  startCamera();
-
-  // Si el usuario navega a otra pantalla, apaga la cámara.
-  const stopOnLeave = () => { stopped = true; stopScannerStream(); };
-  backBtn.addEventListener("click", stopOnLeave, { once: true });
-  homeBtn.addEventListener("click", stopOnLeave, { once: true });
-
-  return wrap;
-}
-
-function buildScannerResult(code) {
-  const wrap = document.createElement("div");
-  const item = ESCANER_DATA?.[code];
-
-  if (!item) {
-    wrap.appendChild(buildPlaceholder("Sin datos", "📷", "No se encontró información para el código " + code + "."));
-    return wrap;
-  }
-
-  const hasRobo = item.applecare_robo_perdida !== undefined && item.applecare_robo_perdida !== null;
-
-  const hero = document.createElement("div");
-  hero.className = "ac-hero";
-  hero.innerHTML = `
-    <span class="ac-hero-icon">📷</span>
-    <h2>${item.modelo}</h2>
-    <p class="ac-hero-sub">${[item.color, item.capacidad].filter(Boolean).join(" · ")}</p>
-    ${hasRobo ? `
-      <div class="ac-price-row">
-        <div class="ac-price-box"><span>AppleCare+</span><strong>${money(item.applecare)}</strong></div>
-        <div class="ac-price-box robo"><span>Robo y Extravío</span><strong>${money(item.applecare_robo_perdida)}</strong></div>
-      </div>
-    ` : `<div class="ac-price">${money(item.applecare)}</div>`}
-  `;
-  wrap.appendChild(hero);
-
-  const again = document.createElement("button");
-  again.className = "primary-btn";
-  again.style.marginTop = "4px";
-  again.textContent = "Escanear otro código";
-  again.addEventListener("click", () => {
-    stack.pop();
-    navigate({ screen: "scannerScan", title: "Escáner" });
-  });
-  wrap.appendChild(again);
-
-  return wrap;
-}
-
-// ---- Componente reutilizable: pestañas de opción + chips de meses ----
 function buildPlanTabs(options, base, extraOpts = {}) {
   const { onSelect, phonePrice } = extraOpts;
   const wrap = document.createElement("div");
@@ -1007,8 +889,6 @@ function buildPlanTabs(options, base, extraOpts = {}) {
     chipsRow.className = "month-chips";
     let selectedMonths = MESES[0];
 
-    // Solo visible cuando el plazo elegido es 15 meses y la opción incluye
-    // AppleCare+: permite elegir en cuántos meses (10, 12 o 13) se financia.
     const acChipsRow = document.createElement("div");
     acChipsRow.className = "month-chips";
     acChipsRow.hidden = true;
@@ -1080,9 +960,6 @@ function buildPlanTabs(options, base, extraOpts = {}) {
       note.textContent = "* A 15 meses, el AppleCare+ se financia solo dentro de los meses que elijas (10, 12 o 13).";
       panels.appendChild(note);
 
-      // Recuadro de promoción: 50% del equipo + 50% del AppleCare+ seleccionado,
-      // aplicable dentro de los primeros 13 meses. Solo aplica donde se
-      // conoce el precio del equipo solo (phonePrice), es decir, Switch Up.
       if (phonePrice !== undefined && phonePrice !== null) {
         const promoBox = document.createElement("div");
         promoBox.className = "plan-result";
@@ -1120,7 +997,6 @@ function buildPlanTabs(options, base, extraOpts = {}) {
   return wrap;
 }
 
-// ---- For Life + AC / GET + AC ----
 const FINANCE_CONFIG = {
   IFL: { label: "iPhone For Life", phase1: 10, phase2Start: 11, phase2End: 24, phase2Months: 14, residualMonth: 25 },
   GET: { label: "GET",             phase1: 13, phase2Start: 14, phase2End: 20, phase2Months: 7,  residualMonth: 21 },
@@ -1189,6 +1065,11 @@ function buildFinanceResult(model, capacity, planType) {
     return wrap;
   }
 
+  wrap.appendChild(buildFinanceColumnsGrid(finData, ac, cfg));
+  return wrap;
+}
+
+function buildFinanceColumnsGrid(finData, ac, cfg) {
   const cols = [
     { label: "AppleCare+", extra: ac.APPLECARE },
     { label: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
@@ -1222,14 +1103,11 @@ function buildFinanceResult(model, capacity, planType) {
     grid.appendChild(card);
   });
 
-  wrap.appendChild(grid);
-  return wrap;
+  return grid;
 }
 
-// ---- Primer render ----
 render(true);
 
-// ---- Registro del Service Worker (para instalar como PWA) ----
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("sw.js").catch(() => {});
