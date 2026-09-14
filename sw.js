@@ -8,6 +8,7 @@ const ASSETS = [
   "./datos/precios_iphone.json",
   "./datos/applecare.json",
   "./datos/switchup_modelos.json",
+  "./datos/applecare_info.json",
   "./datos/financiamiento.json",
   "./datos/cobertura.json"
 ];
@@ -28,10 +29,10 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+// Red primero: si hay internet, siempre trae la versión más nueva
+// (precios, modelos, etc.) y actualiza la copia guardada en el celular.
+// Si no hay internet, usa esa copia guardada como respaldo.
 self.addEventListener("fetch", (event) => {
-  // Red primero: si hay internet, siempre trae la versión más nueva
-  // (precios, modelos, etc.) y actualiza la copia guardada en el celular.
-  // Si no hay internet, usa esa copia guardada como respaldo.
   event.respondWith(
     fetch(event.request)
       .then(response => {
