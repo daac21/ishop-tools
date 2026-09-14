@@ -1,0 +1,3121 @@
+{
+  "195951030197": {
+    "modelo": "iPhone 17e",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195951030234": {
+    "modelo": "iPhone 17e",
+    "color": "Blanco",
+    "capacidad": "256",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195951030272": {
+    "modelo": "iPhone 17e",
+    "color": "Rosa Palido",
+    "capacidad": "256",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195950643091": {
+    "modelo": "iPhone 17",
+    "color": "Azul Neblina",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950643053": {
+    "modelo": "iPhone 17",
+    "color": "Blanco",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950643138": {
+    "modelo": "iPhone 17",
+    "color": "Lavanda",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950643015": {
+    "modelo": "iPhone 17",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950643176": {
+    "modelo": "iPhone 17",
+    "color": "Salvia",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195951030319": {
+    "modelo": "iPhone 17e",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195951030357": {
+    "modelo": "iPhone 17e",
+    "color": "Blanco",
+    "capacidad": "512",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195951030395": {
+    "modelo": "iPhone 17e",
+    "color": "Rosa Palido",
+    "capacidad": "512",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195950643299": {
+    "modelo": "iPhone 17",
+    "color": "Azul Neblina",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950643251": {
+    "modelo": "iPhone 17",
+    "color": "Blanco",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950643336": {
+    "modelo": "iPhone 17",
+    "color": "Lavanda",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950643213": {
+    "modelo": "iPhone 17",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950643374": {
+    "modelo": "iPhone 17",
+    "color": "Salvia",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950626513": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Azul Profundo",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950626438": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Naranja Cosmico",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950626353": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638325": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Azul Profundo",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638288": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Naranja Cosmico",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638240": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621419": {
+    "modelo": "iPhone Air",
+    "color": "Azul Cielo",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621334": {
+    "modelo": "iPhone Air",
+    "color": "Blanco Nube",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621297": {
+    "modelo": "iPhone Air",
+    "color": "Negro Espacial",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621372": {
+    "modelo": "iPhone Air",
+    "color": "Oro Claro",
+    "capacidad": "256",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950626759": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Azul Profundo",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950626674": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Naranja Cosmico",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950626599": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638448": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Azul Profundo",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638400": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Naranja Cosmico",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638363": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621570": {
+    "modelo": "iPhone Air",
+    "color": "Azul Cielo",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621495": {
+    "modelo": "iPhone Air",
+    "color": "Blanco Nube",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621457": {
+    "modelo": "iPhone Air",
+    "color": "Negro Espacial",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621532": {
+    "modelo": "iPhone Air",
+    "color": "Oro Claro",
+    "capacidad": "512",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950626995": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Azul Profundo",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950626919": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Naranja Cosmico",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950626834": {
+    "modelo": "iPhone 17 Pro",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638561": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Azul Profundo",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638523": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Naranja Cosmico",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638486": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621730": {
+    "modelo": "iPhone Air",
+    "color": "Azul Cielo",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621655": {
+    "modelo": "iPhone Air",
+    "color": "Blanco Nube",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621617": {
+    "modelo": "iPhone Air",
+    "color": "Negro Espacial",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950621693": {
+    "modelo": "iPhone Air",
+    "color": "Oro Claro",
+    "capacidad": "1TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638684": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Azul Profundo",
+    "capacidad": "2TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638646": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Naranja Cosmico",
+    "capacidad": "2TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195950638608": {
+    "modelo": "iPhone 17 Pro Max",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 4399,
+    "applecare_robo_perdida": 5999
+  },
+  "195949721687": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Blanco",
+    "capacidad": "128",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721656": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Negro",
+    "capacidad": "128",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721717": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Rosa",
+    "capacidad": "128",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721748": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Ultramarino",
+    "capacidad": "128",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721779": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Verde Azulado",
+    "capacidad": "128",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949821257": {
+    "modelo": "iPhone 16",
+    "color": "Blanco",
+    "capacidad": "128",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821219": {
+    "modelo": "iPhone 16",
+    "color": "Negro",
+    "capacidad": "128",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821295": {
+    "modelo": "iPhone 16",
+    "color": "Rosa",
+    "capacidad": "128",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821332": {
+    "modelo": "iPhone 16",
+    "color": "Ultramarino",
+    "capacidad": "128",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821370": {
+    "modelo": "iPhone 16",
+    "color": "Verde Azulado",
+    "capacidad": "128",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950051766": {
+    "modelo": "iPhone 16e",
+    "color": "Blanco",
+    "capacidad": "128",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195950051742": {
+    "modelo": "iPhone 16e",
+    "color": "Negro",
+    "capacidad": "128",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195949721830": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Blanco",
+    "capacidad": "256",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721809": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721861": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Rosa",
+    "capacidad": "256",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721892": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Ultramarino",
+    "capacidad": "256",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721922": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Verde Azulado",
+    "capacidad": "256",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949821455": {
+    "modelo": "iPhone 16",
+    "color": "Blanco",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821417": {
+    "modelo": "iPhone 16",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821493": {
+    "modelo": "iPhone 16",
+    "color": "Rosa",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821530": {
+    "modelo": "iPhone 16",
+    "color": "Ultramarino",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821578": {
+    "modelo": "iPhone 16",
+    "color": "Verde Azulado",
+    "capacidad": "256",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950051803": {
+    "modelo": "iPhone 16e",
+    "color": "Blanco",
+    "capacidad": "256",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195950051780": {
+    "modelo": "iPhone 16e",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195949721984": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Blanco",
+    "capacidad": "512",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949721953": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949722011": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Rosa",
+    "capacidad": "512",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949722042": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Ultramarino",
+    "capacidad": "512",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949722073": {
+    "modelo": "iPhone 16 Plus",
+    "color": "Verde Azulado",
+    "capacidad": "512",
+    "applecare": 3899,
+    "applecare_robo_perdida": 5499
+  },
+  "195949821653": {
+    "modelo": "iPhone 16",
+    "color": "Blanco",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821615": {
+    "modelo": "iPhone 16",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821691": {
+    "modelo": "iPhone 16",
+    "color": "Rosa",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821738": {
+    "modelo": "iPhone 16",
+    "color": "Ultramarino",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195949821776": {
+    "modelo": "iPhone 16",
+    "color": "Verde Azulado",
+    "capacidad": "512",
+    "applecare": 3299,
+    "applecare_robo_perdida": 4899
+  },
+  "195950051841": {
+    "modelo": "iPhone 16e",
+    "color": "Blanco",
+    "capacidad": "512",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195950051827": {
+    "modelo": "iPhone 16e",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 2599,
+    "applecare_robo_perdida": 4199
+  },
+  "195949035333": {
+    "modelo": "iPhone 15",
+    "color": "Azul",
+    "capacidad": "128",
+    "applecare": null,
+    "applecare_robo_perdida": null
+  },
+  "195949035180": {
+    "modelo": "iPhone 15",
+    "color": "Negro",
+    "capacidad": "128",
+    "applecare": null,
+    "applecare_robo_perdida": null
+  },
+  "195949035234": {
+    "modelo": "iPhone 15",
+    "color": "Rosa",
+    "capacidad": "128",
+    "applecare": null,
+    "applecare_robo_perdida": null
+  },
+  "194252838037": {
+    "modelo": "iPhone 13",
+    "color": "Blanco Estelar",
+    "capacidad": "128",
+    "applecare": null,
+    "applecare_robo_perdida": null
+  },
+  "194252838020": {
+    "modelo": "iPhone 13",
+    "color": "Medianoche",
+    "capacidad": "128",
+    "applecare": null,
+    "applecare_robo_perdida": null
+  },
+  "195949035586": {
+    "modelo": "iPhone 15",
+    "color": "Azul",
+    "capacidad": "256",
+    "applecare": null,
+    "applecare_robo_perdida": null
+  },
+  "195949035432": {
+    "modelo": "iPhone 15",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": null,
+    "applecare_robo_perdida": null
+  },
+  "195950797978": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Azul",
+    "capacidad": "128",
+    "applecare": 2299
+  },
+  "195950798203": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Blanco Estelar",
+    "capacidad": "128",
+    "applecare": 2299
+  },
+  "195950797749": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Gris Espacial",
+    "capacidad": "128",
+    "applecare": 2299
+  },
+  "195950798432": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Morado",
+    "capacidad": "128",
+    "applecare": 2299
+  },
+  "195950784848": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Azul",
+    "capacidad": "128",
+    "applecare": 2299
+  },
+  "195950785104": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Blanco Estelar",
+    "capacidad": "128",
+    "applecare": 2299
+  },
+  "195950784589": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Gris Espacial",
+    "capacidad": "128",
+    "applecare": 2299
+  },
+  "195950785364": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Morado",
+    "capacidad": "128",
+    "applecare": 2299
+  },
+  "195950798890": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Azul",
+    "capacidad": "256",
+    "applecare": 2299
+  },
+  "195950799125": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Blanco Estelar",
+    "capacidad": "256",
+    "applecare": 2299
+  },
+  "195950798661": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Gris Espacial",
+    "capacidad": "256",
+    "applecare": 2299
+  },
+  "195950799354": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Morado",
+    "capacidad": "256",
+    "applecare": 2299
+  },
+  "195950785883": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Azul",
+    "capacidad": "256",
+    "applecare": 2299
+  },
+  "195950786149": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Blanco Estelar",
+    "capacidad": "256",
+    "applecare": 2299
+  },
+  "195950785623": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Gris Espacial",
+    "capacidad": "256",
+    "applecare": 2299
+  },
+  "195950786408": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Morado",
+    "capacidad": "256",
+    "applecare": 2299
+  },
+  "195950799811": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Azul",
+    "capacidad": "512",
+    "applecare": 2299
+  },
+  "195950800043": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Blanco Estelar",
+    "capacidad": "512",
+    "applecare": 2299
+  },
+  "195950799583": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Gris Espacial",
+    "capacidad": "512",
+    "applecare": 2299
+  },
+  "195950800272": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Morado",
+    "capacidad": "512",
+    "applecare": 2299
+  },
+  "195950786927": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Azul",
+    "capacidad": "512",
+    "applecare": 2299
+  },
+  "195950787184": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Blanco Estelar",
+    "capacidad": "512",
+    "applecare": 2299
+  },
+  "195950786668": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Gris Espacial",
+    "capacidad": "512",
+    "applecare": 2299
+  },
+  "195950787443": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Morado",
+    "capacidad": "512",
+    "applecare": 2299
+  },
+  "195950800739": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Azul",
+    "capacidad": "1 TB",
+    "applecare": 2299
+  },
+  "195950800968": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Blanco Estelar",
+    "capacidad": "1 TB",
+    "applecare": 2299
+  },
+  "195950800500": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Gris Espacial",
+    "capacidad": "1 TB",
+    "applecare": 2299
+  },
+  "195950801316": {
+    "modelo": "iPad Air 13 M4 Wi-Fi",
+    "color": "Morado",
+    "capacidad": "1 TB",
+    "applecare": 2299
+  },
+  "195950787962": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Azul",
+    "capacidad": "1 TB",
+    "applecare": 2299
+  },
+  "195950788228": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Blanco Estelar",
+    "capacidad": "1 TB",
+    "applecare": 2299
+  },
+  "195950787702": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Gris Espacial",
+    "capacidad": "1 TB",
+    "applecare": 2299
+  },
+  "195950788488": {
+    "modelo": "iPad Air 13 M4 Wi-Fi + Cellular",
+    "color": "Morado",
+    "capacidad": "1 TB",
+    "applecare": 2299
+  },
+  "195950823738": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Azul",
+    "capacidad": "128",
+    "applecare": 1799
+  },
+  "195950823967": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Blanco Estelar",
+    "capacidad": "128",
+    "applecare": 1799
+  },
+  "195950823509": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Gris Espacial",
+    "capacidad": "128",
+    "applecare": 1799
+  },
+  "195950824193": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Morado",
+    "capacidad": "128",
+    "applecare": 1799
+  },
+  "195950810561": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Azul",
+    "capacidad": "128",
+    "applecare": 1799
+  },
+  "195950810820": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Blanco Estelar",
+    "capacidad": "128",
+    "applecare": 1799
+  },
+  "195950810301": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Gris Espacial",
+    "capacidad": "128",
+    "applecare": 1799
+  },
+  "195950811087": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Morado",
+    "capacidad": "128",
+    "applecare": 1799
+  },
+  "195950824650": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Azul",
+    "capacidad": "256",
+    "applecare": 1799
+  },
+  "195950824889": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Blanco Estelar",
+    "capacidad": "256",
+    "applecare": 1799
+  },
+  "195950824421": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Gris Espacial",
+    "capacidad": "256",
+    "applecare": 1799
+  },
+  "195950825114": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Morado",
+    "capacidad": "256",
+    "applecare": 1799
+  },
+  "195950811605": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Azul",
+    "capacidad": "256",
+    "applecare": 1799
+  },
+  "195950811865": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Blanco Estelar",
+    "capacidad": "256",
+    "applecare": 1799
+  },
+  "195950811346": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Gris Espacial",
+    "capacidad": "256",
+    "applecare": 1799
+  },
+  "195950812121": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Morado",
+    "capacidad": "256",
+    "applecare": 1799
+  },
+  "195950825572": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Azul",
+    "capacidad": "512",
+    "applecare": 1799
+  },
+  "195950825800": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Blanco Estelar",
+    "capacidad": "512",
+    "applecare": 1799
+  },
+  "195950825343": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Gris Espacial",
+    "capacidad": "512",
+    "applecare": 1799
+  },
+  "195950826036": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Morado",
+    "capacidad": "512",
+    "applecare": 1799
+  },
+  "195950812640": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Azul",
+    "capacidad": "512",
+    "applecare": 1799
+  },
+  "195950812909": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Blanco Estelar",
+    "capacidad": "512",
+    "applecare": 1799
+  },
+  "195950812381": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Gris Espacial",
+    "capacidad": "512",
+    "applecare": 1799
+  },
+  "195950813166": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Morado",
+    "capacidad": "512",
+    "applecare": 1799
+  },
+  "195950826494": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Azul",
+    "capacidad": "1TB",
+    "applecare": 1799
+  },
+  "195950826722": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Blanco Estelar",
+    "capacidad": "1TB",
+    "applecare": 1799
+  },
+  "195950826265": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Gris Espacial",
+    "capacidad": "1TB",
+    "applecare": 1799
+  },
+  "195950826951": {
+    "modelo": "iPad Air 11 M4 Wi-Fi",
+    "color": "Morado",
+    "capacidad": "1TB",
+    "applecare": 1799
+  },
+  "195950813685": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Azul",
+    "capacidad": "1TB",
+    "applecare": 1799
+  },
+  "195950813944": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Blanco Estelar",
+    "capacidad": "1TB",
+    "applecare": 1799
+  },
+  "195950813425": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Gris Espacial",
+    "capacidad": "1TB",
+    "applecare": 1799
+  },
+  "195950814200": {
+    "modelo": "iPad Air 11 M4 Wi-Fi + Cellular",
+    "color": "Morado",
+    "capacidad": "1TB",
+    "applecare": 1799
+  },
+  "195950395563": {
+    "modelo": "iPad Pro 11\" M5",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 3499
+  },
+  "195950395341": {
+    "modelo": "iPad Pro 11\" M5",
+    "color": "Negro Espacial",
+    "capacidad": "256",
+    "applecare": 3499
+  },
+  "195950400939": {
+    "modelo": "iPad Pro 11\" M5 + Cell",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 3499
+  },
+  "195950400694": {
+    "modelo": "iPad Pro 11\" M5 + Cell",
+    "color": "Negro Espacial",
+    "capacidad": "256",
+    "applecare": 3499
+  },
+  "195950396003": {
+    "modelo": "iPad Pro 11\" M5",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 3499
+  },
+  "195950395785": {
+    "modelo": "iPad Pro 11\" M5",
+    "color": "Negro Espacial",
+    "capacidad": "512",
+    "applecare": 3499
+  },
+  "195950401417": {
+    "modelo": "iPad Pro 11\" M5 + Cell",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 3499
+  },
+  "195950401172": {
+    "modelo": "iPad Pro 11\" M5 + Cell",
+    "color": "Negro Espacial",
+    "capacidad": "512",
+    "applecare": 3499
+  },
+  "195950396447": {
+    "modelo": "iPad Pro 11\" M5",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 3499
+  },
+  "195950396225": {
+    "modelo": "iPad Pro 11\" M5",
+    "color": "Negro Espacial",
+    "capacidad": "1TB",
+    "applecare": 3499
+  },
+  "195950401899": {
+    "modelo": "iPad Pro 11\" M5 + Cell",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 3499
+  },
+  "195950401653": {
+    "modelo": "iPad Pro 11\" M5 + Cell",
+    "color": "Negro Espacial",
+    "capacidad": "1TB",
+    "applecare": 3499
+  },
+  "195950396881": {
+    "modelo": "iPad Pro 11\" M5 - VNT",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 3499
+  },
+  "195950396669": {
+    "modelo": "iPad Pro 11\" M5 - VNT",
+    "color": "Negro Espacial",
+    "capacidad": "1TB",
+    "applecare": 3499
+  },
+  "195950402377": {
+    "modelo": "iPad Pro 11\" M5 + Cell - VNT",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 3499
+  },
+  "195950402131": {
+    "modelo": "iPad Pro 11\" M5 + Cell - VNT",
+    "color": "Negro Espacial",
+    "capacidad": "1TB",
+    "applecare": 3499
+  },
+  "195950397321": {
+    "modelo": "iPad Pro 11\" M5",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 3499
+  },
+  "195950397109": {
+    "modelo": "iPad Pro 11\" M5",
+    "color": "Negro Espacial",
+    "capacidad": "2TB",
+    "applecare": 3499
+  },
+  "195950402858": {
+    "modelo": "iPad Pro 11\" M5 + Cell",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 3499
+  },
+  "195950402612": {
+    "modelo": "iPad Pro 11\" M5 + Cell",
+    "color": "Negro Espacial",
+    "capacidad": "2TB",
+    "applecare": 3499
+  },
+  "195950397765": {
+    "modelo": "iPad Pro 11\" M5 - VNT",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 3499
+  },
+  "195950397543": {
+    "modelo": "iPad Pro 11\" M5 - VNT",
+    "color": "Negro Espacial",
+    "capacidad": "2TB",
+    "applecare": 3499
+  },
+  "195950403336": {
+    "modelo": "iPad Pro 11\" M5 + Cell - VNT",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 3499
+  },
+  "195950403091": {
+    "modelo": "iPad Pro 11\" M5 + Cell - VNT",
+    "color": "Negro Espacial",
+    "capacidad": "2TB",
+    "applecare": 3499
+  },
+  "195950398243": {
+    "modelo": "iPad Pro 13\" M5",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 3999
+  },
+  "195950398021": {
+    "modelo": "iPad Pro 13\" M5",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 3999
+  },
+  "195950403930": {
+    "modelo": "iPad Pro 13\" M5 + Cell",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 3999
+  },
+  "195950403695": {
+    "modelo": "iPad Pro 13\" M5 + Cell",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 3999
+  },
+  "195950398687": {
+    "modelo": "iPad Pro 13\" M5",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 3999
+  },
+  "195950398465": {
+    "modelo": "iPad Pro 13\" M5",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 3999
+  },
+  "195950404418": {
+    "modelo": "iPad Pro 13\" M5 + Cell",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 3999
+  },
+  "195950404173": {
+    "modelo": "iPad Pro 13\" M5 + Cell",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 3999
+  },
+  "195950399127": {
+    "modelo": "iPad Pro 13\" M5",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 3999
+  },
+  "195950398908": {
+    "modelo": "iPad Pro 13\" M5",
+    "color": "Negro",
+    "capacidad": "1TB",
+    "applecare": 3999
+  },
+  "195950404890": {
+    "modelo": "iPad Pro 13\" M5 + Cell",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 3999
+  },
+  "195950404654": {
+    "modelo": "iPad Pro 13\" M5 + Cell",
+    "color": "Negro",
+    "capacidad": "1TB",
+    "applecare": 3999
+  },
+  "195950399561": {
+    "modelo": "iPad Pro 13\" M5 - VNT",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 3999
+  },
+  "195950399349": {
+    "modelo": "iPad Pro 13\" M5 - VNT",
+    "color": "Negro",
+    "capacidad": "1TB",
+    "applecare": 3999
+  },
+  "195950405378": {
+    "modelo": "iPad Pro 13\" M5 + Cell - VNT",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 3999
+  },
+  "195950405132": {
+    "modelo": "iPad Pro 13\" M5 + Cell - VNT",
+    "color": "Negro",
+    "capacidad": "1TB",
+    "applecare": 3999
+  },
+  "195950400007": {
+    "modelo": "iPad Pro 13\" M5",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 3999
+  },
+  "195950399783": {
+    "modelo": "iPad Pro 13\" M5",
+    "color": "Negro",
+    "capacidad": "2TB",
+    "applecare": 3999
+  },
+  "195950405859": {
+    "modelo": "iPad Pro 13\" M5 + Cell",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 3999
+  },
+  "195950405613": {
+    "modelo": "iPad Pro 13\" M5 + Cell",
+    "color": "Negro",
+    "capacidad": "2TB",
+    "applecare": 3999
+  },
+  "195950400441": {
+    "modelo": "iPad Pro 13\" M5 - VNT",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 3999
+  },
+  "195950400229": {
+    "modelo": "iPad Pro 13\" M5 - VNT",
+    "color": "Negro",
+    "capacidad": "2TB",
+    "applecare": 3999
+  },
+  "195950406337": {
+    "modelo": "iPad Pro 13\" M5 + Cell - VNT",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 3999
+  },
+  "195950406092": {
+    "modelo": "iPad Pro 13\" M5 + Cell - VNT",
+    "color": "Negro",
+    "capacidad": "2TB",
+    "applecare": 3999
+  },
+  "195950086621": {
+    "modelo": "iPad 11 A16",
+    "color": "Amarillo",
+    "capacidad": "128",
+    "applecare": 1599
+  },
+  "195950086393": {
+    "modelo": "iPad 11 A16",
+    "color": "Azul",
+    "capacidad": "128",
+    "applecare": 1599
+  },
+  "195950086164": {
+    "modelo": "iPad 11 A16",
+    "color": "Plata",
+    "capacidad": "128",
+    "applecare": 1599
+  },
+  "195950086850": {
+    "modelo": "iPad 11 A16",
+    "color": "Rosa",
+    "capacidad": "128",
+    "applecare": 1599
+  },
+  "195949728891": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Gris Espacial",
+    "capacidad": "128",
+    "applecare": 1599
+  },
+  "195949729126": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Azul",
+    "capacidad": "128",
+    "applecare": 1599
+  },
+  "195949729355": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Blanco Estelar",
+    "capacidad": "128",
+    "applecare": 1599
+  },
+  "195949729584": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Morado",
+    "capacidad": "128",
+    "applecare": 1599
+  },
+  "195950087543": {
+    "modelo": "iPad 11 A16",
+    "color": "Amarillo",
+    "capacidad": "256",
+    "applecare": 1599
+  },
+  "195950087314": {
+    "modelo": "iPad 11 A16",
+    "color": "Azul",
+    "capacidad": "256",
+    "applecare": 1599
+  },
+  "195950087086": {
+    "modelo": "iPad 11 A16",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 1599
+  },
+  "195950087772": {
+    "modelo": "iPad 11 A16",
+    "color": "Rosa",
+    "capacidad": "256",
+    "applecare": 1599
+  },
+  "195949729812": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Gris Espacial",
+    "capacidad": "256",
+    "applecare": 1599
+  },
+  "195949730047": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Azul",
+    "capacidad": "256",
+    "applecare": 1599
+  },
+  "195949730276": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Blanco Estelar",
+    "capacidad": "256",
+    "applecare": 1599
+  },
+  "195949730504": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Morado",
+    "capacidad": "256",
+    "applecare": 1599
+  },
+  "195950088465": {
+    "modelo": "iPad 11 A16",
+    "color": "Amarillo",
+    "capacidad": "512",
+    "applecare": 1599
+  },
+  "195950088236": {
+    "modelo": "iPad 11 A16",
+    "color": "Azul",
+    "capacidad": "512",
+    "applecare": 1599
+  },
+  "195950088007": {
+    "modelo": "iPad 11 A16",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 1599
+  },
+  "195950088694": {
+    "modelo": "iPad 11 A16",
+    "color": "Rosa",
+    "capacidad": "512",
+    "applecare": 1599
+  },
+  "195949751783": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Gris Espacial",
+    "capacidad": "512",
+    "applecare": 1599
+  },
+  "195949752018": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Azul",
+    "capacidad": "512",
+    "applecare": 1599
+  },
+  "195949752247": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Blanco Estelar",
+    "capacidad": "512",
+    "applecare": 1599
+  },
+  "195949752476": {
+    "modelo": "iPad mini A17 Pro",
+    "color": "Morado",
+    "capacidad": "512",
+    "applecare": 1599
+  },
+  "195950386622": {
+    "modelo": "Watch SE (3rd Gen) | 40 mm | Aluminio",
+    "color": "Blanco Estelar",
+    "capacidad": "GPS",
+    "applecare": 999
+  },
+  "195950386424": {
+    "modelo": "Watch SE (3rd Gen) | 40 mm | Aluminio",
+    "color": "Blanco Estelar",
+    "capacidad": "GPS",
+    "applecare": 999
+  },
+  "195950387223": {
+    "modelo": "Watch SE (3rd Gen) | 40 mm | Aluminio",
+    "color": "Medianoche",
+    "capacidad": "GPS",
+    "applecare": 999
+  },
+  "195950387025": {
+    "modelo": "Watch SE (3rd Gen) | 40 mm | Aluminio",
+    "color": "Medianoche",
+    "capacidad": "GPS",
+    "applecare": 999
+  },
+  "195950387827": {
+    "modelo": "Watch SE (3rd Gen) | 44 mm | Aluminio",
+    "color": "Blanco Estelar",
+    "capacidad": "GPS",
+    "applecare": 999
+  },
+  "195950387629": {
+    "modelo": "Watch SE (3rd Gen) | 44 mm | Aluminio",
+    "color": "Blanco Estelar",
+    "capacidad": "GPS",
+    "applecare": 999
+  },
+  "195950388428": {
+    "modelo": "Watch SE (3rd Gen) | 44 mm | Aluminio",
+    "color": "Medianoche",
+    "capacidad": "GPS",
+    "applecare": 999
+  },
+  "195950388220": {
+    "modelo": "Watch SE (3rd Gen) | 44 mm | Aluminio",
+    "color": "Medianoche",
+    "capacidad": "GPS",
+    "applecare": 999
+  },
+  "195950429527": {
+    "modelo": "Watch SE (3rd Gen) | 40 mm | Aluminio",
+    "color": "Blanco Estelar",
+    "capacidad": "GPS+Cell",
+    "applecare": 999
+  },
+  "195950429343": {
+    "modelo": "Watch SE (3rd Gen) | 40 mm | Aluminio",
+    "color": "Blanco Estelar",
+    "capacidad": "GPS+Cell",
+    "applecare": 999
+  },
+  "195950430066": {
+    "modelo": "Watch SE (3rd Gen) | 40 mm | Aluminio",
+    "color": "Medianoche",
+    "capacidad": "GPS+Cell",
+    "applecare": 999
+  },
+  "195950429886": {
+    "modelo": "Watch SE (3rd Gen) | 40 mm | Aluminio",
+    "color": "Medianoche",
+    "capacidad": "GPS+Cell",
+    "applecare": 999
+  },
+  "195950430608": {
+    "modelo": "Watch SE (3rd Gen) | 44 mm | Aluminio",
+    "color": "Blanco Estelar",
+    "capacidad": "GPS+Cell",
+    "applecare": 999
+  },
+  "195950430424": {
+    "modelo": "Watch SE (3rd Gen) | 44 mm | Aluminio",
+    "color": "Blanco Estelar",
+    "capacidad": "GPS+Cell",
+    "applecare": 999
+  },
+  "195950431148": {
+    "modelo": "Watch SE (3rd Gen) | 44 mm | Aluminio",
+    "color": "Medianoche",
+    "capacidad": "GPS+Cell",
+    "applecare": 999
+  },
+  "195950430967": {
+    "modelo": "Watch SE (3rd Gen) | 44 mm | Aluminio",
+    "color": "Medianoche",
+    "capacidad": "GPS+Cell",
+    "applecare": 999
+  },
+  "195950851687": {
+    "modelo": "MacBook Neo 13\" A18 Pro 8GB / CPU 6 / GPU 5",
+    "color": "Amarillo Citrico",
+    "capacidad": "256 Gb",
+    "applecare": 2999
+  },
+  "195950852622": {
+    "modelo": "MacBook Neo 13\" A18 Pro 8GB / CPU 6 / GPU 5",
+    "color": "Indigo",
+    "capacidad": "256 Gb",
+    "applecare": 2999
+  },
+  "195950850741": {
+    "modelo": "MacBook Neo 13\" A18 Pro 8GB / CPU 6 / GPU 5",
+    "color": "Plata",
+    "capacidad": "256 Gb",
+    "applecare": 2999
+  },
+  "195950853568": {
+    "modelo": "MacBook Neo 13\" A18 Pro 8GB / CPU 6 / GPU 5",
+    "color": "Rosa Rubor",
+    "capacidad": "256 Gb",
+    "applecare": 2999
+  },
+  "195950852158": {
+    "modelo": "MacBook Neo 13\" A18 Pro 8GB / CPU 6 / GPU 5",
+    "color": "Amarillo Citrico",
+    "capacidad": "512 Gb",
+    "applecare": 2999
+  },
+  "195950853094": {
+    "modelo": "MacBook Neo 13\" A18 Pro 8GB / CPU 6 / GPU 5",
+    "color": "Indigo",
+    "capacidad": "512 Gb",
+    "applecare": 2999
+  },
+  "195950851212": {
+    "modelo": "MacBook Neo 13\" A18 Pro 8GB / CPU 6 / GPU 5",
+    "color": "Plata",
+    "capacidad": "512 Gb",
+    "applecare": 2999
+  },
+  "195950854039": {
+    "modelo": "MacBook Neo 13\" A18 Pro 8GB / CPU 6 / GPU 5",
+    "color": "Rosa Rubor",
+    "capacidad": "512 Gb",
+    "applecare": 2999
+  },
+  "195950488876": {
+    "modelo": "Macbookpro 14\" M5 16GB CPU 10 / GPU 10",
+    "color": "Negro Espacial",
+    "capacidad": "512 Gb",
+    "applecare": 5999
+  },
+  "195950490282": {
+    "modelo": "Macbookpro 14\" M5 16GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "512 Gb",
+    "applecare": 5999
+  },
+  "195951161853": {
+    "modelo": "Macbookpro 14\" M5 32GB CPU 10 / GPU 10",
+    "color": "Negro Espacial",
+    "capacidad": "1 TB",
+    "applecare": 5999
+  },
+  "195951162324": {
+    "modelo": "Macbookpro 14\" M5 32GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "1 TB",
+    "applecare": 5999
+  },
+  "195950491227": {
+    "modelo": "Macbookpro 14\" M5 24GB CPU 10 / GPU 10",
+    "color": "Negro Espacial",
+    "capacidad": "1 TB",
+    "applecare": 5999
+  },
+  "195950489811": {
+    "modelo": "Macbookpro 14\" M5 24GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "1 TB",
+    "applecare": 5999
+  },
+  "195950489347": {
+    "modelo": "Macbookpro 14\" M5 16GB CPU 10 / GPU 10",
+    "color": "Negro Espacial",
+    "capacidad": "1 TB",
+    "applecare": 5999
+  },
+  "195950490756": {
+    "modelo": "Macbookpro 14\" M5 16GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "1 TB",
+    "applecare": 5999
+  },
+  "195950718553": {
+    "modelo": "Macbookpro 14\" M5 Pro 24GB CPU 15 / GPU 16",
+    "color": "Negro Espacial",
+    "capacidad": "1 TB",
+    "applecare": 5999
+  },
+  "195950717143": {
+    "modelo": "Macbookpro 14\" M5 Pro 24GB CPU 15 / GPU 16",
+    "color": "Plata",
+    "capacidad": "1 TB",
+    "applecare": 5999
+  },
+  "195951255118": {
+    "modelo": "Macbookpro 14\" M5 Pro 24GB CPU 15 / GPU 16",
+    "color": "Negro Espacial",
+    "capacidad": "2 TB",
+    "applecare": 5999
+  },
+  "195951254647": {
+    "modelo": "Macbookpro 14\" M5 Pro 24GB CPU 15 / GPU 16",
+    "color": "Plata",
+    "capacidad": "2 TB",
+    "applecare": 5999
+  },
+  "195950719024": {
+    "modelo": "Macbookpro 14\" M5 Pro 24GB CPU 18 / GPU 20",
+    "color": "Negro Espacial",
+    "capacidad": "2 TB",
+    "applecare": 5999
+  },
+  "195950717617": {
+    "modelo": "Macbookpro 14\" M5 Pro 24GB CPU 18 / GPU 20",
+    "color": "Plata",
+    "capacidad": "2 TB",
+    "applecare": 5999
+  },
+  "195950719499": {
+    "modelo": "Macbookpro 14\" M5 Max 36GB CPU 18 / GPU 32",
+    "color": "Negro Espacial",
+    "capacidad": "2 TB",
+    "applecare": 5999
+  },
+  "195950718089": {
+    "modelo": "Macbookpro 14\" M5 Max 36GB CPU 18 / GPU 32",
+    "color": "Plata",
+    "capacidad": "2 TB",
+    "applecare": 5999
+  },
+  "195950714623": {
+    "modelo": "Macbookpro 16\" M5 Pro 24GB CPU 18 / GPU 20",
+    "color": "Negro Espacial",
+    "capacidad": "1 TB",
+    "applecare": 8499
+  },
+  "195950712742": {
+    "modelo": "Macbookpro 16\" M5 Pro 24GB CPU 18 / GPU 20",
+    "color": "Plata",
+    "capacidad": "1 TB",
+    "applecare": 8499
+  },
+  "195950715095": {
+    "modelo": "Macbookpro 16\" M5 Pro 48GB CPU 18 / GPU 20",
+    "color": "Negro Espacial",
+    "capacidad": "1 TB",
+    "applecare": 8499
+  },
+  "195950713213": {
+    "modelo": "Macbookpro 16\" M5 Pro 48GB CPU 18 / GPU 20",
+    "color": "Plata",
+    "capacidad": "1 TB",
+    "applecare": 8499
+  },
+  "195950715569": {
+    "modelo": "Macbookpro 16\" M5 Max 36GB CPU 18 / GPU 32",
+    "color": "Negro Espacial",
+    "capacidad": "2 TB",
+    "applecare": 8499
+  },
+  "195950713688": {
+    "modelo": "Macbookpro 16\" M5 Max 36GB CPU 18 / GPU 32",
+    "color": "Plata",
+    "capacidad": "2 TB",
+    "applecare": 8499
+  },
+  "195950716030": {
+    "modelo": "Macbookpro 16\" M5 Max 48GB CPU 18 / GPU 40",
+    "color": "Negro Espacial",
+    "capacidad": "2 TB",
+    "applecare": 8499
+  },
+  "195950714159": {
+    "modelo": "Macbookpro 16\" M5 Max 48GB CPU 18 / GPU 40",
+    "color": "Plata",
+    "capacidad": "2 TB",
+    "applecare": 8499
+  },
+  "195949869501": {
+    "modelo": "MacBook Pro 16\" M4 24GB CPU 14 / GPU 20",
+    "color": "Negro Espacial",
+    "capacidad": "512 Gb"
+  },
+  "195949873386": {
+    "modelo": "Macbook Pro 14\" M4 / 24GB CPU 12 / GPU 16",
+    "color": "Plata",
+    "capacidad": "512 Gb",
+    "applecare": 5999
+  },
+  "195949874734": {
+    "modelo": "Macbook Pro 14\" M4 / 24GB CPU 12 / GPU 16",
+    "color": "Negro Espacial",
+    "capacidad": "512 Gb",
+    "applecare": 5999
+  },
+  "195949704796": {
+    "modelo": "Macbook Pro 14\" M4 / 16GB CPU 10 / GPU 10",
+    "color": "Negro Espacial",
+    "capacidad": "512 Gb",
+    "applecare": 5999
+  },
+  "195950691498": {
+    "modelo": "Macbook Air 13\" M5 16GB CPU 10 / GPU 8",
+    "color": "Azul Cielo",
+    "capacidad": "512 Gb",
+    "applecare": 4499
+  },
+  "195950688672": {
+    "modelo": "Macbook Air 13\" M5 16GB CPU 10 / GPU 8",
+    "color": "Blanco Estelar",
+    "capacidad": "512 Gb",
+    "applecare": 4499
+  },
+  "195950690088": {
+    "modelo": "Macbook Air 13\" M5 16GB CPU 10 / GPU 8",
+    "color": "Medianoche",
+    "capacidad": "512 Gb",
+    "applecare": 4499
+  },
+  "195950687262": {
+    "modelo": "Macbook Air 13\" M5 16GB CPU 10 / GPU 8",
+    "color": "Plata",
+    "capacidad": "512 Gb",
+    "applecare": 4499
+  },
+  "195950691962": {
+    "modelo": "Macbook Air 13\" M5 16GB CPU 10 / GPU 10",
+    "color": "Azul Cielo",
+    "capacidad": "1 Tb",
+    "applecare": 4499
+  },
+  "195950689143": {
+    "modelo": "Macbook Air 13\" M5 16GB CPU 10 / GPU 10",
+    "color": "Blanco Estelar",
+    "capacidad": "1 Tb",
+    "applecare": 4499
+  },
+  "195950690552": {
+    "modelo": "Macbook Air 13\" M5 16GB CPU 10 / GPU 10",
+    "color": "Medianoche",
+    "capacidad": "1 Tb",
+    "applecare": 4499
+  },
+  "195950687736": {
+    "modelo": "Macbook Air 13\" M5 16GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "1 Tb",
+    "applecare": 4499
+  },
+  "195950692433": {
+    "modelo": "Macbook Air 13\" M5 24GB CPU 10 / GPU 10",
+    "color": "Azul Cielo",
+    "capacidad": "1 Tb",
+    "applecare": 4499
+  },
+  "195950689617": {
+    "modelo": "Macbook Air 13\" M5 24GB CPU 10 / GPU 10",
+    "color": "Blanco Estelar",
+    "capacidad": "1 Tb",
+    "applecare": 4499
+  },
+  "195950691023": {
+    "modelo": "Macbook Air 13\" M5 24GB CPU 10 / GPU 10",
+    "color": "Medianoche",
+    "capacidad": "1 Tb",
+    "applecare": 4499
+  },
+  "195950688207": {
+    "modelo": "Macbook Air 13\" M5 24GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "1 Tb",
+    "applecare": 4499
+  },
+  "195950698374": {
+    "modelo": "Macbook Air 15\" M5 16GB CPU 10 / GPU 10",
+    "color": "Azul Cielo",
+    "capacidad": "512 Gb",
+    "applecare": 4999
+  },
+  "195950695557": {
+    "modelo": "Macbook Air 15\" M5 16GB CPU 10 / GPU 10",
+    "color": "Blanco Estelar",
+    "capacidad": "512 Gb",
+    "applecare": 4999
+  },
+  "195950696967": {
+    "modelo": "Macbook Air 15\" M5 16GB CPU 10 / GPU 10",
+    "color": "Medianoche",
+    "capacidad": "512 Gb",
+    "applecare": 4999
+  },
+  "195950694147": {
+    "modelo": "Macbook Air 15\" M5 16GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "512 Gb",
+    "applecare": 4999
+  },
+  "195950699319": {
+    "modelo": "Macbook Air 15\" M5 24GB CPU 10 / GPU 10",
+    "color": "Azul Cielo",
+    "capacidad": "512 Gb",
+    "applecare": 4999
+  },
+  "195950696493": {
+    "modelo": "Macbook Air 15\" M5 24GB CPU 10 / GPU 10",
+    "color": "Blanco Estelar",
+    "capacidad": "512 Gb",
+    "applecare": 4999
+  },
+  "195950697902": {
+    "modelo": "Macbook Air 15\" M5 24GB CPU 10 / GPU 10",
+    "color": "Medianoche",
+    "capacidad": "512 Gb",
+    "applecare": 4999
+  },
+  "195950695083": {
+    "modelo": "Macbook Air 15\" M5 24GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "512 Gb",
+    "applecare": 4999
+  },
+  "195950698848": {
+    "modelo": "Macbook Air 15\" M5 16GB CPU 10 / GPU 10",
+    "color": "Azul Cielo",
+    "capacidad": "1 Tb",
+    "applecare": 4999
+  },
+  "195950696028": {
+    "modelo": "Macbook Air 15\" M5 16GB CPU 10 / GPU 10",
+    "color": "Blanco Estelar",
+    "capacidad": "1 Tb",
+    "applecare": 4999
+  },
+  "195950697438": {
+    "modelo": "Macbook Air 15\" M5 16GB CPU 10 / GPU 10",
+    "color": "Medianoche",
+    "capacidad": "1 Tb",
+    "applecare": 4999
+  },
+  "195950694611": {
+    "modelo": "Macbook Air 15\" M5 16GB CPU 10 / GPU 10",
+    "color": "Plata",
+    "capacidad": "1 Tb",
+    "applecare": 4999
+  },
+  "195950080711": {
+    "modelo": "iMac De 24 M4 nano texturizado",
+    "color": "Plata",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949592751": {
+    "modelo": "iMac De 24 M4",
+    "color": "Azul",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949597176": {
+    "modelo": "iMac De 24 M4",
+    "color": "Azul",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949591433": {
+    "modelo": "iMac De 24 M4",
+    "color": "Plata",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949594588": {
+    "modelo": "iMac De 24 M4",
+    "color": "Plata",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949593192": {
+    "modelo": "iMac De 24 M4",
+    "color": "Rosa",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949598036": {
+    "modelo": "iMac De 24 M4",
+    "color": "Rosa",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949592317": {
+    "modelo": "iMac De 24 M4",
+    "color": "Verde",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949596322": {
+    "modelo": "iMac De 24 M4",
+    "color": "Verde",
+    "capacidad": "256 Gb",
+    "applecare": 3899
+  },
+  "195949597602": {
+    "modelo": "iMac De 24 M4",
+    "color": "Azul",
+    "capacidad": "512 Gb",
+    "applecare": 3899
+  },
+  "195950075656": {
+    "modelo": "iMac De 24 M4",
+    "color": "Azul",
+    "capacidad": "512 Gb",
+    "applecare": 3899
+  },
+  "195949595028": {
+    "modelo": "iMac De 24 M4",
+    "color": "Plata",
+    "capacidad": "512 Gb",
+    "applecare": 3899
+  },
+  "195950076110": {
+    "modelo": "iMac De 24 M4",
+    "color": "Plata",
+    "capacidad": "512 Gb",
+    "applecare": 3899
+  },
+  "195949598463": {
+    "modelo": "iMac De 24 M4",
+    "color": "Rosa",
+    "capacidad": "512 Gb",
+    "applecare": 3899
+  },
+  "195949925245": {
+    "modelo": "iMac De 24 M4",
+    "color": "Rosa",
+    "capacidad": "512 Gb",
+    "applecare": 3899
+  },
+  "195949596759": {
+    "modelo": "iMac De 24 M4",
+    "color": "Verde",
+    "capacidad": "512 Gb",
+    "applecare": 3899
+  },
+  "195950075199": {
+    "modelo": "iMac De 24 M4",
+    "color": "Verde",
+    "capacidad": "512 Gb",
+    "applecare": 3899
+  },
+  "195951409863": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409887": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Borgoña",
+    "capacidad": "256",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409894": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Glaciar",
+    "capacidad": "256",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409870": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409900": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409924": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Borgoña",
+    "capacidad": "512",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409931": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Glaciar",
+    "capacidad": "512",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409917": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409948": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Negro",
+    "capacidad": "1TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409962": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Borgoña",
+    "capacidad": "1TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409979": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Glaciar",
+    "capacidad": "1TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409955": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409986": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Negro",
+    "capacidad": "2TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951410005": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Borgoña",
+    "capacidad": "2TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951410012": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Glaciar",
+    "capacidad": "2TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951409993": {
+    "modelo": "iPhone 18 Pro Max",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415505": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Negro",
+    "capacidad": "256",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415529": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Borgoña",
+    "capacidad": "256",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415536": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Glaciar",
+    "capacidad": "256",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415512": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Plata",
+    "capacidad": "256",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415543": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Negro",
+    "capacidad": "512",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415567": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Borgoña",
+    "capacidad": "512",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415574": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Glaciar",
+    "capacidad": "512",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415550": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Plata",
+    "capacidad": "512",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415581": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Negro",
+    "capacidad": "1TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415604": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Borgoña",
+    "capacidad": "1TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415611": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Glaciar",
+    "capacidad": "1TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415598": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Plata",
+    "capacidad": "1TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415628": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Negro",
+    "capacidad": "2TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415642": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Borgoña",
+    "capacidad": "2TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415659": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Glaciar",
+    "capacidad": "2TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951415635": {
+    "modelo": "iPhone 18 Pro",
+    "color": "Plata",
+    "capacidad": "2TB",
+    "applecare": 4799,
+    "applecare_robo_perdida": 6399
+  },
+  "195951405650": {
+    "modelo": "iPhone Duo",
+    "color": "Cielo Nocturno",
+    "capacidad": "256",
+    "applecare": 6999,
+    "applecare_robo_perdida": 8599
+  },
+  "195951405612": {
+    "modelo": "iPhone Duo",
+    "color": "Blanco Estelar",
+    "capacidad": "256",
+    "applecare": 6999,
+    "applecare_robo_perdida": 8599
+  },
+  "195951405735": {
+    "modelo": "iPhone Duo",
+    "color": "Cielo Nocturno",
+    "capacidad": "512",
+    "applecare": 6999,
+    "applecare_robo_perdida": 8599
+  },
+  "195951405698": {
+    "modelo": "iPhone Duo",
+    "color": "Blanco Estelar",
+    "capacidad": "512",
+    "applecare": 6999,
+    "applecare_robo_perdida": 8599
+  },
+  "195951405810": {
+    "modelo": "iPhone Duo",
+    "color": "Cielo Nocturno",
+    "capacidad": "1TB",
+    "applecare": 6999,
+    "applecare_robo_perdida": 8599
+  },
+  "195951405773": {
+    "modelo": "iPhone Duo",
+    "color": "Blanco Estelar",
+    "capacidad": "1TB",
+    "applecare": 6999,
+    "applecare_robo_perdida": 8599
+  },
+  "195951405896": {
+    "modelo": "iPhone Duo",
+    "color": "Cielo Nocturno",
+    "capacidad": "2TB",
+    "applecare": 6999,
+    "applecare_robo_perdida": 8599
+  },
+  "195951405858": {
+    "modelo": "iPhone Duo",
+    "color": "Blanco Estelar",
+    "capacidad": "2TB",
+    "applecare": 6999,
+    "applecare_robo_perdida": 8599
+  },
+  "195951378886": {
+    "modelo": "AirPods 5",
+    "color": "Cancelación de Ruido",
+    "capacidad": "Carga USB-C",
+    "applecare": 649
+  },
+  "195951378565": {
+    "modelo": "AirPods 5",
+    "color": "Cancelación de Ruido",
+    "capacidad": "Carga Inalámbrica",
+    "applecare": 649
+  },
+  "195951259055": {
+    "modelo": "Apple Watch SE3",
+    "color": "Medianoche Aluminio M/L",
+    "capacidad": "40mm GPS",
+    "applecare": 999
+  },
+  "195951258843": {
+    "modelo": "Apple Watch SE3",
+    "color": "Medianoche Aluminio S/M",
+    "capacidad": "40mm GPS",
+    "applecare": 999
+  },
+  "195951258638": {
+    "modelo": "Apple Watch SE3",
+    "color": "Blanco Estelar Aluminio M/L",
+    "capacidad": "40mm GPS",
+    "applecare": 999
+  },
+  "195951258423": {
+    "modelo": "Apple Watch SE3",
+    "color": "Blanco Estelar Aluminio S/M",
+    "capacidad": "40mm GPS",
+    "applecare": 999
+  },
+  "195951259895": {
+    "modelo": "Apple Watch SE3",
+    "color": "Medianoche Aluminio M/L",
+    "capacidad": "44mm GPS",
+    "applecare": 999
+  },
+  "195951259680": {
+    "modelo": "Apple Watch SE3",
+    "color": "Medianoche Aluminio S/M",
+    "capacidad": "44mm GPS",
+    "applecare": 999
+  },
+  "195951259475": {
+    "modelo": "Apple Watch SE3",
+    "color": "Blanco Estelar Aluminio M/L",
+    "capacidad": "44mm GPS",
+    "applecare": 999
+  },
+  "195951259260": {
+    "modelo": "Apple Watch SE3",
+    "color": "Blanco Estelar Aluminio S/M",
+    "capacidad": "44mm GPS",
+    "applecare": 999
+  },
+  "195951260709": {
+    "modelo": "Apple Watch SE3",
+    "color": "Medianoche Aluminio M/L",
+    "capacidad": "40mm GPS+Cell",
+    "applecare": 999
+  },
+  "195951260501": {
+    "modelo": "Apple Watch SE3",
+    "color": "Medianoche Aluminio S/M",
+    "capacidad": "40mm GPS+Cell",
+    "applecare": 999
+  },
+  "195951260303": {
+    "modelo": "Apple Watch SE3",
+    "color": "Blanco Estelar Aluminio M/L",
+    "capacidad": "40mm GPS+Cell",
+    "applecare": 999
+  },
+  "195951260105": {
+    "modelo": "Apple Watch SE3",
+    "color": "Blanco Estelar Aluminio S/M",
+    "capacidad": "40mm GPS+Cell",
+    "applecare": 999
+  },
+  "195951261508": {
+    "modelo": "Apple Watch SE3",
+    "color": "Medianoche Aluminio M/L",
+    "capacidad": "44mm GPS+Cell",
+    "applecare": 999
+  },
+  "195951261300": {
+    "modelo": "Apple Watch SE3",
+    "color": "Medianoche Aluminio S/M",
+    "capacidad": "44mm GPS+Cell",
+    "applecare": 999
+  },
+  "195951261102": {
+    "modelo": "Apple Watch SE3",
+    "color": "Blanco Estelar Aluminio M/L",
+    "capacidad": "44mm GPS+Cell",
+    "applecare": 999
+  },
+  "195951260907": {
+    "modelo": "Apple Watch SE3",
+    "color": "Blanco Estelar Aluminio S/M",
+    "capacidad": "44mm GPS+Cell",
+    "applecare": 999
+  },
+  "195951433196": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Natural Titanio Deportiva Azul Marino",
+    "capacidad": "M/L 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433257": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Oro Radiante Titanio Deportiva Borgoña",
+    "capacidad": "M/L 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433172": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Natural Titanio Deportiva Azul Marino",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433233": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Oro Radiante Titanio Deportiva Borgoña",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433219": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Natural Titanio Milanés Natural",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433271": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Oro Radiante Titanio Milanés Oro Radiante",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433318": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Natural Titanio Deportiva Azul Marino",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433394": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Oro Radiante Titanio Deportiva Borgoña",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433356": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Natural Titanio Milanés Natural",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433431": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Oro Radiante Titanio Milanés Oro Radiante",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433295": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Natural Titanio Deportiva Azul Marino",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433370": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Oro Radiante Titanio Deportiva Borgoña",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433332": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Natural Titanio Milanés Natural",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433417": {
+    "modelo": "Apple Watch Series 12 Titanio",
+    "color": "Oro Radiante Titanio Milanés Oro Radiante",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951432434": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Negro Aluminio Deportiva Negro",
+    "capacidad": "M/L 42mm GPS",
+    "applecare": 1749
+  },
+  "195951432519": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Deportiva Oliva",
+    "capacidad": "M/L 42mm GPS",
+    "applecare": 1749
+  },
+  "195951432472": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Oro Claro Aluminio Deportiva Arena",
+    "capacidad": "M/L 42mm GPS",
+    "applecare": 1749
+  },
+  "195951432397": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Gris Espacial Aluminio Deportiva Azul Marino",
+    "capacidad": "M/L 42mm GPS",
+    "applecare": 1749
+  },
+  "195951432410": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Negro Aluminio Deportiva Negro",
+    "capacidad": "S/M 42mm GPS",
+    "applecare": 1749
+  },
+  "195951432496": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Deportiva Oliva",
+    "capacidad": "S/M 42mm GPS",
+    "applecare": 1749
+  },
+  "195951432458": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Oro Claro Aluminio Deportiva Arena",
+    "capacidad": "S/M 42mm GPS",
+    "applecare": 1749
+  },
+  "195951432373": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Gris Espacial Aluminio Deportiva Azul Marino",
+    "capacidad": "S/M 42mm GPS",
+    "applecare": 1749
+  },
+  "195951434056": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Milanés Bronce Oscuro",
+    "capacidad": "S/M 42mm GPS",
+    "applecare": 1749
+  },
+  "195951432595": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Negro Aluminio Deportiva Negro",
+    "capacidad": "M/L 46mm GPS",
+    "applecare": 1749
+  },
+  "195951432670": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Deportiva Oliva",
+    "capacidad": "M/L 46mm GPS",
+    "applecare": 1749
+  },
+  "195951432632": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Oro Claro Aluminio Deportiva Arena",
+    "capacidad": "M/L 46mm GPS",
+    "applecare": 1749
+  },
+  "195951432557": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Gris Espacial Aluminio Deportiva Azul Marino",
+    "capacidad": "M/L 46mm GPS",
+    "applecare": 1749
+  },
+  "195951434032": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Milanés Bronce Oscuro",
+    "capacidad": "M/L 46mm GPS",
+    "applecare": 1749
+  },
+  "195951432571": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Negro Aluminio Deportiva Negro",
+    "capacidad": "S/M 46mm GPS",
+    "applecare": 1749
+  },
+  "195951432656": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Deportiva Oliva",
+    "capacidad": "S/M 46mm GPS",
+    "applecare": 1749
+  },
+  "195951432618": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Oro Claro Aluminio Deportiva Arena",
+    "capacidad": "S/M 46mm GPS",
+    "applecare": 1749
+  },
+  "195951432533": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Gris Espacial Aluminio Deportiva Azul Marino",
+    "capacidad": "S/M 46mm GPS",
+    "applecare": 1749
+  },
+  "195951434018": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Milanés Bronce Oscuro",
+    "capacidad": "S/M 46mm GPS",
+    "applecare": 1749
+  },
+  "195951432915": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Negro Aluminio Deportiva Negro",
+    "capacidad": "M/L 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951432991": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Deportiva Oliva",
+    "capacidad": "M/L 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951432953": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Oro Claro Aluminio Deportiva Arena",
+    "capacidad": "M/L 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951432878": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Gris Espacial Aluminio Deportiva Azul Marino",
+    "capacidad": "M/L 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951432892": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Negro Aluminio Deportiva Negro",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951432977": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Deportiva Oliva",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951432939": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Oro Claro Aluminio Deportiva Arena",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951432854": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Gris Espacial Aluminio Deportiva Azul Marino",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951434117": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Milanés Bronce Oscuro",
+    "capacidad": "S/M 42mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433073": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Negro Aluminio Deportiva Negro",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433158": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Deportiva Oliva",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433110": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Oro Claro Aluminio Deportiva Arena",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433035": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Gris Espacial Aluminio Deportiva Azul Marino",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951434094": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Milanés Bronce Oscuro",
+    "capacidad": "M/L 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433059": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Negro Aluminio Deportiva Negro",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433134": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Deportiva Oliva",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433097": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Oro Claro Aluminio Deportiva Arena",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951433011": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Gris Espacial Aluminio Deportiva Azul Marino",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951434070": {
+    "modelo": "Apple Watch Series 12 Aluminio",
+    "color": "Bronce Oscuro Aluminio Milanés Bronce Oscuro",
+    "capacidad": "S/M 46mm GPS+Cell",
+    "applecare": 1749
+  },
+  "195951218335": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951215990": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951218076": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951215730": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951217819": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951215471": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951216775": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951214436": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951217550": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951217031": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951215211": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951214696": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951216515": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951214177": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951217291": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951214955": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951216256": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951213910": {
+    "modelo": "Apple Watch Ultra 4",
+    "color": "Titanio (ver correa/talla en caja)",
+    "capacidad": "49mm GPS+Cell",
+    "applecare": 2099
+  },
+  "195951571980": {
+    "modelo": "Caja AppleCare+ iPhone Duo",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 6999
+  },
+  "195951572543": {
+    "modelo": "Caja AppleCare+ iPhone 18 Pro Max",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 4799
+  },
+  "195951573106": {
+    "modelo": "Caja AppleCare+ iPhone 18 Pro",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 4799
+  },
+  "195950896909": {
+    "modelo": "Caja AppleCare+ iPhone 17 Pro Max",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 4799
+  },
+  "195950897203": {
+    "modelo": "Caja AppleCare+ iPhone 17 Pro",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 4799
+  },
+  "195950897500": {
+    "modelo": "Caja AppleCare+ iPhone Air",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 4799
+  },
+  "195950897807": {
+    "modelo": "Caja AppleCare+ iPhone 17",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 3699
+  },
+  "195951189727": {
+    "modelo": "Caja AppleCare+ iPhone 17e",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 2999
+  },
+  "195950046380": {
+    "modelo": "Caja AppleCare+ iPhone 16 Plus",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 4299
+  },
+  "195950046755": {
+    "modelo": "Caja AppleCare+ iPhone 16",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 3699
+  },
+  "195950526684": {
+    "modelo": "Caja AppleCare+ iPhone 16e",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 2999
+  },
+  "195949328275": {
+    "modelo": "Caja AppleCare+ iPhone 15",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 3699
+  },
+  "195951570198": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone Duo",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 8599
+  },
+  "195951570396": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 18 Pro Max",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 6399
+  },
+  "195951570594": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 18 Pro",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 6399
+  },
+  "195950894264": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 17 Pro Max",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 6399
+  },
+  "195950894417": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 17 Pro",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 6399
+  },
+  "195950894561": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone Air",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 6399
+  },
+  "195950894714": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 17",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 5299
+  },
+  "195951189277": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 17e",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 4599
+  },
+  "195951019703": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 16 Plus",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 5899
+  },
+  "195951019710": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 16",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 5299
+  },
+  "195951019673": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 16e",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 4599
+  },
+  "195951019758": {
+    "modelo": "Caja AppleCare+ Robo y Extravío iPhone 15",
+    "color": "Caja AppleCare+ T&L",
+    "capacidad": "N/A",
+    "applecare": 5299
+  },
+  "195951567365": {
+    "modelo": "Caja AppleCare+ Watch Ultra 4",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 2099
+  },
+  "195951568188": {
+    "modelo": "Caja AppleCare+ Watch Series 12",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 1749
+  },
+  "195950923292": {
+    "modelo": "Caja AppleCare+ Watch SE3",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 999
+  },
+  "195950030846": {
+    "modelo": "Caja AppleCare+ Watch Ultra Hermès",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 3299
+  },
+  "195951017662": {
+    "modelo": "Caja AppleCare+ iPad Pro 13 (M5)",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 4199
+  },
+  "195951017747": {
+    "modelo": "Caja AppleCare+ iPad Pro 11 (M5)",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 3699
+  },
+  "195951188041": {
+    "modelo": "Caja AppleCare+ iPad Air 13 (M4)",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 2499
+  },
+  "195951188126": {
+    "modelo": "Caja AppleCare+ iPad Air 11 (M4)",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 1999
+  },
+  "195950206999": {
+    "modelo": "Caja AppleCare+ iPad mini A17 Pro",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 1799
+  },
+  "195950542189": {
+    "modelo": "Caja AppleCare+ iPad (A16)",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 1799
+  },
+  "195951183701": {
+    "modelo": "Caja AppleCare+ MacBook Pro 16 M5 Pro/M5 Max",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 8799
+  },
+  "195951183787": {
+    "modelo": "Caja AppleCare+ MacBook Pro 14 M5 Pro/M5 Max",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 6299
+  },
+  "195951016177": {
+    "modelo": "Caja AppleCare+ MacBook Pro 14 M5",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 6299
+  },
+  "195951184746": {
+    "modelo": "Caja AppleCare+ MacBook Air 15 (M5)",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 5299
+  },
+  "195951184821": {
+    "modelo": "Caja AppleCare+ MacBook Air 13 (M5)",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 4799
+  },
+  "195951182933": {
+    "modelo": "Caja AppleCare+ MacBook Neo 13 A18 Pro",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 3299
+  },
+  "195951182209": {
+    "modelo": "Caja AppleCare+ Studio Display XDR",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 6499
+  },
+  "195951182124": {
+    "modelo": "Caja AppleCare+ Studio Display (2026)",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 3249
+  },
+  "194252341209": {
+    "modelo": "Caja AppleCare+ AirPods Max",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 1299
+  },
+  "195950950106": {
+    "modelo": "Caja AppleCare+ AirPods Pro 3",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 849
+  },
+  "194252341827": {
+    "modelo": "Caja AppleCare+ AirPods",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 649
+  },
+  "194252340967": {
+    "modelo": "Caja AppleCare+ Beats",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 649
+  },
+  "190198869517": {
+    "modelo": "Caja AppleCare+ HomePod",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 949
+  },
+  "194252263792": {
+    "modelo": "Caja AppleCare+ HomePod mini",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 429
+  },
+  "194252610343": {
+    "modelo": "Caja AppleCare+ Apple TV",
+    "color": "Caja AppleCare+",
+    "capacidad": "N/A",
+    "applecare": 799
+  }
+}
