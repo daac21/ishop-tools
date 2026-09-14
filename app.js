@@ -1,572 +1,1151 @@
-:root{
-  --bg: #f5f5f7;
-  --surface: #ffffff;
-  --text: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --accent: #0071e3;
-  --accent-press: #0058b0;
-  --border: rgba(0,0,0,0.06);
-  --radius: 18px;
-  --topbar-h: 52px;
-  --safe-top: env(safe-area-inset-top, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
+/* =========================================================
+   iShop Tools — v1: estructura y navegación
+   La información (precios, cobertura, etc.) se agregará
+   después en /datos/*.json. Por ahora cada pantalla es un
+   placeholder que confirma que la navegación funciona.
+   ========================================================= */
+
+// ---- Definición del menú principal ----
+const MENU = [
+  { id: "tradein",   icon: "🛒", label: "Trade In",       color: "#0071e3" },
+  { id: "switchup",  icon: "🔄", label: "Switch Up",      color: "#ff9500" },
+  { id: "applecare", icon: "🛡️", label: "AppleCare+",     color: "#34c759" },
+  { id: "forlife",   icon: "💳", label: "For Life + AC",  color: "#5856d6" },
+  { id: "getac",     icon: "💳", label: "GET + AC",       color: "#af52de" },
+  { id: "cubre",     icon: "🛠️", label: "¿Qué cubre?",    color: "#ff3b30" },
+  { id: "scanner",   icon: "📷", label: "Escáner",        color: "#1d1d1f" },
+  { id: "cajas",     icon: "📦", label: "Código cajas",   color: "#8e8e93" },
+];
+
+// Iconos y color por categoría de cobertura
+const COVERAGE_ICONS = {
+  "iPhone": "📱", "iPad": "📓", "Mac": "🖥️", "Mac Neo": "💻",
+  "Apple Watch": "⌚", "AirPods Pro": "🎧", "AirPods Max": "🎧",
+  "HomePod": "🔊", "Apple TV": "📺",
+};
+const COVERAGE_TILE_COLORS = ["#0071e3", "#ff9500", "#34c759", "#5856d6", "#af52de", "#ff3b30", "#1d1d1f", "#0a84ff", "#30d158"];
+
+// AppleCare+ (menú principal): categorías, íconos y nombres de despliegue
+const AC_ICONS = { "iPhone": "📱", "Watch": "⌚", "iPad": "📓", "Mac": "🖥️", "HomePod": "🔊", "Apple TV": "📺", "AirPods": "🎧" };
+const AC_LABELS = { "Watch": "Apple Watch", "AirPods": "AirPods / Beats" };
+
+// ---- Datos: se leen de datos/*.json (ese mismo repo de GitHub).
+// Cada vez que subas un cambio a GitHub, Netlify republica solo y la app
+// jala la versión nueva. Se guarda una copia en el teléfono por si no hay internet.
+let TRADEIN_DATA = null;
+let PRECIOS_IPHONE = null;
+let APPLECARE_DATA = null;
+// Lista de modelos que se muestran en Switch Up (y en qué orden).
+// Se edita solo este archivo (datos/switchup_modelos.json) para
+// agregar/quitar modelos del apartado, sin tocar precios.
+let SWITCHUP_MODELOS = null;
+let FINANCIAMIENTO_DATA = null;
+let COBERTURA_DATA = null;
+let AC_PLANES_DATA = null;
+
+async function loadAllData() {
+  try {
+    const [t, p, a, s, f, c, ac] = await Promise.all([
+      fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/switchup_modelos.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/financiamiento.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/cobertura.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/applecare_planes.json", { cache: "no-store" }).then(r => r.json()),
+    ]);
+    TRADEIN_DATA = t;
+    PRECIOS_IPHONE = p;
+    APPLECARE_DATA = a;
+    SWITCHUP_MODELOS = s;
+    FINANCIAMIENTO_DATA = f;
+    COBERTURA_DATA = c;
+    AC_PLANES_DATA = ac;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_planes: ac }));
+  } catch (e) {
+    const cached = localStorage.getItem("ishop_data_cache");
+    if (cached) {
+      const data = JSON.parse(cached);
+      TRADEIN_DATA = data.tradein || {};
+      PRECIOS_IPHONE = data.precios_iphone || {};
+      APPLECARE_DATA = data.applecare || {};
+      SWITCHUP_MODELOS = data.switchup_modelos || [];
+      FINANCIAMIENTO_DATA = data.financiamiento || {};
+      COBERTURA_DATA = data.cobertura || {};
+      AC_PLANES_DATA = data.applecare_planes || {};
+    } else {
+      TRADEIN_DATA = {};
+      PRECIOS_IPHONE = {};
+      APPLECARE_DATA = {};
+      SWITCHUP_MODELOS = [];
+      FINANCIAMIENTO_DATA = {};
+      COBERTURA_DATA = {};
+      AC_PLANES_DATA = {};
+    }
+  }
+}
+const dataReady = loadAllData();
+
+// ---- Estado de navegación ----
+// Cada entrada: { screen: "home" | "tool" | "coverageDetail" | "tradeNode" | "quoteSelectNew" | "quoteResult" | "switchResult", ...params, title }
+let stack = [{ screen: "home", title: "iShop Tools" }];
+const MESES = [3, 6, 9, 10, 12, 13, 15];
+const MEMBRESIA_SWITCH = 399;
+
+function money(n) {
+  if (n === null || n === undefined || isNaN(n)) return "Precio pendiente";
+  return "$" + Math.round(n).toLocaleString("es-MX");
 }
 
-*{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-html,body{
-  height:100%;
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  overscroll-behavior-y: none;
+function parsePesoValue(str) {
+  if (typeof str !== "string") return null;
+  const clean = str.replace(/[^0-9.]/g, "");
+  if (!clean) return null;
+  return parseFloat(clean);
 }
 
-#app{
-  height:100dvh;
-  display:flex;
-  flex-direction:column;
+// base se reparte en 15 meses siempre; extra (AppleCare) solo dentro de
+// los primeros acMonths (10, 12 o 13, elegible por el usuario)
+function computePlan(base, extra, months, acMonths) {
+  if (base === null || base === undefined) return null;
+  const safeExtra = extra || 0;
+  if (months === 15 && safeExtra > 0) {
+    const acM = acMonths || 10;
+    return {
+      split: true,
+      acMonths: acM,
+      phase1: { months: acM, amount: base / 15 + safeExtra / acM },
+      phase2: { months: 15 - acM, amount: base / 15 },
+    };
+  }
+  return { split: false, amount: (base + safeExtra) / months };
 }
 
-/* Barra superior */
-#topbar{
-  position:relative;
-  height: calc(var(--topbar-h) + var(--safe-top));
-  padding-top: var(--safe-top);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: rgba(245,245,247,0.86);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--border);
-  flex-shrink:0;
-  z-index:10;
+const screensEl = document.getElementById("screens");
+const titleEl = document.getElementById("screenTitle");
+const backBtn = document.getElementById("backBtn");
+const homeBtn = document.getElementById("homeBtn");
+
+function currentEntry() {
+  return stack[stack.length - 1];
 }
 
-#screenTitle{
-  font-size:17px;
-  font-weight:600;
-  letter-spacing:-0.01em;
-  margin:0;
-  max-width:60%;
-  text-align:center;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+function navigate(entry) {
+  stack.push(entry);
+  render(true);
 }
 
-.nav-btn{
-  position:absolute;
-  top: calc(var(--safe-top) + 2px);
-  height: calc(var(--topbar-h) - 4px);
-  width:44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:none;
-  border:none;
-  color:var(--accent);
-  padding:0;
-}
-.nav-btn svg{ width:22px; height:22px; }
-#backBtn{ left:2px; }
-#homeBtn{ right:6px; }
-#homeBtn svg{ width:20px; height:20px; }
-.nav-btn:active{ opacity:0.4; }
-
-/* Pantallas */
-#screens{
-  flex:1;
-  position:relative;
-  overflow:hidden;
+function goBack() {
+  if (stack.length > 1) {
+    stack.pop();
+    render(false);
+  }
 }
 
-.screen{
-  position:absolute;
-  inset:0;
-  overflow-y:auto;
-  padding: 20px 16px calc(28px + var(--safe-bottom));
-  -webkit-overflow-scrolling: touch;
+function goHome() {
+  stack = [{ screen: "home", title: "iShop Tools" }];
+  render(false);
 }
 
-.screen.enter{
-  animation: slideIn 0.32s cubic-bezier(.32,.72,0,1) both;
-}
-.screen.leaveBack{
-  animation: slideOutRight 0.32s cubic-bezier(.32,.72,0,1) both;
-}
-@keyframes slideIn{
-  from{ transform: translateX(28px); opacity:0; }
-  to{ transform: translateX(0); opacity:1; }
-}
-@keyframes slideOutRight{
-  from{ transform: translateX(0); opacity:1; }
-  to{ transform: translateX(28px); opacity:0; }
+backBtn.addEventListener("click", goBack);
+homeBtn.addEventListener("click", goHome);
+
+// ---- Render principal ----
+function render(isForward) {
+  const entry = currentEntry();
+  titleEl.textContent = entry.title;
+  backBtn.hidden = stack.length === 1;
+  homeBtn.hidden = stack.length === 1;
+
+  const node = buildScreen(entry);
+  node.classList.add("screen");
+  if (isForward) node.classList.add("enter");
+  screensEl.innerHTML = "";
+  screensEl.appendChild(node);
 }
 
-/* Encabezado de pantalla inicio */
-.home-heading{
-  padding: 6px 4px 22px;
-}
-.home-heading h2{
-  font-size:28px;
-  font-weight:700;
-  letter-spacing:-0.02em;
-  margin:0 0 4px;
-}
-.home-heading p{
-  font-size:15px;
-  color:var(--text-secondary);
-  margin:0;
+// ---- Construcción de cada tipo de pantalla ----
+function buildScreen(entry) {
+  const el = document.createElement("div");
+
+  if (entry.screen === "home") {
+    el.appendChild(buildHome());
+  } else if (entry.screen === "coverage") {
+    el.appendChild(buildCoverageList());
+  } else if (entry.screen === "coverageVariant") {
+    el.appendChild(buildCoverageVariantList(entry.category));
+  } else if (entry.screen === "coverageDetail") {
+    el.appendChild(buildCoverageDetail(entry.category, entry.variant));
+  } else if (entry.screen === "tradeNode") {
+    el.appendChild(buildTradeNode(entry.path));
+  } else if (entry.screen === "quoteSelectNew") {
+    el.appendChild(buildQuoteSelectNew(entry.path, entry.tradeIn));
+  } else if (entry.screen === "quoteResult") {
+    el.appendChild(buildQuoteResult(entry.tradeIn, entry.newModel, entry.newCapacity));
+  } else if (entry.screen === "switchSelect") {
+    el.appendChild(buildSwitchSelect(entry.path));
+  } else if (entry.screen === "switchResult") {
+    el.appendChild(buildSwitchResult(entry.newModel, entry.newCapacity));
+  } else if (entry.screen === "financeSelect") {
+    el.appendChild(buildFinanceSelect(entry.path, entry.planType));
+  } else if (entry.screen === "financeResult") {
+    el.appendChild(buildFinanceResult(entry.model, entry.capacity, entry.planType));
+  } else if (entry.screen === "acCategory") {
+    el.appendChild(buildAcCategoryList());
+  } else if (entry.screen === "acModel") {
+    el.appendChild(buildAcModelList(entry.category));
+  } else if (entry.screen === "acVariant") {
+    el.appendChild(buildAcVariantList(entry.category, entry.model));
+  } else if (entry.screen === "acDetail") {
+    el.appendChild(buildAcDetail(entry.category, entry.model, entry.variant));
+  } else if (entry.screen === "tool") {
+    const meta = MENU.find(m => m.id === entry.id);
+    el.appendChild(buildPlaceholder(entry.title, meta ? meta.icon : "🔧",
+      "Esta sección se conectará próximamente a datos/" + entry.id + ".json."));
+  }
+
+  return el;
 }
 
-/* Lista de herramientas */
-.tool-list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+function buildHome() {
+  const wrap = document.createElement("div");
+
+  const heading = document.createElement("div");
+  heading.className = "home-heading";
+  heading.innerHTML = `<h2>iShop Tools</h2><p>¿Qué herramienta necesitas?</p>`;
+  wrap.appendChild(heading);
+
+  const list = document.createElement("div");
+  list.className = "tool-list";
+
+  MENU.forEach(item => {
+    const btn = document.createElement("button");
+    btn.className = "tool-btn";
+    btn.style.setProperty("--tool-color", item.color);
+    btn.innerHTML = `
+      <span class="tool-icon">${item.icon}</span>
+      <span class="tool-label">${item.label}</span>
+      <span class="chev"></span>
+    `;
+    btn.addEventListener("click", async () => {
+      if (item.id === "cubre") {
+        if (!COBERTURA_DATA) await dataReady;
+        navigate({ screen: "coverage", title: item.label });
+      } else if (item.id === "applecare") {
+        if (!AC_PLANES_DATA) await dataReady;
+        navigate({ screen: "acCategory", title: item.label });
+      } else if (item.id === "tradein") {
+        if (!TRADEIN_DATA) await dataReady;
+        navigate({ screen: "tradeNode", path: [], title: item.label });
+      } else if (item.id === "switchup") {
+        if (!PRECIOS_IPHONE) await dataReady;
+        navigate({ screen: "switchSelect", path: [], title: item.label });
+      } else if (item.id === "forlife" || item.id === "getac") {
+        if (!FINANCIAMIENTO_DATA) await dataReady;
+        const planType = item.id === "forlife" ? "IFL" : "GET";
+        navigate({ screen: "financeSelect", path: [], planType, title: item.label });
+      } else {
+        navigate({ screen: "tool", id: item.id, title: item.label });
+      }
+    });
+    list.appendChild(btn);
+  });
+
+  wrap.appendChild(list);
+  return wrap;
 }
 
-.tool-btn{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  width:100%;
-  padding:16px 16px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  font-size:17px;
-  font-weight:590;
-  color:var(--text);
-  text-align:left;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-}
-.tool-btn:active{
-  background:#f0f0f2;
-  transform: scale(0.985);
+function buildCoverageList() {
+  const wrap = document.createElement("div");
+
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>¿Qué cubre?</h2>`;
+  wrap.appendChild(heading);
+
+  const grid = document.createElement("div");
+  grid.className = "coverage-tile-grid";
+
+  const categories = COBERTURA_DATA ? Object.keys(COBERTURA_DATA) : [];
+  if (categories.length === 0) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛠️", "Aún no hay información cargada en datos/cobertura.json."));
+    return wrap;
+  }
+
+  categories.forEach((cat, i) => {
+    const tile = document.createElement("button");
+    tile.className = "coverage-tile";
+    tile.style.setProperty("--tile-color", COVERAGE_TILE_COLORS[i % COVERAGE_TILE_COLORS.length]);
+    tile.innerHTML = `<span class="coverage-tile-icon">${COVERAGE_ICONS[cat] || "🛠️"}</span><span>${cat}</span>`;
+    tile.addEventListener("click", () => {
+      const variants = Object.keys(COBERTURA_DATA[cat]);
+      if (variants.length === 1) {
+        navigate({ screen: "coverageDetail", category: cat, variant: variants[0], title: cat });
+      } else {
+        navigate({ screen: "coverageVariant", category: cat, title: cat });
+      }
+    });
+    grid.appendChild(tile);
+  });
+
+  wrap.appendChild(grid);
+  return wrap;
 }
 
-.tool-icon{
-  flex-shrink:0;
-  width:40px;
-  height:40px;
-  border-radius:11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  background: var(--tool-color, var(--accent));
+function buildCoverageVariantList(category) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${COVERAGE_ICONS[category] || "🛠️"} ${category}</h2>`;
+  wrap.appendChild(heading);
+
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(COBERTURA_DATA[category]).forEach(variant => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${variant}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "coverageDetail", category, variant, title: variant });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
 }
 
-.tool-label{ flex:1; }
+function buildCoverageDetail(category, variant) {
+  const wrap = document.createElement("div");
+  const data = COBERTURA_DATA?.[category]?.[variant];
+  const isRobo = /robo/i.test(variant);
 
-.tool-btn .chev{
-  flex-shrink:0;
-  width:9px;
-  height:9px;
-  border-right:2px solid var(--text-secondary);
-  border-bottom:2px solid var(--text-secondary);
-  transform: rotate(-45deg);
-  opacity:0.55;
-}
+  const hero = document.createElement("div");
+  hero.className = "coverage-hero" + (isRobo ? " robo" : "");
+  hero.innerHTML = `
+    <span class="coverage-hero-icon">${COVERAGE_ICONS[category] || "🛠️"}</span>
+    <span class="coverage-hero-cat">${category}</span>
+    <strong>${variant}</strong>
+  `;
+  wrap.appendChild(hero);
 
-/* Pantallas de secciones (placeholder) */
-.section-heading{
-  padding: 4px 4px 18px;
-}
-.section-heading h2{
-  font-size:24px;
-  font-weight:700;
-  letter-spacing:-0.02em;
-  margin:0;
-}
+  if (!data) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛠️", "Aún no hay información cargada para esta cobertura."));
+    return wrap;
+  }
 
-.placeholder-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:22px 18px;
-  text-align:center;
-}
-.placeholder-card .emoji{
-  font-size:34px;
-  display:block;
-  margin-bottom:10px;
-}
-.placeholder-card h3{
-  margin:0 0 6px;
-  font-size:17px;
-  font-weight:600;
-}
-.placeholder-card p{
-  margin:0;
-  font-size:14px;
-  color:var(--text-secondary);
-  line-height:1.4;
-}
+  function section(title, icon, innerNode) {
+    const sec = document.createElement("div");
+    sec.className = "cov-section";
+    const h = document.createElement("h3");
+    h.innerHTML = `<span>${icon}</span> ${title}`;
+    sec.appendChild(h);
+    sec.appendChild(innerNode);
+    wrap.appendChild(sec);
+  }
 
-/* Sub-lista (ej. ¿Qué cubre? -> categorías) */
-.sub-list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-top:14px;
-}
-.sub-btn{
-  width:100%;
-  padding:15px 16px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  font-size:16px;
-  font-weight:560;
-  color:var(--text);
-  text-align:left;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.sub-btn:active{ background:#f0f0f2; }
-.sub-btn .chev{
-  width:8px; height:8px;
-  border-right:2px solid var(--text-secondary);
-  border-bottom:2px solid var(--text-secondary);
-  transform: rotate(-45deg);
-  opacity:0.5;
-}
+  function chipList(items, kind) {
+    const box = document.createElement("div");
+    box.className = "chip-list";
+    items.forEach(text => {
+      const chip = document.createElement("span");
+      chip.className = kind === "good" ? "chip-good" : "chip-bad";
+      chip.textContent = (kind === "good" ? "✓ " : "✕ ") + text;
+      box.appendChild(chip);
+    });
+    return box;
+  }
 
-@media (prefers-reduced-motion: reduce){
-  .screen.enter, .screen.leaveBack{ animation: none; }
-}
+  if (data.cubre?.length) section("Qué cubre", "✅", chipList(data.cubre, "good"));
+  if (data.no_cubre?.length) section("Qué no cubre", "❌", chipList(data.no_cubre, "bad"));
 
-/* ---- Botón primario (Cotizar) ---- */
-.primary-btn{
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:14px;
-  background: linear-gradient(135deg, #0071e3, #0058b0);
-  color:#fff;
-  font-size:16px;
-  font-weight:650;
-  box-shadow: 0 6px 16px rgba(0,113,227,0.28);
-}
-.primary-btn:active{ transform: scale(0.98); opacity:0.92; }
+  if (data.cuotas?.length) {
+    const box = document.createElement("div");
+    box.className = "fee-list";
+    data.cuotas.forEach(c => {
+      const row = document.createElement("div");
+      row.className = "fee-row";
+      row.innerHTML = `<span>${c.label}</span><strong>${c.precio}</strong>`;
+      box.appendChild(row);
+    });
+    section("Cuotas de servicio", "💰", box);
+  }
 
-.sub-btn.selected{
-  border-color: var(--accent);
-  background: rgba(0,113,227,0.08);
-  box-shadow: 0 0 0 1.5px var(--accent) inset;
+  if (data.si_aplica?.length) section("Casos que normalmente sí aplican", "📍", chipList(data.si_aplica, "good"));
+  if (data.rechazados?.length) section("Casos que pueden ser rechazados", "🚫", chipList(data.rechazados, "bad"));
+
+  if (data.bateria) {
+    const box = document.createElement("div");
+    box.className = "battery-box";
+    box.innerHTML = `<span>${data.bateria.condicion}</span><strong>${data.bateria.resultado}</strong>`;
+    section("Batería", "🔋", box);
+  }
+
+  if (data.info?.length) {
+    const ul = document.createElement("ul");
+    ul.className = "info-checklist";
+    data.info.forEach(t => { const li = document.createElement("li"); li.textContent = "✓ " + t; ul.appendChild(li); });
+    section("Información importante", "🔄", ul);
+  }
+
+  if (data.reclamo?.length) {
+    const ol = document.createElement("ol");
+    ol.className = "claim-steps";
+    data.reclamo.forEach(t => { const li = document.createElement("li"); li.textContent = t; ol.appendChild(li); });
+    section("Cómo reclamar", "📋", ol);
+  }
+
+  return wrap;
 }
 
-/* ---- Banner de resumen (Trade In / Switch Up) ---- */
-.trade-banner{
-  position:relative;
-  overflow:hidden;
-  background: linear-gradient(135deg, #0071e3 0%, #5856d6 60%, #0058b0 100%);
-  color:#fff;
-  border-radius: var(--radius);
-  padding:18px 20px;
-  margin-bottom:16px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  box-shadow: 0 12px 26px rgba(0,113,227,0.32);
-}
-.trade-banner::after{
-  content:"";
-  position:absolute;
-  top:-45%;
-  right:-15%;
-  width:170px;
-  height:170px;
-  background: radial-gradient(circle, rgba(255,255,255,0.22), transparent 70%);
-  pointer-events:none;
-}
-.trade-banner span{
-  font-size:11px;
-  font-weight:700;
-  opacity:0.85;
-  text-transform:uppercase;
-  letter-spacing:0.06em;
-}
-.trade-banner strong{
-  font-size:20px;
-  font-weight:750;
-  letter-spacing:-0.01em;
-  line-height:1.35;
+function buildPlaceholder(title, emoji, message) {
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `
+    <div class="placeholder-card">
+      <span class="emoji">${emoji}</span>
+      <h3>${title}</h3>
+      <p>${message}</p>
+    </div>
+  `;
+  return wrap;
 }
 
-/* ---- Pestañas de opciones (Solo equipo / +AppleCare+ / +R y P) ---- */
-.plan-tabs{
-  display:flex;
-  gap:6px;
-  background:#e8e8ed;
-  padding:4px;
-  border-radius:14px;
-  margin-bottom:16px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-}
-.plan-tab{
-  flex:1;
-  border:none;
-  background:transparent;
-  padding:10px 6px;
-  font-size:13px;
-  font-weight:600;
-  color:var(--text-secondary);
-  border-radius:9px;
-  text-align:center;
-}
-.plan-tab.active{
-  background:#fff;
-  color:var(--text);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+// ---- Trade In: navegación dinámica sobre tradein.json ----
+const PRICE_ROWS = [
+  { key: "ÓPTIMO",   label: "Óptimo",   color: "#34c759" },
+  { key: "BATERÍA",  label: "Batería",  color: "#ff9500" },
+  { key: "PANTALLA", label: "Pantalla", color: "#0071e3" },
+  { key: "B Y P",    label: "B y P",    color: "#af52de" },
+];
+
+function getNodeAtPath(path) {
+  let node = TRADEIN_DATA;
+  for (const key of path) {
+    if (!node) return null;
+    node = node[key];
+  }
+  return node;
 }
 
-/* ---- Chips de meses ---- */
-.month-chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:14px;
-}
-.chip{
-  padding:9px 16px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--surface);
-  font-size:14px;
-  font-weight:600;
-  color:var(--text);
-}
-.chip.active{
-  background:var(--accent);
-  border-color:var(--accent);
-  color:#fff;
+function isPriceLeaf(node) {
+  return node && typeof node === "object" && Object.prototype.hasOwnProperty.call(node, "ÓPTIMO");
 }
 
-/* ---- Resultado del plan ---- */
-.plan-result{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius:var(--radius);
-  padding:18px 20px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-}
-.plan-phase{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:15px;
-}
-.plan-phase span{ color:var(--text-secondary); }
-.plan-phase strong{ font-size:21px; font-weight:750; color:var(--accent); }
-.plan-note{
-  font-size:12px;
-  color:var(--text-secondary);
-  margin:10px 2px 0;
-  line-height:1.4;
-}
-.pending{
-  color:var(--text-secondary);
-  font-size:14px;
-  text-align:center;
-  margin:0;
+function buildTradeNode(path) {
+  const node = getNodeAtPath(path);
+  const wrap = document.createElement("div");
+
+  if (!node) {
+    wrap.appendChild(buildPlaceholder("Trade In", "🛒", "No se encontró información para esta selección."));
+    return wrap;
+  }
+
+  if (isPriceLeaf(node)) {
+    const isIphone = path[0] === "iPhone";
+    const heading = document.createElement("div");
+    heading.className = "section-heading";
+    heading.innerHTML = `<h2>${path[path.length - 1]}</h2>`;
+    wrap.appendChild(heading);
+
+    const list = document.createElement("div");
+    list.className = "sub-list";
+
+    PRICE_ROWS.forEach(row => {
+      const raw = node[row.key] ?? "N/A";
+      const numeric = parsePesoValue(raw);
+      const item = document.createElement(isIphone && numeric !== null ? "button" : "div");
+      item.className = "sub-btn";
+      item.innerHTML = `
+        <span style="display:flex;align-items:center;gap:10px;">
+          <span style="width:9px;height:9px;border-radius:50%;background:${row.color};display:inline-block;"></span>
+          ${row.label}
+        </span>
+        <span style="font-weight:650;">${raw}</span>
+      `;
+      // Redirección inmediata a elegir el iPhone nuevo. Solo aplica en la
+      // categoría iPhone (isIphone) — iPad/Mac/Apple Watch no cotizan aquí.
+      if (isIphone && numeric !== null) {
+        item.addEventListener("click", () => {
+          navigate({
+            screen: "quoteSelectNew",
+            path: [],
+            tradeIn: { model: path[1], capacity: path[2], value: numeric, condition: row.label },
+            title: "Equipo nuevo",
+          });
+        });
+      }
+      list.appendChild(item);
+    });
+    wrap.appendChild(list);
+    return wrap;
+  }
+
+  // Nodo intermedio: mostrar lista de opciones (categoría, modelo, capacidad, etc.)
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  const label = path.length === 0 ? "Trade In" : path[path.length - 1];
+  heading.innerHTML = `<h2>${path.length === 0 ? "Selecciona un tipo" : label}</h2>`;
+  wrap.appendChild(heading);
+
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(node).forEach(key => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${key}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "tradeNode", path: [...path, key], title: key });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
 }
 
-/* ---- Selector "otra forma de pago" en la cotización de Trade In ---- */
-.alt-finance-select{
-  width:100%;
-  padding:14px 16px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:var(--surface);
-  font-size:15px;
-  font-weight:600;
-  color:var(--text);
-  -webkit-appearance:none;
-  appearance:none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 14px center;
-  background-size:18px;
+// ---- Selección de equipo nuevo (Trade In) ----
+function buildQuoteSelectNew(path, tradeIn) {
+  const node = getNodeAtPathIn(PRECIOS_IPHONE, path);
+  const wrap = document.createElement("div");
+
+  const banner = document.createElement("div");
+  banner.className = "trade-banner";
+  banner.innerHTML = `<span>Trade In seleccionado</span><strong>${tradeIn.model} ${tradeIn.capacity} · ${tradeIn.condition} · ${money(tradeIn.value)}</strong>`;
+  wrap.appendChild(banner);
+
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${path.length === 0 ? "Elige el iPhone nuevo" : path[path.length - 1]}</h2>`;
+  wrap.appendChild(heading);
+
+  const list = document.createElement("div");
+  list.className = "sub-list";
+
+  if (typeof node !== "object" || node === null) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "📦", "Aún no hay precios cargados para esta selección."));
+    return wrap;
+  }
+
+  const isLeaf = Object.values(node).every(v => v === null || typeof v === "number");
+  if (isLeaf) {
+    Object.entries(node).forEach(([cap, price]) => {
+      const btn = document.createElement("button");
+      btn.className = "sub-btn";
+      btn.innerHTML = `<span>${cap}</span><span style="font-weight:650;">${money(price)}</span>`;
+      btn.addEventListener("click", () => {
+        navigate({
+          screen: "quoteResult",
+          tradeIn,
+          newModel: path[path.length - 1],
+          newCapacity: cap,
+          title: "Cotización",
+        });
+      });
+      list.appendChild(btn);
+    });
+  } else {
+    filteredModelKeys(node, path).forEach(key => {
+      const btn = document.createElement("button");
+      btn.className = "sub-btn";
+      btn.innerHTML = `<span>${key}</span><span class="chev"></span>`;
+      btn.addEventListener("click", () => {
+        navigate({ screen: "quoteSelectNew", path: [...path, key], tradeIn, title: key });
+      });
+      list.appendChild(btn);
+    });
+  }
+  wrap.appendChild(list);
+  return wrap;
 }
 
-/* ---- For Life + AC / GET + AC: dos columnas lado a lado ---- */
-.finance-columns{
-  display:flex;
-  gap:10px;
-}
-.finance-col{
-  flex:1;
-  min-width:0;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px 12px;
-}
-.finance-col h4{
-  margin:0 0 10px;
-  font-size:13px;
-  font-weight:700;
-  text-align:center;
-  color:var(--accent);
-}
-.finance-row{
-  display:flex;
-  flex-direction:column;
-  gap:1px;
-  padding:8px 0;
-  border-bottom:1px solid var(--border);
-  font-size:11px;
-  color:var(--text-secondary);
-}
-.finance-row strong{
-  font-size:15px;
-  color:var(--text);
-  font-weight:700;
-}
-.finance-row.total{
-  border-bottom:none;
-  margin-top:4px;
-  padding-top:10px;
-  border-top:2px solid var(--text);
-}
-.finance-row.total strong{
-  font-size:17px;
-  color:var(--accent);
+function getNodeAtPathIn(root, path) {
+  let node = root;
+  for (const key of path) {
+    if (!node) return null;
+    node = node[key];
+  }
+  return node;
 }
 
-/* ---- ¿Qué cubre?: grid de categorías ---- */
-.coverage-tile-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+// En el primer nivel (elegir modelo) se muestra solo la lista corta de
+// datos/switchup_modelos.json, en ese orden. Se usa tanto en Trade In
+// como en Switch Up para elegir el iPhone nuevo.
+function filteredModelKeys(node, path) {
+  if (path.length === 0 && Array.isArray(SWITCHUP_MODELOS)) {
+    return SWITCHUP_MODELOS.filter(m => Object.prototype.hasOwnProperty.call(node, m));
+  }
+  return Object.keys(node);
 }
-.coverage-tile{
-  aspect-ratio:1.15;
-  border:none;
-  border-radius:18px;
-  background: linear-gradient(150deg, var(--tile-color), color-mix(in srgb, var(--tile-color) 65%, black));
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  font-size:14px;
-  font-weight:650;
-  text-align:center;
-  padding:10px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
-.coverage-tile:active{ transform:scale(0.96); }
-.coverage-tile-icon{ font-size:32px; }
 
-/* ---- Encabezado hero de cobertura ---- */
-.coverage-hero{
-  position:relative;
-  overflow:hidden;
-  background: linear-gradient(135deg, #34c759 0%, #0071e3 100%);
-  color:#fff;
-  border-radius:var(--radius);
-  padding:20px;
-  margin-bottom:18px;
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  box-shadow: 0 12px 26px rgba(0,0,0,0.18);
-}
-.coverage-hero.robo{
-  background: linear-gradient(135deg, #ff3b30 0%, #af52de 100%);
-}
-.coverage-hero-icon{ font-size:30px; margin-bottom:6px; }
-.coverage-hero-cat{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; opacity:0.85; }
-.coverage-hero strong{ font-size:20px; font-weight:750; }
+// ---- Resultado de cotización Trade In (3 opciones x plazos) ----
+function buildQuoteResult(tradeIn, newModel, newCapacity) {
+  const wrap = document.createElement("div");
+  const newPrice = PRECIOS_IPHONE?.[newModel]?.[newCapacity] ?? null;
+  const ac = APPLECARE_DATA?.[newModel] || {};
+  const base = newPrice === null ? null : newPrice - tradeIn.value;
 
-/* ---- Secciones de cobertura ---- */
-.cov-section{ margin-bottom:20px; }
-.cov-section h3{
-  font-size:14px;
-  font-weight:700;
-  margin:0 0 10px;
-  display:flex;
-  align-items:center;
-  gap:6px;
+  const banner = document.createElement("div");
+  banner.className = "trade-banner";
+  wrap.appendChild(banner);
+
+  // El recuadro se actualiza según la pestaña activa: equipo − Trade In
+  // [+ AppleCare+ seleccionado] = total.
+  function updateBanner(opt) {
+    if (newPrice === null) {
+      banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>Precio pendiente de cargar</strong>`;
+      return;
+    }
+    let html = `<span>${newModel} ${newCapacity}</span><strong>${money(newPrice)} − ${money(tradeIn.value)} (Trade In) = ${money(base)}`;
+    if (opt && opt.extra !== null && opt.extra !== undefined && opt.extra > 0) {
+      html += ` + ${money(opt.extra)} ${opt.shortLabel} = ${money(base + opt.extra)}</strong>`;
+    } else {
+      html += `</strong>`;
+    }
+    banner.innerHTML = html;
+  }
+
+  const options = [
+    { key: "solo", label: "Solo equipo", shortLabel: "Equipo", extra: 0 },
+    { key: "ac", label: "Equipo + AppleCare+", shortLabel: "AppleCare+", extra: ac.APPLECARE },
+    { key: "acrp", label: "Equipo + AppleCare+ R y P", shortLabel: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
+  ];
+
+  wrap.appendChild(buildPlanTabs(options, base, { onSelect: updateBanner }));
+
+  if (newPrice !== null) {
+    wrap.appendChild(buildTradeInAltFinancing(tradeIn, newModel, newCapacity, newPrice, ac));
+  }
+
+  return wrap;
 }
-.chip-list{ display:flex; flex-wrap:wrap; gap:8px; }
-.chip-good{
-  background: rgba(52,199,89,0.12);
-  color:#1d7a3e;
-  border:1px solid rgba(52,199,89,0.32);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:600;
+
+// Desplegable "ver con otra forma de pago" dentro de la cotización de
+// Trade In: For Life, GET o Switch Up, todos con el descuento de Trade In
+// ya aplicado, y con la opción de sumar AppleCare+ normal o Robo y Pérdida.
+function buildTradeInAltFinancing(tradeIn, newModel, newCapacity, newPrice, ac) {
+  const wrap = document.createElement("div");
+  wrap.style.marginTop = "18px";
+
+  const label = document.createElement("p");
+  label.className = "plan-note";
+  label.style.margin = "0 0 8px 2px";
+  label.textContent = "¿Prefieres verlo en otra forma de pago?";
+  wrap.appendChild(label);
+
+  const select = document.createElement("select");
+  select.className = "alt-finance-select";
+  select.innerHTML = `
+    <option value="">Elegir…</option>
+    <option value="IFL">iPhone For Life + AC</option>
+    <option value="GET">GET + AC</option>
+    <option value="switchup">Switch Up</option>
+  `;
+  wrap.appendChild(select);
+
+  const resultArea = document.createElement("div");
+  resultArea.style.marginTop = "12px";
+  wrap.appendChild(resultArea);
+
+  select.addEventListener("change", () => {
+    resultArea.innerHTML = "";
+    if (!select.value) return;
+
+    if (select.value === "switchup") {
+      const switchBase = newPrice + MEMBRESIA_SWITCH - tradeIn.value;
+      const banner = document.createElement("div");
+      banner.className = "trade-banner";
+      banner.innerHTML = `<span>Switch Up con Trade In</span><strong>${money(newPrice)} + ${money(MEMBRESIA_SWITCH)} − ${money(tradeIn.value)} (Trade In) = ${money(switchBase)}</strong>`;
+      resultArea.appendChild(banner);
+
+      const options = [
+        { key: "ac", label: "AppleCare+", extra: ac.APPLECARE },
+        { key: "acrp", label: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
+      ];
+      resultArea.appendChild(buildPlanTabs(options, switchBase));
+      return;
+    }
+
+    // For Life (IFL) o GET
+    const cfg = FINANCE_CONFIG[select.value];
+    const finData = FINANCIAMIENTO_DATA?.[newModel]?.[newCapacity]?.[select.value];
+    if (!finData) {
+      resultArea.appendChild(buildPlaceholder("Sin datos", "💳", "Aún no hay plan " + cfg.label + " cargado para este equipo."));
+      return;
+    }
+
+    const totalMsi = cfg.phase1 + cfg.phase2Months; // 24 en For Life, 20 en GET
+    const descuentoMensual = tradeIn.value / totalMsi;
+    const discountedFinData = {
+      monthly: Math.max(0, finData.monthly - descuentoMensual),
+      residual: finData.residual,
+    };
+
+    const banner = document.createElement("div");
+    banner.className = "trade-banner";
+    banner.innerHTML = `<span>${cfg.label} con Trade In</span><strong>${money(finData.monthly)}/mes − ${money(descuentoMensual)} (Trade In ÷ ${totalMsi} msi) = ${money(discountedFinData.monthly)}/mes</strong>`;
+    resultArea.appendChild(banner);
+
+    resultArea.appendChild(buildFinanceColumnsGrid(discountedFinData, ac, cfg));
+  });
+
+  return wrap;
 }
-.chip-bad{
-  background: rgba(255,59,48,0.1);
-  color:#a3241c;
-  border:1px solid rgba(255,59,48,0.28);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:600;
+
+// ---- Switch Up ----
+function buildSwitchSelect(path) {
+  const node = getNodeAtPathIn(PRECIOS_IPHONE, path);
+  const wrap = document.createElement("div");
+
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${path.length === 0 ? "Elige el iPhone nuevo" : path[path.length - 1]}</h2>`;
+  wrap.appendChild(heading);
+
+  const list = document.createElement("div");
+  list.className = "sub-list";
+
+  if (typeof node !== "object" || node === null) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🔄", "Aún no hay precios cargados para esta selección."));
+    return wrap;
+  }
+
+  const isLeaf = Object.values(node).every(v => v === null || typeof v === "number");
+  if (isLeaf) {
+    Object.entries(node).forEach(([cap, price]) => {
+      const btn = document.createElement("button");
+      btn.className = "sub-btn";
+      btn.innerHTML = `<span>${cap}</span><span style="font-weight:650;">${money(price)}</span>`;
+      btn.addEventListener("click", () => {
+        navigate({ screen: "switchResult", newModel: path[path.length - 1], newCapacity: cap, title: "Switch Up" });
+      });
+      list.appendChild(btn);
+    });
+  } else {
+    filteredModelKeys(node, path).forEach(key => {
+      const btn = document.createElement("button");
+      btn.className = "sub-btn";
+      btn.innerHTML = `<span>${key}</span><span class="chev"></span>`;
+      btn.addEventListener("click", () => {
+        navigate({ screen: "switchSelect", path: [...path, key], title: key });
+      });
+      list.appendChild(btn);
+    });
+  }
+  wrap.appendChild(list);
+  return wrap;
 }
-.fee-list{ display:flex; flex-direction:column; gap:8px; }
-.fee-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:12px 14px;
-  font-size:13.5px;
-  gap:10px;
+
+function buildSwitchResult(newModel, newCapacity) {
+  const wrap = document.createElement("div");
+  const newPrice = PRECIOS_IPHONE?.[newModel]?.[newCapacity] ?? null;
+  const ac = APPLECARE_DATA?.[newModel] || {};
+  const base = newPrice === null ? null : newPrice + MEMBRESIA_SWITCH;
+
+  const banner = document.createElement("div");
+  banner.className = "trade-banner";
+  wrap.appendChild(banner);
+
+  // El recuadro superior se actualiza según la opción (AppleCare+ / R y P)
+  // que esté activa en las pestañas: equipo + membresía [+ AppleCare+] = total.
+  function updateBanner(opt) {
+    if (newPrice === null) {
+      banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>Precio pendiente de cargar</strong>`;
+      return;
+    }
+    let html = `<span>${newModel} ${newCapacity}</span><strong>${money(newPrice)} + ${money(MEMBRESIA_SWITCH)} membresía`;
+    if (opt && opt.extra !== null && opt.extra !== undefined) {
+      html += ` + ${money(opt.extra)} ${opt.label} = ${money(base + opt.extra)}</strong>`;
+    } else {
+      html += ` = ${money(base)}</strong>`;
+    }
+    banner.innerHTML = html;
+  }
+
+  const options = [
+    { key: "ac", label: "AppleCare+", extra: ac.APPLECARE },
+    { key: "acrp", label: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
+  ];
+
+  wrap.appendChild(buildPlanTabs(options, base, { onSelect: updateBanner, phonePrice: newPrice }));
+  return wrap;
 }
-.fee-row strong{ color:var(--accent); font-size:15px; flex-shrink:0; }
-.battery-box{
-  background: linear-gradient(135deg, #34c759, #1d8a3e);
-  color:#fff;
-  border-radius:16px;
-  padding:16px 18px;
-  display:flex;
-  flex-direction:column;
-  gap:4px;
+
+// ---- Componente reutilizable: pestañas de opción + chips de meses ----
+function buildPlanTabs(options, base, extraOpts = {}) {
+  const { onSelect, phonePrice } = extraOpts;
+  const wrap = document.createElement("div");
+
+  const tabs = document.createElement("div");
+  tabs.className = "plan-tabs";
+  const panels = document.createElement("div");
+
+  let activeIdx = 0;
+
+  function renderPanel(idx) {
+    panels.innerHTML = "";
+    const opt = options[idx];
+    if (typeof onSelect === "function") onSelect(opt);
+    const chipsRow = document.createElement("div");
+    chipsRow.className = "month-chips";
+    let selectedMonths = MESES[0];
+
+    // Solo visible cuando el plazo elegido es 15 meses y la opción incluye
+    // AppleCare+: permite elegir en cuántos meses (10, 12 o 13) se financia.
+    const acChipsRow = document.createElement("div");
+    acChipsRow.className = "month-chips";
+    acChipsRow.hidden = true;
+    let selectedAcMonths = 10;
+    [10, 12, 13].forEach(m => {
+      const chip = document.createElement("button");
+      chip.className = "chip" + (m === selectedAcMonths ? " active" : "");
+      chip.textContent = "AC " + m + " msi";
+      chip.addEventListener("click", () => {
+        selectedAcMonths = m;
+        acChipsRow.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        renderResult();
+      });
+      acChipsRow.appendChild(chip);
+    });
+
+    const resultBox = document.createElement("div");
+    resultBox.className = "plan-result";
+
+    function renderResult() {
+      if (base === null || base === undefined) {
+        resultBox.innerHTML = `<p class="pending">Precio del equipo pendiente de cargar.</p>`;
+        acChipsRow.hidden = true;
+        return;
+      }
+      if (opt.extra === null) {
+        resultBox.innerHTML = `<p class="pending">Precio de AppleCare+ pendiente de cargar.</p>`;
+        acChipsRow.hidden = true;
+        return;
+      }
+      acChipsRow.hidden = !(selectedMonths === 15 && opt.extra > 0);
+      const plan = computePlan(base, opt.extra, selectedMonths, selectedAcMonths);
+      if (!plan) {
+        resultBox.innerHTML = `<p class="pending">Precio pendiente de cargar.</p>`;
+        return;
+      }
+      if (plan.split) {
+        resultBox.innerHTML = `
+          <div class="plan-phase"><span>Mes 1 a ${plan.acMonths} (con AppleCare+)</span><strong>${money(plan.phase1.amount)}/mes</strong></div>
+          <div class="plan-phase"><span>Mes ${plan.acMonths + 1} a 15 (solo iPhone)</span><strong>${money(plan.phase2.amount)}/mes</strong></div>
+        `;
+      } else {
+        resultBox.innerHTML = `<div class="plan-phase"><span>${selectedMonths} meses</span><strong>${money(plan.amount)}/mes</strong></div>`;
+      }
+    }
+
+    MESES.forEach(m => {
+      const chip = document.createElement("button");
+      chip.className = "chip" + (m === selectedMonths ? " active" : "");
+      chip.textContent = m + (m === 15 ? "*" : "");
+      chip.addEventListener("click", () => {
+        selectedMonths = m;
+        chipsRow.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        renderResult();
+      });
+      chipsRow.appendChild(chip);
+    });
+
+    panels.appendChild(chipsRow);
+    panels.appendChild(acChipsRow);
+    panels.appendChild(resultBox);
+    renderResult();
+
+    if (opt.extra) {
+      const note = document.createElement("p");
+      note.className = "plan-note";
+      note.textContent = "* A 15 meses, el AppleCare+ se financia solo dentro de los meses que elijas (10, 12 o 13).";
+      panels.appendChild(note);
+
+      // Recuadro de promoción: 50% del equipo + 50% del AppleCare+ seleccionado,
+      // aplicable dentro de los primeros 13 meses. Solo aplica donde se
+      // conoce el precio del equipo solo (phonePrice), es decir, Switch Up.
+      if (phonePrice !== undefined && phonePrice !== null) {
+        const promoBox = document.createElement("div");
+        promoBox.className = "plan-result";
+        promoBox.style.marginTop = "10px";
+        promoBox.innerHTML = `
+          <div class="plan-phase"><span>50% del equipo</span><strong>${money(phonePrice * 0.5)}</strong></div>
+          <div class="plan-phase"><span>50% de ${opt.label}</span><strong>${money(opt.extra * 0.5)}</strong></div>
+        `;
+        panels.appendChild(promoBox);
+
+        const promoNote = document.createElement("p");
+        promoNote.className = "plan-note";
+        promoNote.textContent = "50% aplicable dentro de los primeros 13 meses.";
+        panels.appendChild(promoNote);
+      }
+    }
+  }
+
+  options.forEach((opt, idx) => {
+    const tab = document.createElement("button");
+    tab.className = "plan-tab" + (idx === 0 ? " active" : "");
+    tab.textContent = opt.label;
+    tab.addEventListener("click", () => {
+      tabs.querySelectorAll(".plan-tab").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      activeIdx = idx;
+      renderPanel(idx);
+    });
+    tabs.appendChild(tab);
+  });
+
+  wrap.appendChild(tabs);
+  wrap.appendChild(panels);
+  renderPanel(0);
+  return wrap;
 }
-.battery-box span{ font-size:13px; opacity:0.9; }
-.battery-box strong{ font-size:16px; font-weight:700; }
-.info-checklist{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
-.info-checklist li{ font-size:14px; color:var(--text-secondary); line-height:1.4; }
-.claim-steps{ list-style:none; margin:0; padding:0; counter-reset:step; }
-.claim-steps li{
-  counter-increment:step;
-  position:relative;
-  padding-left:34px;
-  margin-bottom:12px;
-  font-size:14px;
-  line-height:1.4;
+
+// ---- For Life + AC / GET + AC ----
+const FINANCE_CONFIG = {
+  IFL: { label: "iPhone For Life", phase1: 10, phase2Start: 11, phase2End: 24, phase2Months: 14, residualMonth: 25 },
+  GET: { label: "GET",             phase1: 13, phase2Start: 14, phase2End: 20, phase2Months: 7,  residualMonth: 21 },
+};
+
+function buildFinanceSelect(path, planType) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+
+  if (path.length === 0) {
+    heading.innerHTML = `<h2>Elige el iPhone</h2>`;
+    wrap.appendChild(heading);
+    const list = document.createElement("div");
+    list.className = "sub-list";
+    const models = FINANCIAMIENTO_DATA ? Object.keys(FINANCIAMIENTO_DATA) : [];
+    if (models.length === 0) {
+      wrap.appendChild(buildPlaceholder("Sin datos", "💳", "Aún no hay planes cargados en datos/financiamiento.json."));
+      return wrap;
+    }
+    models.forEach(model => {
+      const btn = document.createElement("button");
+      btn.className = "sub-btn";
+      btn.innerHTML = `<span>${model}</span><span class="chev"></span>`;
+      btn.addEventListener("click", () => {
+        navigate({ screen: "financeSelect", path: [model], planType, title: model });
+      });
+      list.appendChild(btn);
+    });
+    wrap.appendChild(list);
+    return wrap;
+  }
+
+  const model = path[0];
+  const caps = FINANCIAMIENTO_DATA?.[model] || {};
+  heading.innerHTML = `<h2>${model}</h2>`;
+  wrap.appendChild(heading);
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(caps).forEach(cap => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${cap}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "financeResult", model, capacity: cap, planType, title: cap });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
 }
-.claim-steps li::before{
-  content:counter(step);
-  position:absolute;
-  left:0; top:-1px;
-  width:24px; height:24px;
-  border-radius:50%;
-  background:var(--accent);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  font-weight:700;
+
+function buildFinanceResult(model, capacity, planType) {
+  const wrap = document.createElement("div");
+  const cfg = FINANCE_CONFIG[planType];
+  const finData = FINANCIAMIENTO_DATA?.[model]?.[capacity]?.[planType];
+  const ac = APPLECARE_DATA?.[model] || {};
+
+  const banner = document.createElement("div");
+  banner.className = "trade-banner";
+  banner.innerHTML = `<span>${cfg.label}</span><strong>${model} ${capacity}</strong>`;
+  wrap.appendChild(banner);
+
+  if (!finData) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "💳", "Aún no hay plan " + cfg.label + " cargado para este equipo."));
+    return wrap;
+  }
+
+  wrap.appendChild(buildFinanceColumnsGrid(finData, ac, cfg));
+  return wrap;
+}
+
+// Construye la grid de 2 columnas (AppleCare+ / AppleCare+ R y P) para un
+// plan tipo For Life o GET. finData = { monthly, residual } — puede venir
+// ya con el descuento de Trade In aplicado a "monthly".
+function buildFinanceColumnsGrid(finData, ac, cfg) {
+  const cols = [
+    { label: "AppleCare+", extra: ac.APPLECARE },
+    { label: "AppleCare+ R y P", extra: ac.ROBO_PERDIDA },
+  ];
+
+  const grid = document.createElement("div");
+  grid.className = "finance-columns";
+
+  cols.forEach(col => {
+    const card = document.createElement("div");
+    card.className = "finance-col";
+
+    if (col.extra === null || col.extra === undefined) {
+      card.innerHTML = `<h4>${col.label}</h4><p class="pending">AppleCare+ pendiente</p>`;
+      grid.appendChild(card);
+      return;
+    }
+
+    const phase1Amount = finData.monthly + col.extra / cfg.phase1;
+    const phase2Amount = finData.monthly;
+    const residual = finData.residual;
+    const total = phase1Amount * cfg.phase1 + phase2Amount * cfg.phase2Months + residual;
+
+    card.innerHTML = `
+      <h4>${col.label}</h4>
+      <div class="finance-row"><span>Mes 1–${cfg.phase1}</span><strong>${money(phase1Amount)}</strong></div>
+      <div class="finance-row"><span>Mes ${cfg.phase1 + 1}–${cfg.phase2End}</span><strong>${money(phase2Amount)}</strong></div>
+      <div class="finance-row"><span>Mes ${cfg.residualMonth} (saldo)</span><strong>${money(residual)}</strong></div>
+      <div class="finance-row total"><span>Total</span><strong>${money(total)}</strong></div>
+    `;
+    grid.appendChild(card);
+  });
+
+  return grid;
+}
+function buildAcCategoryList() {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>AppleCare+</h2>`;
+  wrap.appendChild(heading);
+
+  const grid = document.createElement("div");
+  grid.className = "coverage-tile-grid";
+  const categories = AC_PLANES_DATA ? Object.keys(AC_PLANES_DATA) : [];
+  if (categories.length === 0) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛡️", "Aún no hay planes cargados en datos/applecare_planes.json."));
+    return wrap;
+  }
+  categories.forEach((cat, i) => {
+    const tile = document.createElement("button");
+    tile.className = "coverage-tile";
+    tile.style.setProperty("--tile-color", COVERAGE_TILE_COLORS[i % COVERAGE_TILE_COLORS.length]);
+    tile.innerHTML = `<span class="coverage-tile-icon">${AC_ICONS[cat] || "🛡️"}</span><span>${AC_LABELS[cat] || cat}</span>`;
+    tile.addEventListener("click", () => navigate({ screen: "acModel", category: cat, title: AC_LABELS[cat] || cat }));
+    grid.appendChild(tile);
+  });
+  wrap.appendChild(grid);
+  return wrap;
+}
+
+function buildAcModelList(category) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${AC_ICONS[category] || "🛡️"} ${AC_LABELS[category] || category}</h2>`;
+  wrap.appendChild(heading);
+
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  const models = AC_PLANES_DATA[category] || {};
+  Object.keys(models).forEach(model => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${model}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      const variants = Object.keys(models[model]);
+      if (variants.length === 1) {
+        navigate({ screen: "acDetail", category, model, variant: variants[0], title: model });
+      } else {
+        navigate({ screen: "acVariant", category, model, title: model });
+      }
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildAcVariantList(category, model) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${model}</h2>`;
+  wrap.appendChild(heading);
+
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(AC_PLANES_DATA[category][model]).forEach(variant => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${variant}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => navigate({ screen: "acDetail", category, model, variant, title: variant }));
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildAcDetail(category, model, variant) {
+  const wrap = document.createElement("div");
+  const plan = AC_PLANES_DATA?.[category]?.[model]?.[variant];
+
+  if (!plan) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛡️", "Aún no hay plan cargado para este equipo."));
+    return wrap;
+  }
+
+  const isRobo = /robo/i.test(variant);
+  const hero = document.createElement("div");
+  hero.className = "ac-hero" + (isRobo ? " robo" : "");
+  hero.innerHTML = `
+    <span class="ac-hero-model">${model}</span>
+    <span class="ac-hero-plan">${variant}</span>
+    <div class="ac-hero-price"><span>${money(plan.precio)}</span><small>protección total</small></div>
+  `;
+  wrap.appendChild(hero);
+
+  const cta = document.createElement("div");
+  cta.className = "ac-cta";
+  cta.textContent = "✨ Protege tu inversión desde hoy";
+  wrap.appendChild(cta);
+
+  if (plan.cubre?.length) {
+    const sec = document.createElement("div");
+    sec.className = "cov-section";
+    sec.innerHTML = `<h3><span>✅</span> Incluye</h3>`;
+    const ul = document.createElement("ul");
+    ul.className = "ac-benefits";
+    plan.cubre.forEach(t => { const li = document.createElement("li"); li.innerHTML = `<span class="ac-check">✓</span> ${t}`; ul.appendChild(li); });
+    sec.appendChild(ul);
+    wrap.appendChild(sec);
+  }
+
+  if (plan.deducibles && Object.keys(plan.deducibles).length) {
+    const sec = document.createElement("div");
+    sec.className = "cov-section";
+    sec.innerHTML = `<h3><span>💰</span> Deducibles</h3>`;
+    const box = document.createElement("div");
+    box.className = "fee-list";
+    Object.entries(plan.deducibles).forEach(([label, precio]) => {
+      const row = document.createElement("div");
+      row.className = "fee-row";
+      row.innerHTML = `<span>${label}</span><strong>${money(precio)}</strong>`;
+      box.appendChild(row);
+    });
+    sec.appendChild(box);
+    wrap.appendChild(sec);
+  }
+
+  return wrap;
+}
+
+// ---- Primer render ----
+render(true);
+
+// ---- Registro del Service Worker (para instalar como PWA) ----
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
 }
