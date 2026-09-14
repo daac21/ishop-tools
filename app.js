@@ -25,34 +25,35 @@ const COVERAGE_ICONS = {
 };
 const COVERAGE_TILE_COLORS = ["#0071e3", "#ff9500", "#34c759", "#5856d6", "#af52de", "#ff3b30", "#1d1d1f", "#0a84ff", "#30d158"];
 
-// AppleCare+ (menú principal): categorías, íconos y nombres de despliegue
-const AC_ICONS = { "iPhone": "📱", "Watch": "⌚", "iPad": "📓", "Mac": "🖥️", "HomePod": "🔊", "Apple TV": "📺", "AirPods": "🎧" };
-const AC_LABELS = { "Watch": "Apple Watch", "AirPods": "AirPods / Beats" };
+// Ícono/color por categoría para el apartado AppleCare+ (datos/applecare_info.json)
+const AC_CATEGORY_META = {
+  "iPhone":    { icon: "📱", color: "#0071e3" },
+  "Watch":     { icon: "⌚", color: "#ff3b30" },
+  "iPad":      { icon: "📱", color: "#5856d6" },
+  "Mac":       { icon: "💻", color: "#34c759" },
+  "HomePod":   { icon: "🔊", color: "#ff9500" },
+  "Apple TV":  { icon: "📺", color: "#1d1d1f" },
+  "AirPods":   { icon: "🎧", color: "#8e8e93" },
+};
 
-// ---- Datos: se leen de datos/*.json (ese mismo repo de GitHub).
-// Cada vez que subas un cambio a GitHub, Netlify republica solo y la app
-// jala la versión nueva. Se guarda una copia en el teléfono por si no hay internet.
 let TRADEIN_DATA = null;
 let PRECIOS_IPHONE = null;
 let APPLECARE_DATA = null;
-// Lista de modelos que se muestran en Switch Up (y en qué orden).
-// Se edita solo este archivo (datos/switchup_modelos.json) para
-// agregar/quitar modelos del apartado, sin tocar precios.
 let SWITCHUP_MODELOS = null;
 let FINANCIAMIENTO_DATA = null;
 let COBERTURA_DATA = null;
-let AC_PLANES_DATA = null;
+let APPLECARE_INFO = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a, s, f, c, ac] = await Promise.all([
+    const [t, p, a, s, f, c, aci] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/switchup_modelos.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/financiamiento.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/cobertura.json", { cache: "no-store" }).then(r => r.json()),
-      fetch("datos/applecare_planes.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/applecare_info.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
@@ -60,8 +61,8 @@ async function loadAllData() {
     SWITCHUP_MODELOS = s;
     FINANCIAMIENTO_DATA = f;
     COBERTURA_DATA = c;
-    AC_PLANES_DATA = ac;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_planes: ac }));
+    APPLECARE_INFO = aci;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -72,7 +73,7 @@ async function loadAllData() {
       SWITCHUP_MODELOS = data.switchup_modelos || [];
       FINANCIAMIENTO_DATA = data.financiamiento || {};
       COBERTURA_DATA = data.cobertura || {};
-      AC_PLANES_DATA = data.applecare_planes || {};
+      APPLECARE_INFO = data.applecare_info || {};
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
@@ -80,14 +81,12 @@ async function loadAllData() {
       SWITCHUP_MODELOS = [];
       FINANCIAMIENTO_DATA = {};
       COBERTURA_DATA = {};
-      AC_PLANES_DATA = {};
+      APPLECARE_INFO = {};
     }
   }
 }
 const dataReady = loadAllData();
 
-// ---- Estado de navegación ----
-// Cada entrada: { screen: "home" | "tool" | "coverageDetail" | "tradeNode" | "quoteSelectNew" | "quoteResult" | "switchResult", ...params, title }
 let stack = [{ screen: "home", title: "iShop Tools" }];
 const MESES = [3, 6, 9, 10, 12, 13, 15];
 const MEMBRESIA_SWITCH = 399;
@@ -104,8 +103,6 @@ function parsePesoValue(str) {
   return parseFloat(clean);
 }
 
-// base se reparte en 15 meses siempre; extra (AppleCare) solo dentro de
-// los primeros acMonths (10, 12 o 13, elegible por el usuario)
 function computePlan(base, extra, months, acMonths) {
   if (base === null || base === undefined) return null;
   const safeExtra = extra || 0;
@@ -150,7 +147,6 @@ function goHome() {
 backBtn.addEventListener("click", goBack);
 homeBtn.addEventListener("click", goHome);
 
-// ---- Render principal ----
 function render(isForward) {
   const entry = currentEntry();
   titleEl.textContent = entry.title;
@@ -164,7 +160,6 @@ function render(isForward) {
   screensEl.appendChild(node);
 }
 
-// ---- Construcción de cada tipo de pantalla ----
 function buildScreen(entry) {
   const el = document.createElement("div");
 
@@ -190,12 +185,12 @@ function buildScreen(entry) {
     el.appendChild(buildFinanceSelect(entry.path, entry.planType));
   } else if (entry.screen === "financeResult") {
     el.appendChild(buildFinanceResult(entry.model, entry.capacity, entry.planType));
-  } else if (entry.screen === "acCategory") {
-    el.appendChild(buildAcCategoryList());
-  } else if (entry.screen === "acModel") {
-    el.appendChild(buildAcModelList(entry.category));
-  } else if (entry.screen === "acVariant") {
-    el.appendChild(buildAcVariantList(entry.category, entry.model));
+  } else if (entry.screen === "acCategories") {
+    el.appendChild(buildAcCategories());
+  } else if (entry.screen === "acModels") {
+    el.appendChild(buildAcModels(entry.category));
+  } else if (entry.screen === "acVariants") {
+    el.appendChild(buildAcVariants(entry.category, entry.model));
   } else if (entry.screen === "acDetail") {
     el.appendChild(buildAcDetail(entry.category, entry.model, entry.variant));
   } else if (entry.screen === "tool") {
@@ -231,15 +226,15 @@ function buildHome() {
       if (item.id === "cubre") {
         if (!COBERTURA_DATA) await dataReady;
         navigate({ screen: "coverage", title: item.label });
-      } else if (item.id === "applecare") {
-        if (!AC_PLANES_DATA) await dataReady;
-        navigate({ screen: "acCategory", title: item.label });
       } else if (item.id === "tradein") {
         if (!TRADEIN_DATA) await dataReady;
         navigate({ screen: "tradeNode", path: [], title: item.label });
       } else if (item.id === "switchup") {
         if (!PRECIOS_IPHONE) await dataReady;
         navigate({ screen: "switchSelect", path: [], title: item.label });
+      } else if (item.id === "applecare") {
+        if (!APPLECARE_INFO) await dataReady;
+        navigate({ screen: "acCategories", title: item.label });
       } else if (item.id === "forlife" || item.id === "getac") {
         if (!FINANCIAMIENTO_DATA) await dataReady;
         const planType = item.id === "forlife" ? "IFL" : "GET";
@@ -409,7 +404,6 @@ function buildPlaceholder(title, emoji, message) {
   return wrap;
 }
 
-// ---- Trade In: navegación dinámica sobre tradein.json ----
 const PRICE_ROWS = [
   { key: "ÓPTIMO",   label: "Óptimo",   color: "#34c759" },
   { key: "BATERÍA",  label: "Batería",  color: "#ff9500" },
@@ -461,8 +455,6 @@ function buildTradeNode(path) {
         </span>
         <span style="font-weight:650;">${raw}</span>
       `;
-      // Redirección inmediata a elegir el iPhone nuevo. Solo aplica en la
-      // categoría iPhone (isIphone) — iPad/Mac/Apple Watch no cotizan aquí.
       if (isIphone && numeric !== null) {
         item.addEventListener("click", () => {
           navigate({
@@ -479,7 +471,6 @@ function buildTradeNode(path) {
     return wrap;
   }
 
-  // Nodo intermedio: mostrar lista de opciones (categoría, modelo, capacidad, etc.)
   const heading = document.createElement("div");
   heading.className = "section-heading";
   const label = path.length === 0 ? "Trade In" : path[path.length - 1];
@@ -501,7 +492,6 @@ function buildTradeNode(path) {
   return wrap;
 }
 
-// ---- Selección de equipo nuevo (Trade In) ----
 function buildQuoteSelectNew(path, tradeIn) {
   const node = getNodeAtPathIn(PRECIOS_IPHONE, path);
   const wrap = document.createElement("div");
@@ -565,9 +555,6 @@ function getNodeAtPathIn(root, path) {
   return node;
 }
 
-// En el primer nivel (elegir modelo) se muestra solo la lista corta de
-// datos/switchup_modelos.json, en ese orden. Se usa tanto en Trade In
-// como en Switch Up para elegir el iPhone nuevo.
 function filteredModelKeys(node, path) {
   if (path.length === 0 && Array.isArray(SWITCHUP_MODELOS)) {
     return SWITCHUP_MODELOS.filter(m => Object.prototype.hasOwnProperty.call(node, m));
@@ -575,7 +562,6 @@ function filteredModelKeys(node, path) {
   return Object.keys(node);
 }
 
-// ---- Resultado de cotización Trade In (3 opciones x plazos) ----
 function buildQuoteResult(tradeIn, newModel, newCapacity) {
   const wrap = document.createElement("div");
   const newPrice = PRECIOS_IPHONE?.[newModel]?.[newCapacity] ?? null;
@@ -586,8 +572,6 @@ function buildQuoteResult(tradeIn, newModel, newCapacity) {
   banner.className = "trade-banner";
   wrap.appendChild(banner);
 
-  // El recuadro se actualiza según la pestaña activa: equipo − Trade In
-  // [+ AppleCare+ seleccionado] = total.
   function updateBanner(opt) {
     if (newPrice === null) {
       banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>Precio pendiente de cargar</strong>`;
@@ -617,9 +601,6 @@ function buildQuoteResult(tradeIn, newModel, newCapacity) {
   return wrap;
 }
 
-// Desplegable "ver con otra forma de pago" dentro de la cotización de
-// Trade In: For Life, GET o Switch Up, todos con el descuento de Trade In
-// ya aplicado, y con la opción de sumar AppleCare+ normal o Robo y Pérdida.
 function buildTradeInAltFinancing(tradeIn, newModel, newCapacity, newPrice, ac) {
   const wrap = document.createElement("div");
   wrap.style.marginTop = "18px";
@@ -663,7 +644,6 @@ function buildTradeInAltFinancing(tradeIn, newModel, newCapacity, newPrice, ac) 
       return;
     }
 
-    // For Life (IFL) o GET
     const cfg = FINANCE_CONFIG[select.value];
     const finData = FINANCIAMIENTO_DATA?.[newModel]?.[newCapacity]?.[select.value];
     if (!finData) {
@@ -671,7 +651,7 @@ function buildTradeInAltFinancing(tradeIn, newModel, newCapacity, newPrice, ac) 
       return;
     }
 
-    const totalMsi = cfg.phase1 + cfg.phase2Months; // 24 en For Life, 20 en GET
+    const totalMsi = cfg.phase1 + cfg.phase2Months;
     const descuentoMensual = tradeIn.value / totalMsi;
     const discountedFinData = {
       monthly: Math.max(0, finData.monthly - descuentoMensual),
@@ -689,7 +669,6 @@ function buildTradeInAltFinancing(tradeIn, newModel, newCapacity, newPrice, ac) 
   return wrap;
 }
 
-// ---- Switch Up ----
 function buildSwitchSelect(path) {
   const node = getNodeAtPathIn(PRECIOS_IPHONE, path);
   const wrap = document.createElement("div");
@@ -743,8 +722,6 @@ function buildSwitchResult(newModel, newCapacity) {
   banner.className = "trade-banner";
   wrap.appendChild(banner);
 
-  // El recuadro superior se actualiza según la opción (AppleCare+ / R y P)
-  // que esté activa en las pestañas: equipo + membresía [+ AppleCare+] = total.
   function updateBanner(opt) {
     if (newPrice === null) {
       banner.innerHTML = `<span>${newModel} ${newCapacity}</span><strong>Precio pendiente de cargar</strong>`;
@@ -768,7 +745,132 @@ function buildSwitchResult(newModel, newCapacity) {
   return wrap;
 }
 
-// ---- Componente reutilizable: pestañas de opción + chips de meses ----
+function buildAcCategories() {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "home-heading";
+  heading.innerHTML = `<h2>AppleCare+</h2><p>Protección oficial Apple para cada equipo.</p>`;
+  wrap.appendChild(heading);
+
+  const cats = APPLECARE_INFO ? Object.keys(APPLECARE_INFO) : [];
+  if (cats.length === 0) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛡️", "Aún no hay información de AppleCare+ cargada."));
+    return wrap;
+  }
+
+  const list = document.createElement("div");
+  list.className = "tool-list";
+  cats.forEach(cat => {
+    const meta = AC_CATEGORY_META[cat] || { icon: "🛡️", color: "#0071e3" };
+    const btn = document.createElement("button");
+    btn.className = "tool-btn";
+    btn.style.setProperty("--tool-color", meta.color);
+    btn.innerHTML = `<span class="tool-icon">${meta.icon}</span><span class="tool-label">${cat}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "acModels", category: cat, title: cat });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildAcModels(category) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${category}</h2>`;
+  wrap.appendChild(heading);
+
+  const models = APPLECARE_INFO?.[category] || {};
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(models).forEach(model => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${model}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      const variants = Object.keys(models[model]);
+      if (variants.length === 1) {
+        navigate({ screen: "acDetail", category, model, variant: variants[0], title: model });
+      } else {
+        navigate({ screen: "acVariants", category, model, title: model });
+      }
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildAcVariants(category, model) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${model}</h2>`;
+  wrap.appendChild(heading);
+
+  const variants = APPLECARE_INFO?.[category]?.[model] || {};
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(variants).forEach(v => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${v}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "acDetail", category, model, variant: v, title: v });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildAcDetail(category, model, variant) {
+  const wrap = document.createElement("div");
+  const info = APPLECARE_INFO?.[category]?.[model]?.[variant];
+
+  if (!info) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛡️", "Aún no hay información cargada para este equipo."));
+    return wrap;
+  }
+
+  const roboPrice = info["Robo y Extravío"];
+  const hasRobo = roboPrice !== undefined && roboPrice !== null;
+
+  const hero = document.createElement("div");
+  hero.className = "ac-hero";
+  hero.innerHTML = `
+    <span class="ac-hero-icon">🛡️</span>
+    <h2>${model}</h2>
+    <p class="ac-hero-sub">${variant}</p>
+    ${hasRobo ? `
+      <div class="ac-price-row">
+        <div class="ac-price-box"><span>AppleCare+</span><strong>${money(info.precio)}</strong></div>
+        <div class="ac-price-box robo"><span>Robo y Extravío</span><strong>${money(roboPrice)}</strong></div>
+      </div>
+    ` : `<div class="ac-price">${money(info.precio)}</div>`}
+  `;
+  wrap.appendChild(hero);
+
+  if (Array.isArray(info.cubre) && info.cubre.length) {
+    const benefits = document.createElement("div");
+    benefits.className = "ac-benefits";
+    benefits.innerHTML = `<h4>Incluye</h4><ul>${info.cubre.map(c => `<li>${c}</li>`).join("")}</ul>`;
+    wrap.appendChild(benefits);
+  }
+
+  if (info.deducibles && Object.keys(info.deducibles).length) {
+    const deduc = document.createElement("div");
+    deduc.className = "plan-result";
+    deduc.innerHTML = `<h4 style="margin:0 0 2px;font-size:12px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;">Deducibles</h4>`
+      + Object.entries(info.deducibles).map(([k, v]) => `<div class="plan-phase"><span>${k}</span><strong>${money(v)}</strong></div>`).join("");
+    wrap.appendChild(deduc);
+  }
+
+  return wrap;
+}
+
 function buildPlanTabs(options, base, extraOpts = {}) {
   const { onSelect, phonePrice } = extraOpts;
   const wrap = document.createElement("div");
@@ -787,8 +889,6 @@ function buildPlanTabs(options, base, extraOpts = {}) {
     chipsRow.className = "month-chips";
     let selectedMonths = MESES[0];
 
-    // Solo visible cuando el plazo elegido es 15 meses y la opción incluye
-    // AppleCare+: permite elegir en cuántos meses (10, 12 o 13) se financia.
     const acChipsRow = document.createElement("div");
     acChipsRow.className = "month-chips";
     acChipsRow.hidden = true;
@@ -860,9 +960,6 @@ function buildPlanTabs(options, base, extraOpts = {}) {
       note.textContent = "* A 15 meses, el AppleCare+ se financia solo dentro de los meses que elijas (10, 12 o 13).";
       panels.appendChild(note);
 
-      // Recuadro de promoción: 50% del equipo + 50% del AppleCare+ seleccionado,
-      // aplicable dentro de los primeros 13 meses. Solo aplica donde se
-      // conoce el precio del equipo solo (phonePrice), es decir, Switch Up.
       if (phonePrice !== undefined && phonePrice !== null) {
         const promoBox = document.createElement("div");
         promoBox.className = "plan-result";
@@ -900,7 +997,6 @@ function buildPlanTabs(options, base, extraOpts = {}) {
   return wrap;
 }
 
-// ---- For Life + AC / GET + AC ----
 const FINANCE_CONFIG = {
   IFL: { label: "iPhone For Life", phase1: 10, phase2Start: 11, phase2End: 24, phase2Months: 14, residualMonth: 25 },
   GET: { label: "GET",             phase1: 13, phase2Start: 14, phase2End: 20, phase2Months: 7,  residualMonth: 21 },
@@ -973,9 +1069,6 @@ function buildFinanceResult(model, capacity, planType) {
   return wrap;
 }
 
-// Construye la grid de 2 columnas (AppleCare+ / AppleCare+ R y P) para un
-// plan tipo For Life o GET. finData = { monthly, residual } — puede venir
-// ya con el descuento de Trade In aplicado a "monthly".
 function buildFinanceColumnsGrid(finData, ac, cfg) {
   const cols = [
     { label: "AppleCare+", extra: ac.APPLECARE },
@@ -1012,138 +1105,9 @@ function buildFinanceColumnsGrid(finData, ac, cfg) {
 
   return grid;
 }
-function buildAcCategoryList() {
-  const wrap = document.createElement("div");
-  const heading = document.createElement("div");
-  heading.className = "section-heading";
-  heading.innerHTML = `<h2>AppleCare+</h2>`;
-  wrap.appendChild(heading);
 
-  const grid = document.createElement("div");
-  grid.className = "coverage-tile-grid";
-  const categories = AC_PLANES_DATA ? Object.keys(AC_PLANES_DATA) : [];
-  if (categories.length === 0) {
-    wrap.appendChild(buildPlaceholder("Sin datos", "🛡️", "Aún no hay planes cargados en datos/applecare_planes.json."));
-    return wrap;
-  }
-  categories.forEach((cat, i) => {
-    const tile = document.createElement("button");
-    tile.className = "coverage-tile";
-    tile.style.setProperty("--tile-color", COVERAGE_TILE_COLORS[i % COVERAGE_TILE_COLORS.length]);
-    tile.innerHTML = `<span class="coverage-tile-icon">${AC_ICONS[cat] || "🛡️"}</span><span>${AC_LABELS[cat] || cat}</span>`;
-    tile.addEventListener("click", () => navigate({ screen: "acModel", category: cat, title: AC_LABELS[cat] || cat }));
-    grid.appendChild(tile);
-  });
-  wrap.appendChild(grid);
-  return wrap;
-}
-
-function buildAcModelList(category) {
-  const wrap = document.createElement("div");
-  const heading = document.createElement("div");
-  heading.className = "section-heading";
-  heading.innerHTML = `<h2>${AC_ICONS[category] || "🛡️"} ${AC_LABELS[category] || category}</h2>`;
-  wrap.appendChild(heading);
-
-  const list = document.createElement("div");
-  list.className = "sub-list";
-  const models = AC_PLANES_DATA[category] || {};
-  Object.keys(models).forEach(model => {
-    const btn = document.createElement("button");
-    btn.className = "sub-btn";
-    btn.innerHTML = `<span>${model}</span><span class="chev"></span>`;
-    btn.addEventListener("click", () => {
-      const variants = Object.keys(models[model]);
-      if (variants.length === 1) {
-        navigate({ screen: "acDetail", category, model, variant: variants[0], title: model });
-      } else {
-        navigate({ screen: "acVariant", category, model, title: model });
-      }
-    });
-    list.appendChild(btn);
-  });
-  wrap.appendChild(list);
-  return wrap;
-}
-
-function buildAcVariantList(category, model) {
-  const wrap = document.createElement("div");
-  const heading = document.createElement("div");
-  heading.className = "section-heading";
-  heading.innerHTML = `<h2>${model}</h2>`;
-  wrap.appendChild(heading);
-
-  const list = document.createElement("div");
-  list.className = "sub-list";
-  Object.keys(AC_PLANES_DATA[category][model]).forEach(variant => {
-    const btn = document.createElement("button");
-    btn.className = "sub-btn";
-    btn.innerHTML = `<span>${variant}</span><span class="chev"></span>`;
-    btn.addEventListener("click", () => navigate({ screen: "acDetail", category, model, variant, title: variant }));
-    list.appendChild(btn);
-  });
-  wrap.appendChild(list);
-  return wrap;
-}
-
-function buildAcDetail(category, model, variant) {
-  const wrap = document.createElement("div");
-  const plan = AC_PLANES_DATA?.[category]?.[model]?.[variant];
-
-  if (!plan) {
-    wrap.appendChild(buildPlaceholder("Sin datos", "🛡️", "Aún no hay plan cargado para este equipo."));
-    return wrap;
-  }
-
-  const isRobo = /robo/i.test(variant);
-  const hero = document.createElement("div");
-  hero.className = "ac-hero" + (isRobo ? " robo" : "");
-  hero.innerHTML = `
-    <span class="ac-hero-model">${model}</span>
-    <span class="ac-hero-plan">${variant}</span>
-    <div class="ac-hero-price"><span>${money(plan.precio)}</span><small>protección total</small></div>
-  `;
-  wrap.appendChild(hero);
-
-  const cta = document.createElement("div");
-  cta.className = "ac-cta";
-  cta.textContent = "✨ Protege tu inversión desde hoy";
-  wrap.appendChild(cta);
-
-  if (plan.cubre?.length) {
-    const sec = document.createElement("div");
-    sec.className = "cov-section";
-    sec.innerHTML = `<h3><span>✅</span> Incluye</h3>`;
-    const ul = document.createElement("ul");
-    ul.className = "ac-benefits";
-    plan.cubre.forEach(t => { const li = document.createElement("li"); li.innerHTML = `<span class="ac-check">✓</span> ${t}`; ul.appendChild(li); });
-    sec.appendChild(ul);
-    wrap.appendChild(sec);
-  }
-
-  if (plan.deducibles && Object.keys(plan.deducibles).length) {
-    const sec = document.createElement("div");
-    sec.className = "cov-section";
-    sec.innerHTML = `<h3><span>💰</span> Deducibles</h3>`;
-    const box = document.createElement("div");
-    box.className = "fee-list";
-    Object.entries(plan.deducibles).forEach(([label, precio]) => {
-      const row = document.createElement("div");
-      row.className = "fee-row";
-      row.innerHTML = `<span>${label}</span><strong>${money(precio)}</strong>`;
-      box.appendChild(row);
-    });
-    sec.appendChild(box);
-    wrap.appendChild(sec);
-  }
-
-  return wrap;
-}
-
-// ---- Primer render ----
 render(true);
 
-// ---- Registro del Service Worker (para instalar como PWA) ----
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("sw.js").catch(() => {});
