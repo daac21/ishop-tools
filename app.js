@@ -17,14 +17,13 @@ const MENU = [
   { id: "cajas",     icon: "📦", label: "Código cajas",   color: "#8e8e93" },
 ];
 
-// Categorías de ejemplo para "¿Qué cubre?" — demuestra navegación
-// de más de un nivel (Inicio → ¿Qué cubre? → categoría → detalle)
-const COVERAGE_CATEGORIES = [
-  { id: "iphone", label: "iPhone" },
-  { id: "ipad",   label: "iPad" },
-  { id: "mac",    label: "Mac" },
-  { id: "watch",  label: "Apple Watch" },
-];
+// Iconos y color por categoría de cobertura
+const COVERAGE_ICONS = {
+  "iPhone": "📱", "iPad": "📓", "Mac": "🖥️", "Mac Neo": "💻",
+  "Apple Watch": "⌚", "AirPods Pro": "🎧", "AirPods Max": "🎧",
+  "HomePod": "🔊", "Apple TV": "📺",
+};
+const COVERAGE_TILE_COLORS = ["#0071e3", "#ff9500", "#34c759", "#5856d6", "#af52de", "#ff3b30", "#1d1d1f", "#0a84ff", "#30d158"];
 
 // ---- Datos: se leen de datos/*.json (ese mismo repo de GitHub).
 // Cada vez que subas un cambio a GitHub, Netlify republica solo y la app
@@ -37,22 +36,25 @@ let APPLECARE_DATA = null;
 // agregar/quitar modelos del apartado, sin tocar precios.
 let SWITCHUP_MODELOS = null;
 let FINANCIAMIENTO_DATA = null;
+let COBERTURA_DATA = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a, s, f] = await Promise.all([
+    const [t, p, a, s, f, c] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/switchup_modelos.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/financiamiento.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/cobertura.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
     APPLECARE_DATA = a;
     SWITCHUP_MODELOS = s;
     FINANCIAMIENTO_DATA = f;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f }));
+    COBERTURA_DATA = c;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -62,12 +64,14 @@ async function loadAllData() {
       APPLECARE_DATA = data.applecare || {};
       SWITCHUP_MODELOS = data.switchup_modelos || [];
       FINANCIAMIENTO_DATA = data.financiamiento || {};
+      COBERTURA_DATA = data.cobertura || {};
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
       APPLECARE_DATA = {};
       SWITCHUP_MODELOS = [];
       FINANCIAMIENTO_DATA = {};
+      COBERTURA_DATA = {};
     }
   }
 }
@@ -159,9 +163,10 @@ function buildScreen(entry) {
     el.appendChild(buildHome());
   } else if (entry.screen === "coverage") {
     el.appendChild(buildCoverageList());
+  } else if (entry.screen === "coverageVariant") {
+    el.appendChild(buildCoverageVariantList(entry.category));
   } else if (entry.screen === "coverageDetail") {
-    el.appendChild(buildPlaceholder(entry.title, "🛠️",
-      "Aquí se mostrará la cobertura detallada de " + entry.title + "."));
+    el.appendChild(buildCoverageDetail(entry.category, entry.variant));
   } else if (entry.screen === "tradeNode") {
     el.appendChild(buildTradeNode(entry.path));
   } else if (entry.screen === "quoteSelectNew") {
@@ -207,6 +212,7 @@ function buildHome() {
     `;
     btn.addEventListener("click", async () => {
       if (item.id === "cubre") {
+        if (!COBERTURA_DATA) await dataReady;
         navigate({ screen: "coverage", title: item.label });
       } else if (item.id === "tradein") {
         if (!TRADEIN_DATA) await dataReady;
@@ -234,23 +240,140 @@ function buildCoverageList() {
 
   const heading = document.createElement("div");
   heading.className = "section-heading";
-  heading.innerHTML = `<h2>Selecciona una categoría</h2>`;
+  heading.innerHTML = `<h2>¿Qué cubre?</h2>`;
+  wrap.appendChild(heading);
+
+  const grid = document.createElement("div");
+  grid.className = "coverage-tile-grid";
+
+  const categories = COBERTURA_DATA ? Object.keys(COBERTURA_DATA) : [];
+  if (categories.length === 0) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛠️", "Aún no hay información cargada en datos/cobertura.json."));
+    return wrap;
+  }
+
+  categories.forEach((cat, i) => {
+    const tile = document.createElement("button");
+    tile.className = "coverage-tile";
+    tile.style.setProperty("--tile-color", COVERAGE_TILE_COLORS[i % COVERAGE_TILE_COLORS.length]);
+    tile.innerHTML = `<span class="coverage-tile-icon">${COVERAGE_ICONS[cat] || "🛠️"}</span><span>${cat}</span>`;
+    tile.addEventListener("click", () => {
+      const variants = Object.keys(COBERTURA_DATA[cat]);
+      if (variants.length === 1) {
+        navigate({ screen: "coverageDetail", category: cat, variant: variants[0], title: cat });
+      } else {
+        navigate({ screen: "coverageVariant", category: cat, title: cat });
+      }
+    });
+    grid.appendChild(tile);
+  });
+
+  wrap.appendChild(grid);
+  return wrap;
+}
+
+function buildCoverageVariantList(category) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${COVERAGE_ICONS[category] || "🛠️"} ${category}</h2>`;
   wrap.appendChild(heading);
 
   const list = document.createElement("div");
   list.className = "sub-list";
-
-  COVERAGE_CATEGORIES.forEach(cat => {
+  Object.keys(COBERTURA_DATA[category]).forEach(variant => {
     const btn = document.createElement("button");
     btn.className = "sub-btn";
-    btn.innerHTML = `<span>${cat.label}</span><span class="chev"></span>`;
+    btn.innerHTML = `<span>${variant}</span><span class="chev"></span>`;
     btn.addEventListener("click", () => {
-      navigate({ screen: "coverageDetail", id: cat.id, title: cat.label });
+      navigate({ screen: "coverageDetail", category, variant, title: variant });
     });
     list.appendChild(btn);
   });
-
   wrap.appendChild(list);
+  return wrap;
+}
+
+function buildCoverageDetail(category, variant) {
+  const wrap = document.createElement("div");
+  const data = COBERTURA_DATA?.[category]?.[variant];
+  const isRobo = /robo/i.test(variant);
+
+  const hero = document.createElement("div");
+  hero.className = "coverage-hero" + (isRobo ? " robo" : "");
+  hero.innerHTML = `
+    <span class="coverage-hero-icon">${COVERAGE_ICONS[category] || "🛠️"}</span>
+    <span class="coverage-hero-cat">${category}</span>
+    <strong>${variant}</strong>
+  `;
+  wrap.appendChild(hero);
+
+  if (!data) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛠️", "Aún no hay información cargada para esta cobertura."));
+    return wrap;
+  }
+
+  function section(title, icon, innerNode) {
+    const sec = document.createElement("div");
+    sec.className = "cov-section";
+    const h = document.createElement("h3");
+    h.innerHTML = `<span>${icon}</span> ${title}`;
+    sec.appendChild(h);
+    sec.appendChild(innerNode);
+    wrap.appendChild(sec);
+  }
+
+  function chipList(items, kind) {
+    const box = document.createElement("div");
+    box.className = "chip-list";
+    items.forEach(text => {
+      const chip = document.createElement("span");
+      chip.className = kind === "good" ? "chip-good" : "chip-bad";
+      chip.textContent = (kind === "good" ? "✓ " : "✕ ") + text;
+      box.appendChild(chip);
+    });
+    return box;
+  }
+
+  if (data.cubre?.length) section("Qué cubre", "✅", chipList(data.cubre, "good"));
+  if (data.no_cubre?.length) section("Qué no cubre", "❌", chipList(data.no_cubre, "bad"));
+
+  if (data.cuotas?.length) {
+    const box = document.createElement("div");
+    box.className = "fee-list";
+    data.cuotas.forEach(c => {
+      const row = document.createElement("div");
+      row.className = "fee-row";
+      row.innerHTML = `<span>${c.label}</span><strong>${c.precio}</strong>`;
+      box.appendChild(row);
+    });
+    section("Cuotas de servicio", "💰", box);
+  }
+
+  if (data.si_aplica?.length) section("Casos que normalmente sí aplican", "📍", chipList(data.si_aplica, "good"));
+  if (data.rechazados?.length) section("Casos que pueden ser rechazados", "🚫", chipList(data.rechazados, "bad"));
+
+  if (data.bateria) {
+    const box = document.createElement("div");
+    box.className = "battery-box";
+    box.innerHTML = `<span>${data.bateria.condicion}</span><strong>${data.bateria.resultado}</strong>`;
+    section("Batería", "🔋", box);
+  }
+
+  if (data.info?.length) {
+    const ul = document.createElement("ul");
+    ul.className = "info-checklist";
+    data.info.forEach(t => { const li = document.createElement("li"); li.textContent = "✓ " + t; ul.appendChild(li); });
+    section("Información importante", "🔄", ul);
+  }
+
+  if (data.reclamo?.length) {
+    const ol = document.createElement("ol");
+    ol.className = "claim-steps";
+    data.reclamo.forEach(t => { const li = document.createElement("li"); li.textContent = t; ol.appendChild(li); });
+    section("Cómo reclamar", "📋", ol);
+  }
+
   return wrap;
 }
 
