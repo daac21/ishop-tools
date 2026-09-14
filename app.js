@@ -25,6 +25,17 @@ const COVERAGE_ICONS = {
 };
 const COVERAGE_TILE_COLORS = ["#0071e3", "#ff9500", "#34c759", "#5856d6", "#af52de", "#ff3b30", "#1d1d1f", "#0a84ff", "#30d158"];
 
+// Ícono/color por categoría para el apartado AppleCare+ (datos/applecare_info.json)
+const AC_CATEGORY_META = {
+  "iPhone":    { icon: "📱", color: "#0071e3" },
+  "Watch":     { icon: "⌚", color: "#ff3b30" },
+  "iPad":      { icon: "📱", color: "#5856d6" },
+  "Mac":       { icon: "💻", color: "#34c759" },
+  "HomePod":   { icon: "🔊", color: "#ff9500" },
+  "Apple TV":  { icon: "📺", color: "#1d1d1f" },
+  "AirPods":   { icon: "🎧", color: "#8e8e93" },
+};
+
 // ---- Datos: se leen de datos/*.json (ese mismo repo de GitHub).
 // Cada vez que subas un cambio a GitHub, Netlify republica solo y la app
 // jala la versión nueva. Se guarda una copia en el teléfono por si no hay internet.
@@ -37,16 +48,19 @@ let APPLECARE_DATA = null;
 let SWITCHUP_MODELOS = null;
 let FINANCIAMIENTO_DATA = null;
 let COBERTURA_DATA = null;
+// Info comercial de AppleCare+ por categoría/equipo (precio, deducibles, beneficios)
+let APPLECARE_INFO = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a, s, f, c] = await Promise.all([
+    const [t, p, a, s, f, c, aci] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/switchup_modelos.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/financiamiento.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/cobertura.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/applecare_info.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
@@ -54,7 +68,8 @@ async function loadAllData() {
     SWITCHUP_MODELOS = s;
     FINANCIAMIENTO_DATA = f;
     COBERTURA_DATA = c;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c }));
+    APPLECARE_INFO = aci;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -65,6 +80,7 @@ async function loadAllData() {
       SWITCHUP_MODELOS = data.switchup_modelos || [];
       FINANCIAMIENTO_DATA = data.financiamiento || {};
       COBERTURA_DATA = data.cobertura || {};
+      APPLECARE_INFO = data.applecare_info || {};
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
@@ -72,6 +88,7 @@ async function loadAllData() {
       SWITCHUP_MODELOS = [];
       FINANCIAMIENTO_DATA = {};
       COBERTURA_DATA = {};
+      APPLECARE_INFO = {};
     }
   }
 }
@@ -181,6 +198,14 @@ function buildScreen(entry) {
     el.appendChild(buildFinanceSelect(entry.path, entry.planType));
   } else if (entry.screen === "financeResult") {
     el.appendChild(buildFinanceResult(entry.model, entry.capacity, entry.planType));
+  } else if (entry.screen === "acCategories") {
+    el.appendChild(buildAcCategories());
+  } else if (entry.screen === "acModels") {
+    el.appendChild(buildAcModels(entry.category));
+  } else if (entry.screen === "acVariants") {
+    el.appendChild(buildAcVariants(entry.category, entry.model));
+  } else if (entry.screen === "acDetail") {
+    el.appendChild(buildAcDetail(entry.category, entry.model, entry.variant));
   } else if (entry.screen === "tool") {
     const meta = MENU.find(m => m.id === entry.id);
     el.appendChild(buildPlaceholder(entry.title, meta ? meta.icon : "🔧",
@@ -220,6 +245,9 @@ function buildHome() {
       } else if (item.id === "switchup") {
         if (!PRECIOS_IPHONE) await dataReady;
         navigate({ screen: "switchSelect", path: [], title: item.label });
+      } else if (item.id === "applecare") {
+        if (!APPLECARE_INFO) await dataReady;
+        navigate({ screen: "acCategories", title: item.label });
       } else if (item.id === "forlife" || item.id === "getac") {
         if (!FINANCIAMIENTO_DATA) await dataReady;
         const planType = item.id === "forlife" ? "IFL" : "GET";
@@ -668,6 +696,135 @@ function buildSwitchResult(newModel, newCapacity) {
   ];
 
   wrap.appendChild(buildPlanTabs(options, base, { onSelect: updateBanner, phonePrice: newPrice }));
+  return wrap;
+}
+
+// ---- AppleCare+ (datos/applecare_info.json): categoría → equipo → variante → detalle ----
+function buildAcCategories() {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "home-heading";
+  heading.innerHTML = `<h2>AppleCare+</h2><p>Protección oficial Apple para cada equipo.</p>`;
+  wrap.appendChild(heading);
+
+  const cats = APPLECARE_INFO ? Object.keys(APPLECARE_INFO) : [];
+  if (cats.length === 0) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛡️", "Aún no hay información de AppleCare+ cargada."));
+    return wrap;
+  }
+
+  const list = document.createElement("div");
+  list.className = "tool-list";
+  cats.forEach(cat => {
+    const meta = AC_CATEGORY_META[cat] || { icon: "🛡️", color: "#0071e3" };
+    const btn = document.createElement("button");
+    btn.className = "tool-btn";
+    btn.style.setProperty("--tool-color", meta.color);
+    btn.innerHTML = `<span class="tool-icon">${meta.icon}</span><span class="tool-label">${cat}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "acModels", category: cat, title: cat });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildAcModels(category) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${category}</h2>`;
+  wrap.appendChild(heading);
+
+  const models = APPLECARE_INFO?.[category] || {};
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(models).forEach(model => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${model}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      const variants = Object.keys(models[model]);
+      if (variants.length === 1) {
+        navigate({ screen: "acDetail", category, model, variant: variants[0], title: model });
+      } else {
+        navigate({ screen: "acVariants", category, model, title: model });
+      }
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildAcVariants(category, model) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${model}</h2>`;
+  wrap.appendChild(heading);
+
+  const variants = APPLECARE_INFO?.[category]?.[model] || {};
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(variants).forEach(v => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${v}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "acDetail", category, model, variant: v, title: v });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildAcDetail(category, model, variant) {
+  const wrap = document.createElement("div");
+  const info = APPLECARE_INFO?.[category]?.[model]?.[variant];
+
+  if (!info) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "🛡️", "Aún no hay información cargada para este equipo."));
+    return wrap;
+  }
+
+  // Algunos equipos (iPhone) traen el precio de Robo y Extravío dentro de
+  // la misma variante "AppleCare+" — se muestran los 2 precios lado a lado.
+  const roboPrice = info["Robo y Extravío"];
+  const hasRobo = roboPrice !== undefined && roboPrice !== null;
+
+  const hero = document.createElement("div");
+  hero.className = "ac-hero";
+  hero.innerHTML = `
+    <span class="ac-hero-icon">🛡️</span>
+    <h2>${model}</h2>
+    <p class="ac-hero-sub">${variant}</p>
+    ${hasRobo ? `
+      <div class="ac-price-row">
+        <div class="ac-price-box"><span>AppleCare+</span><strong>${money(info.precio)}</strong></div>
+        <div class="ac-price-box robo"><span>Robo y Extravío</span><strong>${money(roboPrice)}</strong></div>
+      </div>
+    ` : `<div class="ac-price">${money(info.precio)}</div>`}
+  `;
+  wrap.appendChild(hero);
+
+  if (Array.isArray(info.cubre) && info.cubre.length) {
+    const benefits = document.createElement("div");
+    benefits.className = "ac-benefits";
+    benefits.innerHTML = `<h4>Incluye</h4><ul>${info.cubre.map(c => `<li>${c}</li>`).join("")}</ul>`;
+    wrap.appendChild(benefits);
+  }
+
+  if (info.deducibles && Object.keys(info.deducibles).length) {
+    const deduc = document.createElement("div");
+    deduc.className = "plan-result";
+    deduc.innerHTML = `<h4 style="margin:0 0 2px;font-size:12px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;">Deducibles</h4>`
+      + Object.entries(info.deducibles).map(([k, v]) => `<div class="plan-phase"><span>${k}</span><strong>${money(v)}</strong></div>`).join("");
+    wrap.appendChild(deduc);
+  }
+
   return wrap;
 }
 
