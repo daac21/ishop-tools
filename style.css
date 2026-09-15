@@ -110,6 +110,12 @@ html,body{
 .home-heading{
   padding: 6px 4px 22px;
 }
+.home-heading-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
 .home-heading h2{
   font-size:28px;
   font-weight:700;
@@ -120,6 +126,31 @@ html,body{
   font-size:15px;
   color:var(--text-secondary);
   margin:0;
+}
+
+/* Selector de vista: cuadrícula / lista */
+.view-toggle{
+  display:flex;
+  gap:2px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:2px;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.view-toggle-btn{
+  width:32px;
+  height:32px;
+  border-radius:8px;
+  font-size:16px;
+  color:var(--text-secondary);
+  background:transparent;
+}
+.view-toggle-btn.active{
+  background:var(--bg);
+  color:var(--text);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
 }
 
 /* Lista de herramientas */
@@ -159,6 +190,10 @@ html,body{
   justify-content:center;
   font-size:20px;
   background: var(--tool-color, var(--accent));
+}
+
+.tool-btn-neutral .tool-icon{
+  background: #e8e8ed;
 }
 
 .tool-label{ flex:1; }
