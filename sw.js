@@ -1,4 +1,4 @@
-const CACHE_NAME = "ishop-tools-v6";
+const CACHE_NAME = "ishop-tools-v7";
 const ASSETS = [
   "./index.html",
   "./style.css",
@@ -9,7 +9,9 @@ const ASSETS = [
   "./datos/applecare.json",
   "./datos/switchup_modelos.json",
   "./datos/financiamiento.json",
-  "./datos/cobertura.json"
+  "./datos/cobertura.json",
+  "./datos/applecare_info.json",
+  "./datos/escaner.json"
 ];
 
 self.addEventListener("install", (event) => {
