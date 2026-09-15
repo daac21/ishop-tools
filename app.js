@@ -559,11 +559,14 @@ function buildScanner() {
 
 /* ---- Código cajas: generar el código de barras de AppleCare+ (y el de serie) para escanear en caja ---- */
 const CAJAS_CATEGORY_META = {
-  "iPhone (T&L)": { icon: "📱", color: "#ff3b30" },
-  "iPhone": { icon: "📱", color: "#0071e3" },
-  "Watch / iPad": { icon: "⌚", color: "#ff9500" },
-  "Mac / Displays / Accesorios": { icon: "💻", color: "#5856d6" },
-  "Home / TV": { icon: "🏠", color: "#8e8e93" },
+  "iPhone (T&L)": { icon: "📱" },
+  "iPhone": { icon: "📱" },
+  "Watch": { icon: "⌚" },
+  "iPad": { icon: "📱" },
+  "Mac": { icon: "💻" },
+  "Studio Display": { icon: "🖥️" },
+  "AirPods": { icon: "🎧" },
+  "Home / TV": { icon: "🏠" },
 };
 
 let barcodeLibPromise = null;
@@ -606,8 +609,8 @@ function renderBarcodeInto(container, value, format) {
 function buildCajasCategories() {
   const wrap = document.createElement("div");
   const heading = document.createElement("div");
-  heading.className = "home-heading";
-  heading.innerHTML = `<h2>Código cajas</h2><p>Elige el equipo para generar su código de AppleCare+.</p>`;
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>📦 Código cajas</h2><p>Elige el equipo para generar su código de AppleCare+.</p>`;
   wrap.appendChild(heading);
 
   const cats = CODIGOS_CAJAS ? Object.keys(CODIGOS_CAJAS) : [];
@@ -616,20 +619,20 @@ function buildCajasCategories() {
     return wrap;
   }
 
-  const list = document.createElement("div");
-  list.className = "tool-list";
-  cats.forEach(cat => {
-    const meta = CAJAS_CATEGORY_META[cat] || { icon: "📦", color: "#8e8e93" };
-    const btn = document.createElement("button");
-    btn.className = "tool-btn";
-    btn.style.setProperty("--tool-color", meta.color);
-    btn.innerHTML = `<span class="tool-icon">${meta.icon}</span><span class="tool-label">${cat}</span><span class="chev"></span>`;
-    btn.addEventListener("click", () => {
+  const grid = document.createElement("div");
+  grid.className = "coverage-tile-grid";
+  cats.forEach((cat, i) => {
+    const meta = CAJAS_CATEGORY_META[cat] || { icon: "📦" };
+    const tile = document.createElement("button");
+    tile.className = "coverage-tile";
+    tile.style.setProperty("--tile-color", COVERAGE_TILE_COLORS[i % COVERAGE_TILE_COLORS.length]);
+    tile.innerHTML = `<span class="coverage-tile-icon">${meta.icon}</span><span>${cat}</span>`;
+    tile.addEventListener("click", () => {
       navigate({ screen: "cajasModels", category: cat, title: cat });
     });
-    list.appendChild(btn);
+    grid.appendChild(tile);
   });
-  wrap.appendChild(list);
+  wrap.appendChild(grid);
   return wrap;
 }
 
