@@ -7,7 +7,7 @@
 
 // ---- Definición del menú principal ----
 const MENU = [
-  { id: "tradein",   icon: "🛒", label: "Trade In",       color: "#0071e3" },
+  { id: "tradein",   icon: "💰", label: "Trade In",       color: "#0071e3" },
   { id: "switchup",  icon: "🔄", label: "Switch Up",      color: "#ff9500" },
   { id: "applecare", icon: "🛡️", label: "AppleCare+",     color: "#34c759" },
   { id: "forlife",   icon: "💳", label: "For Life + AC",  color: "#5856d6" },
