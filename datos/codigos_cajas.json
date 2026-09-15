@@ -1,0 +1,63 @@
+{
+  "iPhone (T&L)": [
+    { "modelo": "iPhone Duo",           "precio": 8599, "externo": "2 021943759334", "interno": "0 195951570198" },
+    { "modelo": "iPhone 18 Pro Max",    "precio": 6399, "externo": "2 021943759266", "interno": "0 195951570396" },
+    { "modelo": "iPhone 18 Pro",        "precio": 6399, "externo": "2 021943759198", "interno": "0 195951570594" },
+    { "modelo": "iPhone 17 Pro Max",    "precio": 6399, "externo": "2 021943676242", "interno": "0 195950894264" },
+    { "modelo": "iPhone 17 Pro",        "precio": 6399, "externo": "2 021943676310", "interno": "0 195950894417" },
+    { "modelo": "iPhone Air",           "precio": 6399, "externo": "2 021943676389", "interno": "0 195950894561" },
+    { "modelo": "iPhone 17",            "precio": 5299, "externo": "2 021943676457", "interno": "0 195950894714" },
+    { "modelo": "iPhone 17e",           "precio": 4599, "externo": "2 021943733365", "interno": "0 195951189277" },
+    { "modelo": "iPhone 16 Plus",       "precio": 5899, "externo": "2 021942849968", "interno": "0 195951019703" },
+    { "modelo": "iPhone 16",            "precio": 5299, "externo": "2 021942849890", "interno": "0 195951019710" },
+    { "modelo": "iPhone 16e",           "precio": 4599, "externo": "2 021942922203", "interno": "0 195951019673" },
+    { "modelo": "iPhone 15",            "precio": 5299, "externo": "2 021942057493", "interno": "0 195951019758" }
+  ],
+  "iPhone": [
+    { "modelo": "iPhone Duo",           "precio": 6999, "externo": "2 021943759334", "interno": "0 195951571980" },
+    { "modelo": "iPhone 18 Pro Max",    "precio": 4799, "externo": "2 021943759266", "interno": "0 195951572543" },
+    { "modelo": "iPhone 18 Pro",        "precio": 4799, "externo": "2 021943759198", "interno": "0 195951573106" },
+    { "modelo": "iPhone 17 Pro Max",    "precio": 4799, "externo": "2 021943676242", "interno": "0 195950896909" },
+    { "modelo": "iPhone 17 Pro",        "precio": 4799, "externo": "2 021943676310", "interno": "0 195950897203" },
+    { "modelo": "iPhone Air",           "precio": 4799, "externo": "2 021943676389", "interno": "0 195950897500" },
+    { "modelo": "iPhone 17",            "precio": 3699, "externo": "2 021943676457", "interno": "0 195950897807" },
+    { "modelo": "iPhone 17e",           "precio": 2999, "externo": "2 021943733365", "interno": "0 195951189727" },
+    { "modelo": "iPhone 16 Plus",       "precio": 4299, "externo": "2 021942849968", "interno": "0 195950046380" },
+    { "modelo": "iPhone 16",            "precio": 3699, "externo": "2 021942849890", "interno": "0 195950046755" },
+    { "modelo": "iPhone 16e",           "precio": 2999, "externo": "2 021942922203", "interno": "0 195950526684" },
+    { "modelo": "iPhone 15",            "precio": 3699, "externo": "2 021942057493", "interno": "0 195949328275" }
+  ],
+  "Watch / iPad": [
+    { "modelo": "Watch Ultra 4",        "precio": 2099, "externo": "2 021943759471", "interno": "0 195951567365" },
+    { "modelo": "Watch S12",            "precio": 1749, "externo": "2 021943759402", "interno": "0 195951568188" },
+    { "modelo": "Watch SE3",            "precio": 999,  "externo": "2 021943676525", "interno": "0 195950923292" },
+    { "modelo": "Watch Ultra Hermès",   "precio": 3299, "externo": "2 021942850247", "interno": "0 195950030846" },
+    { "modelo": "Watch Ultra 3",        "precio": 2099, "externo": "2 021943676594", "interno": "0 195950926729" },
+    { "modelo": "Watch S11",            "precio": 1749, "externo": "2 021943676662", "interno": "0 195950926804" },
+    { "modelo": "iPad Pro 13\" (M5)",   "precio": 4199, "externo": "2 021943691924", "interno": "0 195951017662" },
+    { "modelo": "iPad Pro 11\" (M5)",   "precio": 3699, "externo": "2 021943691993", "interno": "0 195951017747" },
+    { "modelo": "iPad Air 13\" (M4)",   "precio": 2499, "externo": "2 021943733228", "interno": "0 195951188041" },
+    { "modelo": "iPad Air 11\" (M4)",   "precio": 1999, "externo": "2 021943733297", "interno": "0 195951188126" },
+    { "modelo": "iPad Mini A17 Pro",    "precio": 1799, "externo": "2 021942878241", "interno": "0 195950206999" },
+    { "modelo": "iPad (A16)",           "precio": 1799, "externo": "2 021942923187", "interno": "0 195950542189" }
+  ],
+  "Mac / Displays / Accesorios": [
+    { "modelo": "MacBook Pro 16 M5 Pro/M5 Max", "precio": 8799, "externo": "2 021943733013", "interno": "0 195951183701" },
+    { "modelo": "MacBook Pro 14 M5 Pro/M5 Max", "precio": 6299, "externo": "2 021943732801", "interno": "0 195951183787" },
+    { "modelo": "MacBook Pro 14 M5",            "precio": 6299, "externo": "2 021943691856", "interno": "0 195951016177" },
+    { "modelo": "MacBook Air 15 (M5)",          "precio": 5299, "externo": "2 021943732948", "interno": "0 195951184746" },
+    { "modelo": "MacBook Air 13 (M5)",          "precio": 4799, "externo": "2 021943732870", "interno": "0 195951184821" },
+    { "modelo": "MacBook Neo 13 A18 Pro",       "precio": 3299, "externo": "2 021943733501", "interno": "0 195951182933" },
+    { "modelo": "Studio Display XDR",           "precio": 6499, "externo": "2 021943733150", "interno": "0 195951182209" },
+    { "modelo": "Studio Display (2026)",        "precio": 3249, "externo": "2 021943733082", "interno": "0 195951182124" },
+    { "modelo": "AirPods Max",                  "precio": 1299, "externo": "2 019939905063", "interno": "0 194252341209" },
+    { "modelo": "AirPods Pro 3",                "precio": 849,  "externo": "2 021943683387", "interno": "0 195950950106" },
+    { "modelo": "AirPods",                      "precio": 649,  "externo": "2 021940469052", "interno": "0 194252341827" },
+    { "modelo": "Beats",                        "precio": 649,  "externo": "2 021940469199", "interno": "0 194252340967" }
+  ],
+  "Home / TV": [
+    { "modelo": "HomePod",      "precio": 949, "externo": "2 021942037471", "interno": "0 190198869517" },
+    { "modelo": "HomePod mini", "precio": 429, "externo": "2 019939895890", "interno": "0 194252263792" },
+    { "modelo": "Apple TV",     "precio": 799, "externo": "2 019938269272", "interno": "0 194252610343" }
+  ]
+}
