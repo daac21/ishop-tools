@@ -27,13 +27,15 @@
     { "modelo": "iPhone 16e",           "precio": 2999, "externo": "2 021942922203", "interno": "0 195950526684" },
     { "modelo": "iPhone 15",            "precio": 3699, "externo": "2 021942057493", "interno": "0 195949328275" }
   ],
-  "Watch / iPad": [
+  "Watch": [
     { "modelo": "Watch Ultra 4",        "precio": 2099, "externo": "2 021943759471", "interno": "0 195951567365" },
     { "modelo": "Watch S12",            "precio": 1749, "externo": "2 021943759402", "interno": "0 195951568188" },
     { "modelo": "Watch SE3",            "precio": 999,  "externo": "2 021943676525", "interno": "0 195950923292" },
     { "modelo": "Watch Ultra Hermès",   "precio": 3299, "externo": "2 021942850247", "interno": "0 195950030846" },
     { "modelo": "Watch Ultra 3",        "precio": 2099, "externo": "2 021943676594", "interno": "0 195950926729" },
-    { "modelo": "Watch S11",            "precio": 1749, "externo": "2 021943676662", "interno": "0 195950926804" },
+    { "modelo": "Watch S11",            "precio": 1749, "externo": "2 021943676662", "interno": "0 195950926804" }
+  ],
+  "iPad": [
     { "modelo": "iPad Pro 13\" (M5)",   "precio": 4199, "externo": "2 021943691924", "interno": "0 195951017662" },
     { "modelo": "iPad Pro 11\" (M5)",   "precio": 3699, "externo": "2 021943691993", "interno": "0 195951017747" },
     { "modelo": "iPad Air 13\" (M4)",   "precio": 2499, "externo": "2 021943733228", "interno": "0 195951188041" },
@@ -41,15 +43,19 @@
     { "modelo": "iPad Mini A17 Pro",    "precio": 1799, "externo": "2 021942878241", "interno": "0 195950206999" },
     { "modelo": "iPad (A16)",           "precio": 1799, "externo": "2 021942923187", "interno": "0 195950542189" }
   ],
-  "Mac / Displays / Accesorios": [
+  "Mac": [
     { "modelo": "MacBook Pro 16 M5 Pro/M5 Max", "precio": 8799, "externo": "2 021943733013", "interno": "0 195951183701" },
     { "modelo": "MacBook Pro 14 M5 Pro/M5 Max", "precio": 6299, "externo": "2 021943732801", "interno": "0 195951183787" },
     { "modelo": "MacBook Pro 14 M5",            "precio": 6299, "externo": "2 021943691856", "interno": "0 195951016177" },
     { "modelo": "MacBook Air 15 (M5)",          "precio": 5299, "externo": "2 021943732948", "interno": "0 195951184746" },
     { "modelo": "MacBook Air 13 (M5)",          "precio": 4799, "externo": "2 021943732870", "interno": "0 195951184821" },
-    { "modelo": "MacBook Neo 13 A18 Pro",       "precio": 3299, "externo": "2 021943733501", "interno": "0 195951182933" },
+    { "modelo": "MacBook Neo 13 A18 Pro",       "precio": 3299, "externo": "2 021943733501", "interno": "0 195951182933" }
+  ],
+  "Studio Display": [
     { "modelo": "Studio Display XDR",           "precio": 6499, "externo": "2 021943733150", "interno": "0 195951182209" },
-    { "modelo": "Studio Display (2026)",        "precio": 3249, "externo": "2 021943733082", "interno": "0 195951182124" },
+    { "modelo": "Studio Display (2026)",        "precio": 3249, "externo": "2 021943733082", "interno": "0 195951182124" }
+  ],
+  "AirPods": [
     { "modelo": "AirPods Max",                  "precio": 1299, "externo": "2 019939905063", "interno": "0 194252341209" },
     { "modelo": "AirPods Pro 3",                "precio": 849,  "externo": "2 021943683387", "interno": "0 195950950106" },
     { "modelo": "AirPods",                      "precio": 649,  "externo": "2 021940469052", "interno": "0 194252341827" },
