@@ -157,6 +157,31 @@ function goHome() {
 backBtn.addEventListener("click", goBack);
 homeBtn.addEventListener("click", goHome);
 
+/* ---- Deslizar con el dedo hacia la derecha para regresar (como el gesto de iOS) ---- */
+(function setupSwipeBack() {
+  const EDGE_ZONE = 35;   // solo cuenta si el toque inicia cerca del borde izquierdo
+  const THRESHOLD = 70;   // distancia mínima para considerarlo un swipe
+  let startX = 0, startY = 0, tracking = false;
+
+  screensEl.addEventListener("touchstart", (e) => {
+    if (stack.length <= 1) { tracking = false; return; }
+    const t = e.touches[0];
+    if (t.clientX > EDGE_ZONE) { tracking = false; return; }
+    startX = t.clientX;
+    startY = t.clientY;
+    tracking = true;
+  }, { passive: true });
+
+  screensEl.addEventListener("touchend", (e) => {
+    if (!tracking) return;
+    tracking = false;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - startX;
+    const dy = Math.abs(t.clientY - startY);
+    if (dx > THRESHOLD && dy < 60) goBack();
+  }, { passive: true });
+})();
+
 function render(isForward) {
   const entry = currentEntry();
   if (entry.screen !== "scanner") stopScanner();
@@ -226,52 +251,97 @@ function buildHome() {
 
   const heading = document.createElement("div");
   heading.className = "home-heading";
-  heading.innerHTML = `<h2>iShop Tools</h2><p>¿Qué herramienta necesitas?</p>`;
+  heading.innerHTML = `
+    <div class="home-heading-row">
+      <div>
+        <h2>iShop Tools</h2>
+        <p>¿Qué herramienta necesitas?</p>
+      </div>
+      <div class="view-toggle">
+        <button class="view-toggle-btn" data-view="grid" title="Cuadrícula">⊞</button>
+        <button class="view-toggle-btn" data-view="list" title="Lista">☰</button>
+      </div>
+    </div>
+  `;
   wrap.appendChild(heading);
 
-  const list = document.createElement("div");
-  list.className = "tool-list";
+  const listWrap = document.createElement("div");
+  wrap.appendChild(listWrap);
 
-  MENU.forEach(item => {
-    const btn = document.createElement("button");
-    btn.className = "tool-btn";
-    btn.style.setProperty("--tool-color", item.color);
-    btn.innerHTML = `
-      <span class="tool-icon">${item.icon}</span>
-      <span class="tool-label">${item.label}</span>
-      <span class="chev"></span>
-    `;
-    btn.addEventListener("click", async () => {
-      if (item.id === "cubre") {
-        if (!COBERTURA_DATA) await dataReady;
-        navigate({ screen: "coverage", title: item.label });
-      } else if (item.id === "tradein") {
-        if (!TRADEIN_DATA) await dataReady;
-        navigate({ screen: "tradeNode", path: [], title: item.label });
-      } else if (item.id === "switchup") {
-        if (!PRECIOS_IPHONE) await dataReady;
-        navigate({ screen: "switchSelect", path: [], title: item.label });
-      } else if (item.id === "applecare") {
-        if (!APPLECARE_INFO) await dataReady;
-        navigate({ screen: "acCategories", title: item.label });
-      } else if (item.id === "forlife" || item.id === "getac") {
-        if (!FINANCIAMIENTO_DATA) await dataReady;
-        const planType = item.id === "forlife" ? "IFL" : "GET";
-        navigate({ screen: "financeSelect", path: [], planType, title: item.label });
-      } else if (item.id === "scanner") {
-        if (!ESCANER_DATA) await dataReady;
-        navigate({ screen: "scanner", title: item.label });
-      } else if (item.id === "cajas") {
-        if (!CODIGOS_CAJAS) await dataReady;
-        navigate({ screen: "cajasCategories", title: item.label });
-      } else {
-        navigate({ screen: "tool", id: item.id, title: item.label });
-      }
+  function renderMenu() {
+    const view = localStorage.getItem("ishop_home_view") || "grid";
+    heading.querySelectorAll(".view-toggle-btn").forEach(b => {
+      b.classList.toggle("active", b.dataset.view === view);
     });
-    list.appendChild(btn);
+
+    listWrap.innerHTML = "";
+
+    if (view === "grid") {
+      const grid = document.createElement("div");
+      grid.className = "coverage-tile-grid";
+      MENU.forEach(item => {
+        const tile = document.createElement("button");
+        tile.className = "coverage-tile";
+        tile.style.setProperty("--tile-color", item.color);
+        tile.innerHTML = `<span class="coverage-tile-icon">${item.icon}</span><span>${item.label}</span>`;
+        tile.addEventListener("click", () => handleMenuClick(item));
+        grid.appendChild(tile);
+      });
+      listWrap.appendChild(grid);
+    } else {
+      const list = document.createElement("div");
+      list.className = "tool-list";
+      MENU.forEach(item => {
+        const btn = document.createElement("button");
+        btn.className = "tool-btn tool-btn-neutral";
+        btn.innerHTML = `
+          <span class="tool-icon">${item.icon}</span>
+          <span class="tool-label">${item.label}</span>
+          <span class="chev"></span>
+        `;
+        btn.addEventListener("click", () => handleMenuClick(item));
+        list.appendChild(btn);
+      });
+      listWrap.appendChild(list);
+    }
+  }
+
+  async function handleMenuClick(item) {
+    if (item.id === "cubre") {
+      if (!COBERTURA_DATA) await dataReady;
+      navigate({ screen: "coverage", title: item.label });
+    } else if (item.id === "tradein") {
+      if (!TRADEIN_DATA) await dataReady;
+      navigate({ screen: "tradeNode", path: [], title: item.label });
+    } else if (item.id === "switchup") {
+      if (!PRECIOS_IPHONE) await dataReady;
+      navigate({ screen: "switchSelect", path: [], title: item.label });
+    } else if (item.id === "applecare") {
+      if (!APPLECARE_INFO) await dataReady;
+      navigate({ screen: "acCategories", title: item.label });
+    } else if (item.id === "forlife" || item.id === "getac") {
+      if (!FINANCIAMIENTO_DATA) await dataReady;
+      const planType = item.id === "forlife" ? "IFL" : "GET";
+      navigate({ screen: "financeSelect", path: [], planType, title: item.label });
+    } else if (item.id === "scanner") {
+      if (!ESCANER_DATA) await dataReady;
+      navigate({ screen: "scanner", title: item.label });
+    } else if (item.id === "cajas") {
+      if (!CODIGOS_CAJAS) await dataReady;
+      navigate({ screen: "cajasCategories", title: item.label });
+    } else {
+      navigate({ screen: "tool", id: item.id, title: item.label });
+    }
+  }
+
+  heading.querySelectorAll(".view-toggle-btn").forEach(b => {
+    b.addEventListener("click", () => {
+      localStorage.setItem("ishop_home_view", b.dataset.view);
+      renderMenu();
+    });
   });
 
-  wrap.appendChild(list);
+  renderMenu();
   return wrap;
 }
 
