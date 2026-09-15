@@ -400,6 +400,48 @@ html,body{
   background-size:18px;
 }
 
+/* ---- Escáner de código de barras ---- */
+.scanner-reader{
+  width:100%;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:#000;
+  border:1px solid var(--border);
+  min-height:220px;
+}
+.scanner-status{
+  text-align:center;
+  font-size:13px;
+  color:var(--text-secondary);
+  padding:10px 6px 0;
+}
+.scanner-result{ margin-top:14px; }
+.scanner-manual{
+  display:flex;
+  gap:8px;
+  margin-top:16px;
+}
+.scanner-manual-input{
+  flex:1;
+  min-width:0;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  font-size:15px;
+}
+.scanner-manual-btn{
+  padding:0 18px;
+  border-radius:14px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  font-weight:700;
+  font-size:15px;
+}
+.scanner-manual-btn:active{ background:var(--accent-press); }
+
 /* ---- For Life + AC / GET + AC: dos columnas lado a lado ---- */
 .finance-columns{
   display:flex;
