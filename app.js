@@ -7,7 +7,7 @@
 
 // ---- Definición del menú principal ----
 const MENU = [
-  { id: "tradein",   icon: "💰", label: "Trade In",       color: "#0071e3" },
+  { id: "tradein",   icon: "🛒", label: "Trade In",       color: "#0071e3" },
   { id: "switchup",  icon: "🔄", label: "Switch Up",      color: "#ff9500" },
   { id: "applecare", icon: "🛡️", label: "AppleCare+",     color: "#34c759" },
   { id: "forlife",   icon: "💳", label: "For Life + AC",  color: "#5856d6" },
@@ -44,10 +44,11 @@ let FINANCIAMIENTO_DATA = null;
 let COBERTURA_DATA = null;
 let APPLECARE_INFO = null;
 let ESCANER_DATA = null;
+let CODIGOS_CAJAS = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a, s, f, c, aci, esc] = await Promise.all([
+    const [t, p, a, s, f, c, aci, esc, caj] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
@@ -56,6 +57,7 @@ async function loadAllData() {
       fetch("datos/cobertura.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare_info.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/escaner.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/codigos_cajas.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
@@ -65,7 +67,8 @@ async function loadAllData() {
     COBERTURA_DATA = c;
     APPLECARE_INFO = aci;
     ESCANER_DATA = esc;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci, escaner: esc }));
+    CODIGOS_CAJAS = caj;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci, escaner: esc, codigos_cajas: caj }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -78,6 +81,7 @@ async function loadAllData() {
       COBERTURA_DATA = data.cobertura || {};
       APPLECARE_INFO = data.applecare_info || {};
       ESCANER_DATA = data.escaner || {};
+      CODIGOS_CAJAS = data.codigos_cajas || {};
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
@@ -87,6 +91,7 @@ async function loadAllData() {
       COBERTURA_DATA = {};
       APPLECARE_INFO = {};
       ESCANER_DATA = {};
+      CODIGOS_CAJAS = {};
     }
   }
 }
@@ -201,6 +206,12 @@ function buildScreen(entry) {
     el.appendChild(buildAcDetail(entry.category, entry.model, entry.variant));
   } else if (entry.screen === "scanner") {
     el.appendChild(buildScanner());
+  } else if (entry.screen === "cajasCategories") {
+    el.appendChild(buildCajasCategories());
+  } else if (entry.screen === "cajasModels") {
+    el.appendChild(buildCajasModels(entry.category));
+  } else if (entry.screen === "cajasDetail") {
+    el.appendChild(buildCajasDetail(entry.category, entry.modelo));
   } else if (entry.screen === "tool") {
     const meta = MENU.find(m => m.id === entry.id);
     el.appendChild(buildPlaceholder(entry.title, meta ? meta.icon : "🔧",
@@ -250,6 +261,9 @@ function buildHome() {
       } else if (item.id === "scanner") {
         if (!ESCANER_DATA) await dataReady;
         navigate({ screen: "scanner", title: item.label });
+      } else if (item.id === "cajas") {
+        if (!CODIGOS_CAJAS) await dataReady;
+        navigate({ screen: "cajasCategories", title: item.label });
       } else {
         navigate({ screen: "tool", id: item.id, title: item.label });
       }
@@ -538,6 +552,179 @@ function buildScanner() {
     });
   }).catch(() => {
     statusEl.textContent = "No se pudo cargar el escáner (revisa tu conexión). Usa la búsqueda manual de abajo.";
+  });
+
+  return wrap;
+}
+
+/* ---- Código cajas: generar el código de barras de AppleCare+ (y el de serie) para escanear en caja ---- */
+const CAJAS_CATEGORY_META = {
+  "iPhone (T&L)": { icon: "📱", color: "#ff3b30" },
+  "iPhone": { icon: "📱", color: "#0071e3" },
+  "Watch / iPad": { icon: "⌚", color: "#ff9500" },
+  "Mac / Displays / Accesorios": { icon: "💻", color: "#5856d6" },
+  "Home / TV": { icon: "🏠", color: "#8e8e93" },
+};
+
+let barcodeLibPromise = null;
+function loadBarcodeLib() {
+  if (window.JsBarcode) return Promise.resolve();
+  if (barcodeLibPromise) return barcodeLibPromise;
+  barcodeLibPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js";
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("No se pudo cargar el generador de códigos."));
+    document.head.appendChild(script);
+  });
+  return barcodeLibPromise;
+}
+
+function renderBarcodeInto(container, value, format) {
+  container.innerHTML = `<svg class="barcode-svg"></svg>`;
+  const svg = container.querySelector("svg");
+  loadBarcodeLib().then(() => {
+    try {
+      window.JsBarcode(svg, value, {
+        format: format || "CODE39",
+        lineColor: "#000",
+        background: "transparent",
+        width: 2.4,
+        height: 90,
+        displayValue: true,
+        fontSize: 16,
+        margin: 8,
+      });
+    } catch (e) {
+      container.innerHTML = `<p class="pending">No se pudo generar este código.</p>`;
+    }
+  }).catch(() => {
+    container.innerHTML = `<p class="pending">Sin conexión: no se pudo cargar el generador de códigos.</p>`;
+  });
+}
+
+function buildCajasCategories() {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "home-heading";
+  heading.innerHTML = `<h2>Código cajas</h2><p>Elige el equipo para generar su código de AppleCare+.</p>`;
+  wrap.appendChild(heading);
+
+  const cats = CODIGOS_CAJAS ? Object.keys(CODIGOS_CAJAS) : [];
+  if (cats.length === 0) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "📦", "Aún no hay códigos cargados."));
+    return wrap;
+  }
+
+  const list = document.createElement("div");
+  list.className = "tool-list";
+  cats.forEach(cat => {
+    const meta = CAJAS_CATEGORY_META[cat] || { icon: "📦", color: "#8e8e93" };
+    const btn = document.createElement("button");
+    btn.className = "tool-btn";
+    btn.style.setProperty("--tool-color", meta.color);
+    btn.innerHTML = `<span class="tool-icon">${meta.icon}</span><span class="tool-label">${cat}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "cajasModels", category: cat, title: cat });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildCajasModels(category) {
+  const wrap = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${category}</h2>`;
+  wrap.appendChild(heading);
+
+  const models = (CODIGOS_CAJAS && CODIGOS_CAJAS[category]) || [];
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  models.forEach(m => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${m.modelo}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "cajasDetail", category, modelo: m.modelo, title: m.modelo });
+    });
+    list.appendChild(btn);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+function buildCajasDetail(category, modelo) {
+  const wrap = document.createElement("div");
+  const models = (CODIGOS_CAJAS && CODIGOS_CAJAS[category]) || [];
+  const info = models.find(m => m.modelo === modelo);
+
+  if (!info) {
+    wrap.appendChild(buildPlaceholder("Sin datos", "📦", "No se encontró este equipo."));
+    return wrap;
+  }
+
+  const hero = document.createElement("div");
+  hero.className = "ac-hero";
+  hero.innerHTML = `
+    <span class="ac-hero-icon">📦</span>
+    <h2>${info.modelo}</h2>
+    <div class="ac-price">${money(info.precio)}</div>
+  `;
+  wrap.appendChild(hero);
+
+  const chipsRow = document.createElement("div");
+  chipsRow.className = "chip-list";
+  ["Externo", "Interno"].forEach((label, i) => {
+    const chip = document.createElement("button");
+    chip.className = "chip" + (i === 0 ? " active" : "");
+    chip.textContent = label;
+    chip.addEventListener("click", () => {
+      chipsRow.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      showAcBarcode(label);
+    });
+    chipsRow.appendChild(chip);
+  });
+  wrap.appendChild(chipsRow);
+
+  const acBarcodeBox = document.createElement("div");
+  acBarcodeBox.className = "barcode-box";
+  wrap.appendChild(acBarcodeBox);
+
+  function showAcBarcode(label) {
+    const value = label === "Externo" ? info.externo : info.interno;
+    renderBarcodeInto(acBarcodeBox, value, "CODE39");
+  }
+  showAcBarcode("Externo");
+
+  const serialToggleRow = document.createElement("div");
+  serialToggleRow.className = "scanner-manual";
+  serialToggleRow.style.marginTop = "20px";
+  serialToggleRow.innerHTML = `
+    <input type="text" placeholder="Número de serie del equipo (opcional)" class="scanner-manual-input serial-input">
+    <button class="scanner-manual-btn">Generar</button>
+  `;
+  wrap.appendChild(serialToggleRow);
+
+  const serialBarcodeBox = document.createElement("div");
+  serialBarcodeBox.className = "barcode-box";
+  serialBarcodeBox.hidden = true;
+  wrap.appendChild(serialBarcodeBox);
+
+  const serialInput = serialToggleRow.querySelector(".serial-input");
+  const serialBtn = serialToggleRow.querySelector(".scanner-manual-btn");
+  function generateSerial() {
+    const val = serialInput.value.trim().toUpperCase();
+    if (!val) return;
+    serialBarcodeBox.hidden = false;
+    renderBarcodeInto(serialBarcodeBox, val, "CODE39");
+  }
+  serialBtn.addEventListener("click", generateSerial);
+  serialInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") generateSerial();
   });
 
   return wrap;
