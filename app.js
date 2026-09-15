@@ -7,7 +7,7 @@
 
 // ---- Definición del menú principal ----
 const MENU = [
-  { id: "tradein",   icon: "🛒", label: "Trade In",       color: "#0071e3" },
+  { id: "tradein",   icon: "💰", label: "Trade In",       color: "#0071e3" },
   { id: "switchup",  icon: "🔄", label: "Switch Up",      color: "#ff9500" },
   { id: "applecare", icon: "🛡️", label: "AppleCare+",     color: "#34c759" },
   { id: "forlife",   icon: "💳", label: "For Life + AC",  color: "#5856d6" },
@@ -19,7 +19,7 @@ const MENU = [
 
 // Iconos y color por categoría de cobertura
 const COVERAGE_ICONS = {
-  "iPhone": "📱", "iPad": "📓", "Mac": "🖥️", "Mac Neo": "💻",
+  "iPhone": "📱", "iPad": "📱", "Mac": "🖥️", "Mac Neo": "💻",
   "Apple Watch": "⌚", "AirPods Pro": "🎧", "AirPods Max": "🎧",
   "HomePod": "🔊", "Apple TV": "📺",
 };
@@ -97,7 +97,7 @@ async function loadAllData() {
 }
 const dataReady = loadAllData();
 
-let stack = [{ screen: "home", title: "iShop Tools" }];
+let stack = [{ screen: "home", title: "iShop" }];
 const MESES = [3, 6, 9, 10, 12, 13, 15];
 const MEMBRESIA_SWITCH = 399;
 
