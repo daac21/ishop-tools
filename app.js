@@ -43,10 +43,11 @@ let SWITCHUP_MODELOS = null;
 let FINANCIAMIENTO_DATA = null;
 let COBERTURA_DATA = null;
 let APPLECARE_INFO = null;
+let ESCANER_DATA = null;
 
 async function loadAllData() {
   try {
-    const [t, p, a, s, f, c, aci] = await Promise.all([
+    const [t, p, a, s, f, c, aci, esc] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
@@ -54,6 +55,7 @@ async function loadAllData() {
       fetch("datos/financiamiento.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/cobertura.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare_info.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/escaner.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
@@ -62,7 +64,8 @@ async function loadAllData() {
     FINANCIAMIENTO_DATA = f;
     COBERTURA_DATA = c;
     APPLECARE_INFO = aci;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci }));
+    ESCANER_DATA = esc;
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci, escaner: esc }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
@@ -74,6 +77,7 @@ async function loadAllData() {
       FINANCIAMIENTO_DATA = data.financiamiento || {};
       COBERTURA_DATA = data.cobertura || {};
       APPLECARE_INFO = data.applecare_info || {};
+      ESCANER_DATA = data.escaner || {};
     } else {
       TRADEIN_DATA = {};
       PRECIOS_IPHONE = {};
@@ -82,6 +86,7 @@ async function loadAllData() {
       FINANCIAMIENTO_DATA = {};
       COBERTURA_DATA = {};
       APPLECARE_INFO = {};
+      ESCANER_DATA = {};
     }
   }
 }
@@ -149,6 +154,7 @@ homeBtn.addEventListener("click", goHome);
 
 function render(isForward) {
   const entry = currentEntry();
+  if (entry.screen !== "scanner") stopScanner();
   titleEl.textContent = entry.title;
   backBtn.hidden = stack.length === 1;
   homeBtn.hidden = stack.length === 1;
@@ -193,6 +199,8 @@ function buildScreen(entry) {
     el.appendChild(buildAcVariants(entry.category, entry.model));
   } else if (entry.screen === "acDetail") {
     el.appendChild(buildAcDetail(entry.category, entry.model, entry.variant));
+  } else if (entry.screen === "scanner") {
+    el.appendChild(buildScanner());
   } else if (entry.screen === "tool") {
     const meta = MENU.find(m => m.id === entry.id);
     el.appendChild(buildPlaceholder(entry.title, meta ? meta.icon : "🔧",
@@ -239,6 +247,9 @@ function buildHome() {
         if (!FINANCIAMIENTO_DATA) await dataReady;
         const planType = item.id === "forlife" ? "IFL" : "GET";
         navigate({ screen: "financeSelect", path: [], planType, title: item.label });
+      } else if (item.id === "scanner") {
+        if (!ESCANER_DATA) await dataReady;
+        navigate({ screen: "scanner", title: item.label });
       } else {
         navigate({ screen: "tool", id: item.id, title: item.label });
       }
@@ -401,6 +412,134 @@ function buildPlaceholder(title, emoji, message) {
       <p>${message}</p>
     </div>
   `;
+  return wrap;
+}
+
+/* ---- Escáner de código de barras (lee con la cámara y busca en datos/escaner.json) ---- */
+let scannerLibPromise = null;
+let html5QrcodeInstance = null;
+
+function loadScannerLib() {
+  if (window.Html5Qrcode) return Promise.resolve();
+  if (scannerLibPromise) return scannerLibPromise;
+  scannerLibPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js";
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("No se pudo cargar la librería del escáner."));
+    document.head.appendChild(script);
+  });
+  return scannerLibPromise;
+}
+
+function stopScanner() {
+  if (html5QrcodeInstance) {
+    const inst = html5QrcodeInstance;
+    html5QrcodeInstance = null;
+    inst.stop().then(() => inst.clear()).catch(() => {});
+  }
+}
+
+function buildScanner() {
+  const wrap = document.createElement("div");
+  wrap.className = "scanner-wrap";
+
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>📷 Escáner</h2><p>Apunta la cámara al código de barras de la caja.</p>`;
+  wrap.appendChild(heading);
+
+  const readerBox = document.createElement("div");
+  readerBox.id = "scanner-reader";
+  readerBox.className = "scanner-reader";
+  wrap.appendChild(readerBox);
+
+  const statusEl = document.createElement("p");
+  statusEl.className = "scanner-status";
+  statusEl.textContent = "Cargando cámara…";
+  wrap.appendChild(statusEl);
+
+  const resultBox = document.createElement("div");
+  resultBox.className = "scanner-result";
+  wrap.appendChild(resultBox);
+
+  const manualRow = document.createElement("div");
+  manualRow.className = "scanner-manual";
+  manualRow.innerHTML = `
+    <input type="text" inputmode="numeric" placeholder="O escribe el código aquí" class="scanner-manual-input">
+    <button class="scanner-manual-btn">Buscar</button>
+  `;
+  wrap.appendChild(manualRow);
+
+  function showResult(code) {
+    const info = ESCANER_DATA ? ESCANER_DATA[code] : null;
+    if (!info) {
+      resultBox.innerHTML = `
+        <div class="placeholder-card">
+          <span class="emoji">❓</span>
+          <h3>Código no encontrado</h3>
+          <p>${code}</p>
+        </div>
+      `;
+      return;
+    }
+    resultBox.innerHTML = `
+      <div class="trade-banner"><span>${code}</span><strong>${info.modelo}</strong></div>
+      <div class="finance-col">
+        <div class="finance-row"><span>Color</span><strong>${info.color}</strong></div>
+        <div class="finance-row"><span>Capacidad</span><strong>${info.capacidad} GB</strong></div>
+        <div class="finance-row"><span>AppleCare+</span><strong>${money(info.applecare)}</strong></div>
+        <div class="finance-row total"><span>AppleCare+ R y P</span><strong>${money(info.applecare_robo_perdida)}</strong></div>
+      </div>
+    `;
+  }
+
+  const manualInput = manualRow.querySelector(".scanner-manual-input");
+  const manualBtn = manualRow.querySelector(".scanner-manual-btn");
+  manualBtn.addEventListener("click", () => {
+    const val = manualInput.value.trim();
+    if (val) showResult(val);
+  });
+  manualInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") manualBtn.click();
+  });
+
+  loadScannerLib().then(() => {
+    statusEl.textContent = "";
+    const instance = new Html5Qrcode("scanner-reader", {
+      formatsToSupport: [
+        Html5QrcodeSupportedFormats.UPC_A,
+        Html5QrcodeSupportedFormats.UPC_E,
+        Html5QrcodeSupportedFormats.EAN_13,
+        Html5QrcodeSupportedFormats.EAN_8,
+        Html5QrcodeSupportedFormats.CODE_128,
+      ],
+      verbose: false,
+    });
+    html5QrcodeInstance = instance;
+
+    let lastCode = null;
+    let lastTime = 0;
+
+    instance.start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: { width: 260, height: 160 } },
+      (decodedText) => {
+        const now = Date.now();
+        if (decodedText === lastCode && now - lastTime < 2500) return;
+        lastCode = decodedText;
+        lastTime = now;
+        if (navigator.vibrate) navigator.vibrate(80);
+        showResult(decodedText);
+      },
+      () => {} // errores de lectura cuadro a cuadro: se ignoran, son normales
+    ).catch(() => {
+      statusEl.textContent = "No se pudo abrir la cámara. Revisa los permisos o usa la búsqueda manual de abajo.";
+    });
+  }).catch(() => {
+    statusEl.textContent = "No se pudo cargar el escáner (revisa tu conexión). Usa la búsqueda manual de abajo.";
+  });
+
   return wrap;
 }
 
