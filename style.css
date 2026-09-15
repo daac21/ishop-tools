@@ -442,6 +442,19 @@ html,body{
 }
 .scanner-manual-btn:active{ background:var(--accent-press); }
 
+/* ---- Código cajas: tarjeta con el código de barras generado ---- */
+.barcode-box{
+  margin-top:14px;
+  background:#fff;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  padding:14px 8px;
+  display:flex;
+  justify-content:center;
+  overflow-x:auto;
+}
+.barcode-svg{ max-width:100%; height:auto; }
+
 /* ---- For Life + AC / GET + AC: dos columnas lado a lado ---- */
 .finance-columns{
   display:flex;
