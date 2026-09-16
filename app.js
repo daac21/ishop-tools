@@ -26,6 +26,13 @@ const COVERAGE_ICONS = {
 };
 const COVERAGE_TILE_COLORS = ["#0071e3", "#ff9500", "#34c759", "#5856d6", "#af52de", "#ff3b30", "#1d1d1f", "#0a84ff", "#30d158"];
 
+function coverageYears(category, extra) {
+  const t = `${category || ""} ${extra || ""}`.toLowerCase();
+  if (t.includes("herm") || t.includes("edition")) return 3;
+  if (t.includes("mac") || t.includes("display")) return 3;
+  return 2;
+}
+
 // Ícono/color por categoría para el apartado AppleCare+ (datos/applecare_info.json)
 const AC_CATEGORY_META = {
   "iPhone":    { icon: "📱", color: "#0071e3" },
@@ -420,6 +427,7 @@ function buildCoverageDetail(category, variant) {
     <span class="coverage-hero-icon">${COVERAGE_ICONS[category] || "🛠️"}</span>
     <span class="coverage-hero-cat">${category}</span>
     <strong>${variant}</strong>
+    <span class="coverage-years">🗓️ ${coverageYears(category, variant)} años de cobertura</span>
   `;
   wrap.appendChild(hero);
 
@@ -1479,6 +1487,7 @@ function buildAcDetail(category, model, variant) {
     <span class="ac-hero-icon">🛡️</span>
     <h2>${model}</h2>
     <p class="ac-hero-sub">${variant}</p>
+    <span class="coverage-years">🗓️ ${coverageYears(category, model + " " + variant)} años de cobertura</span>
     ${hasRobo ? `
       <div class="ac-price-row">
         <div class="ac-price-box"><span>AppleCare+</span><strong>${money(info.precio)}</strong></div>
