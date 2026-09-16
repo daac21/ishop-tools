@@ -641,6 +641,19 @@ html,body{
 .coverage-hero-icon{ font-size:30px; margin-bottom:6px; }
 .coverage-hero-cat{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; opacity:0.85; }
 .coverage-hero strong{ font-size:20px; font-weight:750; }
+.coverage-years{
+  display:inline-block;
+  margin-top:8px;
+  font-size:12px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.18);
+}
+.ac-hero .coverage-years{
+  background:#eef0f2;
+  color:var(--text-secondary);
+}
 
 /* ---- Secciones de cobertura ---- */
 .cov-section{ margin-bottom:20px; }
