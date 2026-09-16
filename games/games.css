@@ -1,0 +1,183 @@
+/* =========================================================
+   iShop Arcade — estilos de los juegos
+   Archivo separado, pero conectado al mismo sistema de diseño
+   que el resto de la app (usa las variables de :root definidas
+   en style.css: --bg, --surface, --text, --accent, --border, etc.)
+   ========================================================= */
+
+/* ---- Buscaminas ---- */
+.mine-stats{
+  display:flex;
+  justify-content:space-between;
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  padding:2px 4px 12px;
+}
+.mine-board-box{
+  display:flex;
+  justify-content:center;
+  overflow-x:auto;
+}
+.mine-board{
+  display:grid;
+  gap:3px;
+  background:var(--border);
+  padding:6px;
+  border-radius:14px;
+}
+.mine-cell{
+  width:30px;
+  height:30px;
+  border-radius:6px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  font-size:14px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text);
+  touch-action:manipulation;
+  user-select:none;
+}
+.mine-cell.revealed{
+  background:#eef0f2;
+  box-shadow:none;
+}
+.mine-cell.mine-hit{
+  background:#ff3b30;
+}
+.mine-controls{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+}
+.mine-controls .flag-toggle-btn{ flex:1; }
+.mine-controls .restart-btn{ flex:1; padding:0; }
+.mine-message{
+  text-align:center;
+  font-size:16px;
+  font-weight:700;
+  margin-top:14px;
+  min-height:22px;
+}
+.mine-message.mine-win{ color:#34c759; }
+.mine-message.mine-lose{ color:#ff3b30; }
+
+/* ---- Estilos compartidos por Snake y Tetris ---- */
+.game-stats{
+  display:flex;
+  justify-content:space-between;
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  padding:2px 4px 12px;
+  gap:10px;
+}
+.game-stats span{ white-space:nowrap; }
+.game-board-box{
+  display:flex;
+  justify-content:center;
+  background:var(--border);
+  border-radius:14px;
+  padding:6px;
+}
+.game-board-box canvas{
+  display:block;
+  border-radius:8px;
+  background:var(--surface);
+  touch-action:none;
+}
+.game-message{
+  text-align:center;
+  font-size:16px;
+  font-weight:700;
+  margin-top:14px;
+  min-height:22px;
+}
+.game-message.game-win{ color:#34c759; }
+.game-message.game-lose{ color:#ff3b30; }
+.game-controls{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+}
+.game-controls .restart-btn{ flex:1; padding:0; }
+
+/* ---- Snake ---- */
+.snake-layout{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+.snake-dpad{
+  display:grid;
+  grid-template-columns:56px 56px 56px;
+  grid-template-rows:56px 56px 56px;
+  gap:6px;
+  justify-content:center;
+}
+.snake-dpad button{
+  border:none;
+  border-radius:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  font-size:20px;
+  color:var(--text);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.snake-dpad button:active{ background:#f0f0f2; transform:scale(0.94); }
+.snake-dpad .dpad-up{ grid-column:2; grid-row:1; }
+.snake-dpad .dpad-left{ grid-column:1; grid-row:2; }
+.snake-dpad .dpad-center{ grid-column:2; grid-row:2; background:transparent; border:none; box-shadow:none; }
+.snake-dpad .dpad-right{ grid-column:3; grid-row:2; }
+.snake-dpad .dpad-down{ grid-column:2; grid-row:3; }
+
+/* ---- Tetris ---- */
+.tetris-layout{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  align-items:flex-start;
+}
+.tetris-side{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:88px;
+}
+.tetris-next-box{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:8px;
+  text-align:center;
+}
+.tetris-next-box p{
+  margin:0 0 6px;
+  font-size:11px;
+  font-weight:700;
+  color:var(--text-secondary);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.tetris-next-box canvas{ display:block; margin:0 auto; }
+.tetris-controls{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  gap:8px;
+  margin-top:16px;
+}
+.tetris-controls button{
+  padding:14px 0;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--surface);
+  font-size:19px;
+  color:var(--text);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.tetris-controls button:active{ background:#f0f0f2; transform:scale(0.94); }
+.tetris-controls .drop-btn{ grid-column:1 / span 4; font-size:15px; font-weight:700; }
