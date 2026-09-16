@@ -1469,6 +1469,17 @@ function buildAcVariants(category, model) {
   return wrap;
 }
 
+function benefitIcon(text) {
+  const t = text.toLowerCase();
+  if (t.includes("batería")) return "🔋";
+  if (t.includes("robo") || t.includes("extrav")) return "🛡️";
+  if (t.includes("soporte")) return "🎧";
+  if (t.includes("pencil") || t.includes("keyboard")) return "✏️";
+  if (t.includes("original")) return "🔧";
+  if (t.includes("accidental")) return "💥";
+  return "✅";
+}
+
 function buildAcDetail(category, model, variant) {
   const wrap = document.createElement("div");
   const info = APPLECARE_INFO?.[category]?.[model]?.[variant];
@@ -1480,18 +1491,28 @@ function buildAcDetail(category, model, variant) {
 
   const roboPrice = info["Robo y Extravío"];
   const hasRobo = roboPrice !== undefined && roboPrice !== null;
+  const years = coverageYears(category, model + " " + variant);
+  const meta = AC_CATEGORY_META[category] || { color: "#0071e3" };
 
   const hero = document.createElement("div");
   hero.className = "ac-hero";
+  hero.style.setProperty("--tool-color", meta.color);
   hero.innerHTML = `
     <span class="ac-hero-icon">🛡️</span>
     <h2>${model}</h2>
     <p class="ac-hero-sub">${variant}</p>
-    <span class="coverage-years">🗓️ ${coverageYears(category, model + " " + variant)} años de cobertura</span>
+    <span class="coverage-years">🗓️ ${years} años de cobertura</span>
     ${hasRobo ? `
       <div class="ac-price-row">
-        <div class="ac-price-box"><span>AppleCare+</span><strong>${money(info.precio)}</strong></div>
-        <div class="ac-price-box robo"><span>Robo y Extravío</span><strong>${money(roboPrice)}</strong></div>
+        <div class="ac-price-box">
+          <span>AppleCare+</span>
+          <strong>${money(info.precio)}</strong>
+        </div>
+        <div class="ac-price-box robo">
+          <span class="ac-ribbon">Protección total</span>
+          <span>Robo y Extravío</span>
+          <strong>${money(roboPrice)}</strong>
+        </div>
       </div>
     ` : `<div class="ac-price">${money(info.precio)}</div>`}
   `;
@@ -1500,7 +1521,17 @@ function buildAcDetail(category, model, variant) {
   if (Array.isArray(info.cubre) && info.cubre.length) {
     const benefits = document.createElement("div");
     benefits.className = "ac-benefits";
-    benefits.innerHTML = `<h4>Incluye</h4><ul>${info.cubre.map(c => `<li>${c}</li>`).join("")}</ul>`;
+    benefits.innerHTML = `
+      <h4>✨ Todo lo que incluye</h4>
+      <div class="ac-benefit-grid">
+        ${info.cubre.map(c => `
+          <div class="ac-benefit-item">
+            <span class="ac-benefit-icon">${benefitIcon(c)}</span>
+            <span>${c}</span>
+          </div>
+        `).join("")}
+      </div>
+    `;
     wrap.appendChild(benefits);
   }
 
