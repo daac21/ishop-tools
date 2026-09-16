@@ -1,8 +1,12 @@
-const CACHE_NAME = "ishop-tools-v8";
+const CACHE_NAME = "ishop-tools-v9";
 const ASSETS = [
   "./index.html",
   "./style.css",
   "./app.js",
+  "./games/games.css",
+  "./games/minesweeper.js",
+  "./games/snake.js",
+  "./games/tetris.js",
   "./manifest.json",
   "./datos/tradein.json",
   "./datos/precios_iphone.json",
