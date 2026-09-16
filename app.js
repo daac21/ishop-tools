@@ -14,7 +14,7 @@ const MENU = [
   { id: "getac",     icon: "💳", label: "GET + AC",       color: "#af52de" },
   { id: "cubre",     icon: "🛠️", label: "¿Qué cubre?",    color: "#ff3b30" },
   { id: "scanner",   icon: "📷", label: "Escáner",        color: "#1d1d1f" },
-  { id: "cajas",     icon: "📦", label: "Código cajas",   color: "#8e8e93" },
+  { id: "cajas",     icon: "𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃", label: "Código cajas",   color: "#8e8e93" },
 ];
 
 // ---- iShop Arcade (oculto: se abre manteniendo presionado el nombre "iShop Tools") ----
