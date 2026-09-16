@@ -655,6 +655,105 @@ html,body{
   color:var(--text-secondary);
 }
 
+/* ---- AppleCare+: pantalla de detalle atractiva ---- */
+.ac-hero{
+  text-align:center;
+  padding:28px 20px 24px;
+  border-radius:22px;
+  background: linear-gradient(160deg, var(--tool-color, var(--accent)), color-mix(in srgb, var(--tool-color, var(--accent)) 60%, #000));
+  color:#fff;
+  box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--tool-color, var(--accent)) 60%, transparent);
+}
+.ac-hero-icon{ font-size:34px; display:block; margin-bottom:6px; }
+.ac-hero h2{ font-size:22px; font-weight:800; margin:0 0 2px; }
+.ac-hero-sub{ font-size:13px; opacity:0.85; margin:0 0 4px; }
+.ac-hero .coverage-years{
+  background:rgba(255,255,255,0.22);
+  color:#fff;
+  margin-top:4px;
+}
+.ac-price{
+  font-size:34px;
+  font-weight:800;
+  margin-top:16px;
+}
+.ac-price-row{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+.ac-price-box{
+  flex:1;
+  position:relative;
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.28);
+  border-radius:16px;
+  padding:14px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.ac-price-box span{ font-size:12px; opacity:0.9; }
+.ac-price-box strong{ font-size:20px; font-weight:800; }
+.ac-price-box.robo{
+  background:rgba(255,255,255,0.95);
+  color:var(--tool-color, var(--accent));
+  border-color:transparent;
+}
+.ac-ribbon{
+  position:absolute;
+  top:-9px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#ff9500;
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+  padding:3px 9px;
+  border-radius:20px;
+  white-space:nowrap;
+  opacity:1;
+}
+
+.ac-benefits{
+  margin-top:16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+}
+.ac-benefits h4{
+  margin:0 0 12px;
+  font-size:15px;
+  font-weight:750;
+}
+.ac-benefit-grid{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.ac-benefit-item{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:14px;
+  line-height:1.4;
+  color:var(--text);
+}
+.ac-benefit-icon{
+  flex-shrink:0;
+  width:28px;
+  height:28px;
+  border-radius:9px;
+  background:#eef0f2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+}
+
 /* ---- Secciones de cobertura ---- */
 .cov-section{ margin-bottom:20px; }
 .cov-section h3{
