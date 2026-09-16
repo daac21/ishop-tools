@@ -26,7 +26,7 @@ const ARCADE_GAMES = [
 
 // Iconos y color por categoría de cobertura
 const COVERAGE_ICONS = {
-  "iPhone": "📱", "iPad": "📓", "Mac": "🖥️", "Mac Neo": "💻",
+  "iPhone": "📱", "iPad": "📱", "Mac": "🖥️", "Mac Neo": "💻",
   "Apple Watch": "⌚", "AirPods Pro": "🎧", "AirPods Max": "🎧",
   "HomePod": "🔊", "Apple TV": "📺",
 };
