@@ -208,6 +208,17 @@ html,body{
   opacity:0.55;
 }
 
+/* Gesto secreto: mantener presionado el nombre abre iShop Arcade */
+#ishopArcadeTrigger{
+  transition: transform .25s ease, opacity .25s ease;
+  user-select:none;
+  -webkit-user-select:none;
+}
+#ishopArcadeTrigger.title-pressing{
+  transform: scale(0.94);
+  opacity:0.55;
+}
+
 /* Pantallas de secciones (placeholder) */
 .section-heading{
   padding: 4px 4px 18px;
@@ -476,66 +487,6 @@ html,body{
   font-size:15px;
 }
 .scanner-manual-btn:active{ background:var(--accent-press); }
-
-/* ---- Buscaminas ---- */
-.mine-stats{
-  display:flex;
-  justify-content:space-between;
-  font-size:15px;
-  font-weight:600;
-  color:var(--text);
-  padding:2px 4px 12px;
-}
-.mine-board-box{
-  display:flex;
-  justify-content:center;
-  overflow-x:auto;
-}
-.mine-board{
-  display:grid;
-  gap:3px;
-  background:var(--border);
-  padding:6px;
-  border-radius:14px;
-}
-.mine-cell{
-  width:30px;
-  height:30px;
-  border-radius:6px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  font-size:14px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--text);
-  touch-action:manipulation;
-  user-select:none;
-}
-.mine-cell.revealed{
-  background:#eef0f2;
-  box-shadow:none;
-}
-.mine-cell.mine-hit{
-  background:#ff3b30;
-}
-.mine-controls{
-  display:flex;
-  gap:10px;
-  margin-top:16px;
-}
-.mine-controls .flag-toggle-btn{ flex:1; }
-.mine-controls .restart-btn{ flex:1; padding:0; }
-.mine-message{
-  text-align:center;
-  font-size:16px;
-  font-weight:700;
-  margin-top:14px;
-  min-height:22px;
-}
-.mine-message.mine-win{ color:#34c759; }
-.mine-message.mine-lose{ color:#ff3b30; }
 
 /* ---- Código cajas: tarjeta con el código de barras generado ---- */
 .barcode-box{
