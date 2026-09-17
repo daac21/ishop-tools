@@ -48,25 +48,23 @@ const COBERTURA_TO_AC_INFO = {
   "Apple TV":    { source: "Apple TV" },
 };
 
-// Precio "desde" para una categoría/variante de ¿Qué cubre?, tomando el más
-// bajo entre los modelos de applecare_info.json que le correspondan.
-function acInfoPriceForCoverage(category, variant) {
+// Lista de modelos de applecare_info.json que le corresponden a una categoría
+// de cobertura.json, cada uno con su precio normal y (si aplica) el de Robo y
+// Extravío. Alimenta el dropdown de modelo en la sección "Costo de AppleCare+".
+function acInfoModelsForCoverage(category) {
   const map = COBERTURA_TO_AC_INFO[category];
-  if (!map || !APPLECARE_INFO) return null;
+  if (!map || !APPLECARE_INFO) return [];
   const models = APPLECARE_INFO[map.source] || {};
-  const isRobo = /robo/i.test(variant || "");
-  let min = null;
+  const list = [];
   Object.entries(models).forEach(([modelName, variants]) => {
     if (map.excludeNeo && /neo/i.test(modelName)) return;
     if (map.onlyNeo && !/neo/i.test(modelName)) return;
     if (map.nameIncludes && !modelName.includes(map.nameIncludes)) return;
     const info = variants && variants["AppleCare+"];
     if (!info) return;
-    const price = isRobo ? info["Robo y Extravío"] : info.precio;
-    if (price === undefined || price === null || isNaN(price)) return;
-    if (min === null || price < min) min = price;
+    list.push({ name: modelName, precio: info.precio, robo: info["Robo y Extravío"] });
   });
-  return min;
+  return list;
 }
 
 function coverageYears(category, extra) {
@@ -624,17 +622,35 @@ function buildCoverageDetail(category, variant) {
     section("Información importante", "🔄", ul);
   }
 
-  // Costo del plan (calculado desde applecare_info.json, precio más bajo de la
-  // categoría) + su desglose a meses sin intereses, filtrable con un dropdown.
-  // Si no hay match para esta categoría/variante, esta sección no se muestra.
+  // Costo del plan: dropdown de modelo (precio real, ya no "desde") y, solo
+  // para iPhone, un segundo dropdown para elegir AppleCare+ normal o Robo y
+  // Extravío. Debajo, el precio de contado y el desglose a MSI (filtrable).
   const MSI_MONTHS = [3, 6, 9, 12, 13, 15, 18];
-  const precioNum = acInfoPriceForCoverage(category, variant);
-  if (precioNum !== null && precioNum !== undefined && !isNaN(precioNum)) {
+  const acModels = acInfoModelsForCoverage(category);
+  if (acModels.length) {
     const box = document.createElement("div");
+
+    const modelSelect = document.createElement("select");
+    modelSelect.className = "alt-finance-select";
+    modelSelect.style.marginBottom = "10px";
+    modelSelect.innerHTML = acModels.map(m => `<option value="${m.name}">${m.name}</option>`).join("");
+    box.appendChild(modelSelect);
+
+    let tipoSelect = null;
+    if (category === "iPhone") {
+      tipoSelect = document.createElement("select");
+      tipoSelect.className = "alt-finance-select";
+      tipoSelect.style.marginBottom = "10px";
+      tipoSelect.innerHTML = `
+        <option value="normal">AppleCare+</option>
+        <option value="robo">AppleCare+ Robo y Extravío</option>
+      `;
+      tipoSelect.value = isRobo ? "robo" : "normal";
+      box.appendChild(tipoSelect);
+    }
 
     const totalRow = document.createElement("div");
     totalRow.className = "fee-row";
-    totalRow.innerHTML = `<span>Costo de contado (desde)</span><strong>${money(precioNum)}</strong>`;
     box.appendChild(totalRow);
 
     const msiSelect = document.createElement("select");
@@ -642,25 +658,40 @@ function buildCoverageDetail(category, variant) {
     msiSelect.style.margin = "10px 0";
     msiSelect.innerHTML = `<option value="all">Ver todos los plazos</option>` +
       MSI_MONTHS.map(m => `<option value="${m}">${m} MSI</option>`).join("");
+    box.appendChild(msiSelect);
 
     const msiList = document.createElement("div");
     msiList.className = "fee-list";
+    box.appendChild(msiList);
 
-    function renderMsiRows() {
+    function currentPrice() {
+      const model = acModels.find(m => m.name === modelSelect.value) || acModels[0];
+      if (!model) return null;
+      const wantRobo = tipoSelect ? tipoSelect.value === "robo" : false;
+      const price = wantRobo ? model.robo : model.precio;
+      return (price === undefined || price === null || isNaN(price)) ? null : price;
+    }
+
+    function renderAll() {
+      const price = currentPrice();
+      totalRow.innerHTML = price !== null
+        ? `<span>Costo de contado</span><strong>${money(price)}</strong>`
+        : `<span>Costo de contado</span><strong>Precio pendiente</strong>`;
+
       msiList.innerHTML = "";
+      if (price === null) return;
       const months = msiSelect.value === "all" ? MSI_MONTHS : [Number(msiSelect.value)];
       months.forEach(m => {
         const row = document.createElement("div");
         row.className = "fee-row";
-        row.innerHTML = `<span>${m} MSI</span><strong>${money(precioNum / m)}/mes</strong>`;
+        row.innerHTML = `<span>${m} MSI</span><strong>${money(price / m)}/mes</strong>`;
         msiList.appendChild(row);
       });
     }
-    msiSelect.addEventListener("change", renderMsiRows);
-    renderMsiRows();
-
-    box.appendChild(msiSelect);
-    box.appendChild(msiList);
+    modelSelect.addEventListener("change", renderAll);
+    if (tipoSelect) tipoSelect.addEventListener("change", renderAll);
+    msiSelect.addEventListener("change", renderAll);
+    renderAll();
 
     section("Costo de AppleCare+", "💳", box);
   }
