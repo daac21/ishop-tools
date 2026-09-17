@@ -32,6 +32,43 @@ const COVERAGE_ICONS = {
 };
 const COVERAGE_TILE_COLORS = ["#0071e3", "#ff9500", "#34c759", "#5856d6", "#af52de", "#ff3b30", "#1d1d1f", "#0a84ff", "#30d158"];
 
+// Las categorías de cobertura.json (¿Qué cubre?) no coinciden 1 a 1 con las de
+// applecare_info.json (AppleCare+), así que aquí las relacionamos para poder
+// sacar el precio automáticamente en vez de cargarlo a mano en cobertura.json.
+// nameIncludes/excludeNeo/onlyNeo filtran qué modelos de esa fuente cuentan.
+const COBERTURA_TO_AC_INFO = {
+  "iPhone":      { source: "iPhone" },
+  "iPad":        { source: "iPad" },
+  "Mac":         { source: "Mac", excludeNeo: true },
+  "Mac Neo":     { source: "Mac", onlyNeo: true },
+  "Apple Watch": { source: "Watch" },
+  "AirPods Pro": { source: "AirPods", nameIncludes: "Pro" },
+  "AirPods Max": { source: "AirPods", nameIncludes: "Max" },
+  "HomePod":     { source: "HomePod" },
+  "Apple TV":    { source: "Apple TV" },
+};
+
+// Precio "desde" para una categoría/variante de ¿Qué cubre?, tomando el más
+// bajo entre los modelos de applecare_info.json que le correspondan.
+function acInfoPriceForCoverage(category, variant) {
+  const map = COBERTURA_TO_AC_INFO[category];
+  if (!map || !APPLECARE_INFO) return null;
+  const models = APPLECARE_INFO[map.source] || {};
+  const isRobo = /robo/i.test(variant || "");
+  let min = null;
+  Object.entries(models).forEach(([modelName, variants]) => {
+    if (map.excludeNeo && /neo/i.test(modelName)) return;
+    if (map.onlyNeo && !/neo/i.test(modelName)) return;
+    if (map.nameIncludes && !modelName.includes(map.nameIncludes)) return;
+    const info = variants && variants["AppleCare+"];
+    if (!info) return;
+    const price = isRobo ? info["Robo y Extravío"] : info.precio;
+    if (price === undefined || price === null || isNaN(price)) return;
+    if (min === null || price < min) min = price;
+  });
+  return min;
+}
+
 function coverageYears(category, extra) {
   const t = `${category || ""} ${extra || ""}`.toLowerCase();
   if (t.includes("herm") || t.includes("edition")) return 3;
@@ -585,6 +622,30 @@ function buildCoverageDetail(category, variant) {
     ul.className = "info-checklist";
     data.info.forEach(t => { const li = document.createElement("li"); li.textContent = "✓ " + t; ul.appendChild(li); });
     section("Información importante", "🔄", ul);
+  }
+
+  // Costo del plan (calculado desde applecare_info.json, precio más bajo de la
+  // categoría) + su desglose a meses sin intereses. Si no hay match para esta
+  // categoría/variante, esta sección simplemente no se muestra.
+  const MSI_MONTHS = [3, 6, 9, 12, 13, 15, 18];
+  const precioNum = acInfoPriceForCoverage(category, variant);
+  if (precioNum !== null && precioNum !== undefined && !isNaN(precioNum)) {
+    const box = document.createElement("div");
+    box.className = "fee-list";
+
+    const totalRow = document.createElement("div");
+    totalRow.className = "fee-row";
+    totalRow.innerHTML = `<span>Costo de contado (desde)</span><strong>${money(precioNum)}</strong>`;
+    box.appendChild(totalRow);
+
+    MSI_MONTHS.forEach(months => {
+      const row = document.createElement("div");
+      row.className = "fee-row";
+      row.innerHTML = `<span>${months} MSI</span><strong>${money(precioNum / months)}/mes</strong>`;
+      box.appendChild(row);
+    });
+
+    section("Costo de AppleCare+", "💳", box);
   }
 
   if (data.reclamo?.length) {
