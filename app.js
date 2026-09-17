@@ -625,7 +625,7 @@ function buildCoverageDetail(category, variant) {
   // Costo del plan: dropdown de modelo (precio real, ya no "desde") y, solo
   // para iPhone, un segundo dropdown para elegir AppleCare+ normal o Robo y
   // Extravío. Debajo, el precio de contado y el desglose a MSI (filtrable).
-  const MSI_MONTHS = [3, 6, 9, 12, 13, 15, 18];
+  const MSI_MONTHS = [3, 6, 9, 10, 12, 13];
   const acModels = acInfoModelsForCoverage(category);
   if (acModels.length) {
     const box = document.createElement("div");
