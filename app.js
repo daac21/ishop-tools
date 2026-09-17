@@ -535,18 +535,22 @@ function buildCoverageVariantList(category) {
   heading.innerHTML = `<h2>${COVERAGE_ICONS[category] || "🛠️"} ${category}</h2>`;
   wrap.appendChild(heading);
 
-  const list = document.createElement("div");
-  list.className = "sub-list";
-  Object.keys(COBERTURA_DATA[category]).forEach(variant => {
-    const btn = document.createElement("button");
-    btn.className = "sub-btn";
-    btn.innerHTML = `<span>${variant}</span><span class="chev"></span>`;
-    btn.addEventListener("click", () => {
-      navigate({ screen: "coverageDetail", category, variant, title: variant });
-    });
-    list.appendChild(btn);
+  const label = document.createElement("p");
+  label.className = "plan-note";
+  label.style.margin = "0 0 8px 2px";
+  label.textContent = "Elige el tipo de plan";
+  wrap.appendChild(label);
+
+  const select = document.createElement("select");
+  select.className = "alt-finance-select";
+  const variants = Object.keys(COBERTURA_DATA[category]);
+  select.innerHTML = `<option value="">Elegir…</option>` +
+    variants.map(v => `<option value="${v}">${v}</option>`).join("");
+  select.addEventListener("change", () => {
+    if (!select.value) return;
+    navigate({ screen: "coverageDetail", category, variant: select.value, title: select.value });
   });
-  wrap.appendChild(list);
+  wrap.appendChild(select);
   return wrap;
 }
 
@@ -625,25 +629,42 @@ function buildCoverageDetail(category, variant) {
   }
 
   // Costo del plan (calculado desde applecare_info.json, precio más bajo de la
-  // categoría) + su desglose a meses sin intereses. Si no hay match para esta
-  // categoría/variante, esta sección simplemente no se muestra.
+  // categoría) + su desglose a meses sin intereses, filtrable con un dropdown.
+  // Si no hay match para esta categoría/variante, esta sección no se muestra.
   const MSI_MONTHS = [3, 6, 9, 12, 13, 15, 18];
   const precioNum = acInfoPriceForCoverage(category, variant);
   if (precioNum !== null && precioNum !== undefined && !isNaN(precioNum)) {
     const box = document.createElement("div");
-    box.className = "fee-list";
 
     const totalRow = document.createElement("div");
     totalRow.className = "fee-row";
     totalRow.innerHTML = `<span>Costo de contado (desde)</span><strong>${money(precioNum)}</strong>`;
     box.appendChild(totalRow);
 
-    MSI_MONTHS.forEach(months => {
-      const row = document.createElement("div");
-      row.className = "fee-row";
-      row.innerHTML = `<span>${months} MSI</span><strong>${money(precioNum / months)}/mes</strong>`;
-      box.appendChild(row);
-    });
+    const msiSelect = document.createElement("select");
+    msiSelect.className = "alt-finance-select";
+    msiSelect.style.margin = "10px 0";
+    msiSelect.innerHTML = `<option value="all">Ver todos los plazos</option>` +
+      MSI_MONTHS.map(m => `<option value="${m}">${m} MSI</option>`).join("");
+
+    const msiList = document.createElement("div");
+    msiList.className = "fee-list";
+
+    function renderMsiRows() {
+      msiList.innerHTML = "";
+      const months = msiSelect.value === "all" ? MSI_MONTHS : [Number(msiSelect.value)];
+      months.forEach(m => {
+        const row = document.createElement("div");
+        row.className = "fee-row";
+        row.innerHTML = `<span>${m} MSI</span><strong>${money(precioNum / m)}/mes</strong>`;
+        msiList.appendChild(row);
+      });
+    }
+    msiSelect.addEventListener("change", renderMsiRows);
+    renderMsiRows();
+
+    box.appendChild(msiSelect);
+    box.appendChild(msiList);
 
     section("Costo de AppleCare+", "💳", box);
   }
