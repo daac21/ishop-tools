@@ -78,22 +78,22 @@
   "iPhone 17 PRO": {
     "256 GB": {
       "IFL": {
-        "monthly": 829.0,
-        "residual": 8603.0
+        "monthly": 959.0,
+        "residual": 5483.0
       },
       "GET": {
-        "monthly": 929.0,
-        "residual": 9919.0
+        "monthly": 1099.0,
+        "residual": 6519.0
       }
     },
     "512 GB": {
       "IFL": {
-        "monthly": 999.0,
-        "residual": 9523.0
+        "monthly": 1129.0,
+        "residual": 6398.0
       },
       "GET": {
-        "monthly": 1099.0,
-        "residual": 11519.0
+        "monthly": 1299.0,
+        "residual": 7519.0
       }
     },
     "1 TB": {
@@ -110,32 +110,32 @@
   "iPhone 17 PRO MAX": {
     "256 GB": {
       "IFL": {
-        "monthly": 899.0,
-        "residual": 9423.0
+        "monthly": 1039.0,
+        "residual": 6063.0
       },
       "GET": {
-        "monthly": 1009.0,
-        "residual": 10819.0
+        "monthly": 1199.0,
+        "residual": 7019.0
       }
     },
     "512 GB": {
       "IFL": {
-        "monthly": 1059.0,
-        "residual": 10583.0
+        "monthly": 1209.0,
+        "residual": 6978.0
       },
       "GET": {
-        "monthly": 1179.0,
-        "residual": 12419.0
+        "monthly": 1399.0,
+        "residual": 8019.0
       }
     },
     "1 TB": {
       "IFL": {
-        "monthly": 1249.0,
-        "residual": 11023.0
+        "monthly": 1549.0,
+        "residual": 8813.0
       },
       "GET": {
-        "monthly": 1389.0,
-        "residual": 13219.0
+        "monthly": 1799.0,
+        "residual": 10019.0
       }
     },
     "2 TB": {
