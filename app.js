@@ -60,6 +60,35 @@ let APPLECARE_INFO = null;
 let ESCANER_DATA = null;
 let CODIGOS_CAJAS = null;
 
+// datos/applecare.json ahora está indexado por código de barras (SKU), con un
+// campo "modelo" dentro de cada registro. Trade In, For Life + AC y GET + AC
+// necesitan el precio de AppleCare+ buscando por NOMBRE de modelo, así que
+// aquí reconstruimos esa tabla auxiliar a partir del JSON por código de barras.
+function buildApplecareByModel(raw) {
+  const byModel = {};
+  if (!raw) return byModel;
+  Object.values(raw).forEach(item => {
+    const modelo = item && item.modelo;
+    if (!modelo || byModel[modelo]) return; // el primer precio encontrado por modelo es suficiente (son consistentes)
+    byModel[modelo] = {
+      APPLECARE: item.applecare,
+      ROBO_PERDIDA: item.applecare_robo_perdida,
+    };
+  });
+  return byModel;
+}
+
+// Busca el AppleCare+ de un modelo tolerando diferencias de mayúsculas/minúsculas
+// entre los nombres usados en financiamiento.json / tradein.json (p.ej. "iPhone 17 PRO")
+// y los nombres usados en applecare.json (p.ej. "iPhone 17 Pro").
+function findApplecareForModel(modelName) {
+  if (!APPLECARE_DATA || !modelName) return {};
+  if (APPLECARE_DATA[modelName]) return APPLECARE_DATA[modelName];
+  const target = modelName.toLowerCase();
+  const key = Object.keys(APPLECARE_DATA).find(k => k.toLowerCase() === target);
+  return key ? APPLECARE_DATA[key] : {};
+}
+
 async function loadAllData() {
   try {
     const [t, p, a, s, f, c, aci, esc, caj] = await Promise.all([
@@ -75,7 +104,7 @@ async function loadAllData() {
     ]);
     TRADEIN_DATA = t;
     PRECIOS_IPHONE = p;
-    APPLECARE_DATA = a;
+    APPLECARE_DATA = buildApplecareByModel(a);
     SWITCHUP_MODELOS = s;
     FINANCIAMIENTO_DATA = f;
     COBERTURA_DATA = c;
@@ -89,7 +118,7 @@ async function loadAllData() {
       const data = JSON.parse(cached);
       TRADEIN_DATA = data.tradein || {};
       PRECIOS_IPHONE = data.precios_iphone || {};
-      APPLECARE_DATA = data.applecare || {};
+      APPLECARE_DATA = buildApplecareByModel(data.applecare || {});
       SWITCHUP_MODELOS = data.switchup_modelos || [];
       FINANCIAMIENTO_DATA = data.financiamiento || {};
       COBERTURA_DATA = data.cobertura || {};
@@ -1045,7 +1074,7 @@ function filteredModelKeys(node, path) {
 function buildQuoteResult(tradeIn, newModel, newCapacity) {
   const wrap = document.createElement("div");
   const newPrice = PRECIOS_IPHONE?.[newModel]?.[newCapacity] ?? null;
-  const ac = APPLECARE_DATA?.[newModel] || {};
+  const ac = findApplecareForModel(newModel);
   const base = newPrice === null ? null : newPrice - tradeIn.value;
 
   const banner = document.createElement("div");
@@ -1195,7 +1224,7 @@ function buildSwitchSelect(path) {
 function buildSwitchResult(newModel, newCapacity) {
   const wrap = document.createElement("div");
   const newPrice = PRECIOS_IPHONE?.[newModel]?.[newCapacity] ?? null;
-  const ac = APPLECARE_DATA?.[newModel] || {};
+  const ac = findApplecareForModel(newModel);
   const base = newPrice === null ? null : newPrice + MEMBRESIA_SWITCH;
 
   const banner = document.createElement("div");
@@ -1565,7 +1594,7 @@ function buildFinanceResult(model, capacity, planType) {
   const wrap = document.createElement("div");
   const cfg = FINANCE_CONFIG[planType];
   const finData = FINANCIAMIENTO_DATA?.[model]?.[capacity]?.[planType];
-  const ac = APPLECARE_DATA?.[model] || {};
+  const ac = findApplecareForModel(model);
 
   const banner = document.createElement("div");
   banner.className = "trade-banner";
