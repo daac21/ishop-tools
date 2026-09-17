@@ -535,22 +535,18 @@ function buildCoverageVariantList(category) {
   heading.innerHTML = `<h2>${COVERAGE_ICONS[category] || "🛠️"} ${category}</h2>`;
   wrap.appendChild(heading);
 
-  const label = document.createElement("p");
-  label.className = "plan-note";
-  label.style.margin = "0 0 8px 2px";
-  label.textContent = "Elige el tipo de plan";
-  wrap.appendChild(label);
-
-  const select = document.createElement("select");
-  select.className = "alt-finance-select";
-  const variants = Object.keys(COBERTURA_DATA[category]);
-  select.innerHTML = `<option value="">Elegir…</option>` +
-    variants.map(v => `<option value="${v}">${v}</option>`).join("");
-  select.addEventListener("change", () => {
-    if (!select.value) return;
-    navigate({ screen: "coverageDetail", category, variant: select.value, title: select.value });
+  const list = document.createElement("div");
+  list.className = "sub-list";
+  Object.keys(COBERTURA_DATA[category]).forEach(variant => {
+    const btn = document.createElement("button");
+    btn.className = "sub-btn";
+    btn.innerHTML = `<span>${variant}</span><span class="chev"></span>`;
+    btn.addEventListener("click", () => {
+      navigate({ screen: "coverageDetail", category, variant, title: variant });
+    });
+    list.appendChild(btn);
   });
-  wrap.appendChild(select);
+  wrap.appendChild(list);
   return wrap;
 }
 
