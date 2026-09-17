@@ -1,122 +1,605 @@
 {
-  "iPhone SE3": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
+  "iPhone": {
+    "iPhone 18 Pro Max": {
+      "AppleCare+": {
+        "precio": 4799,
+        "Robo y Extravío": 6399,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 18 Pro": {
+      "AppleCare+": {
+        "precio": 4799,
+        "Robo y Extravío": 6399,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone Duo": {
+      "AppleCare+": {
+        "precio": 6999,
+        "Robo y Extravío": 8599,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 17 Pro Max": {
+      "AppleCare+": {
+        "precio": 4799,
+        "Robo y Extravío": 6399,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 17 Pro": {
+      "AppleCare+": {
+        "precio": 4799,
+        "Robo y Extravío": 6399,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 17": {
+      "AppleCare+": {
+        "precio": 3699,
+        "Robo y Extravío": 5299,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 17e": {
+      "AppleCare+": {
+        "precio": 2999,
+        "Robo y Extravío": 4599,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone Air": {
+      "AppleCare+": {
+        "precio": 4799,
+        "Robo y Extravío": 6399,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 16": {
+      "AppleCare+": {
+        "precio": 3699,
+        "Robo y Extravío": 5299,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 16e": {
+      "AppleCare+": {
+        "precio": 2999,
+        "Robo y Extravío": 4599,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 16 Plus": {
+      "AppleCare+": {
+        "precio": 4299,
+        "Robo y Extravío": 5899,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    },
+    "iPhone 15": {
+      "AppleCare+": {
+        "precio": 3699,
+        "Robo y Extravío": 5299,
+        "deducibles": {
+          "Pantalla": 559,
+          "Otros daños": 1899,
+          "Robo o extravío": 3299
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario.",
+          "Protección contra robo y extravío al contratar AppleCare+ Robo y Extravío."
+        ]
+      }
+    }
   },
-  "iPhone 12": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
+  "Watch": {
+    "Apple Watch SE3": {
+      "AppleCare+": {
+        "precio": 999,
+        "deducibles": {
+          "Daño accidental": 1249
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "Apple Watch Series 12": {
+      "AppleCare+": {
+        "precio": 1749,
+        "deducibles": {
+          "Daño accidental": 1249
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "Apple Watch Ultra 4": {
+      "AppleCare+": {
+        "precio": 2099,
+        "deducibles": {
+          "Daño accidental": 1449
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "Apple Watch Ultra Hermès": {
+      "AppleCare+": {
+        "precio": 3299,
+        "deducibles": {
+          "Daño accidental": 1449
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    }
   },
-  "iPhone 12 MINI": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
+  "iPad": {
+    "iPad A16": {
+      "AppleCare+": {
+        "precio": 1799,
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Cobertura para Apple Pencil y Magic Keyboard incluidos en el plan.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "iPad mini A17 Pro": {
+      "AppleCare+": {
+        "precio": 1799,
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Cobertura para Apple Pencil y Magic Keyboard incluidos en el plan.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "iPad Air 11 M4": {
+      "AppleCare+": {
+        "precio": 1999,
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Cobertura para Apple Pencil y Magic Keyboard incluidos en el plan.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "iPad Air 13 M4": {
+      "AppleCare+": {
+        "precio": 2499,
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Cobertura para Apple Pencil y Magic Keyboard incluidos en el plan.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "iPad Pro 11 M5": {
+      "AppleCare+": {
+        "precio": 3699,
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Cobertura para Apple Pencil y Magic Keyboard incluidos en el plan.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "iPad Pro 13 M5": {
+      "AppleCare+": {
+        "precio": 4199,
+        "deducibles": {
+          "iPad": 799,
+          "Apple Pencil": 559,
+          "Magic Keyboard": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Cobertura para Apple Pencil y Magic Keyboard incluidos en el plan.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    }
   },
-  "iPhone 12 PRO": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
+  "Mac": {
+    "Mac mini": {
+      "AppleCare+": {
+        "precio": 2299,
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original (si aplica).",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "Mac Studio": {
+      "AppleCare+": {
+        "precio": 4199,
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original (si aplica).",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "iMac": {
+      "AppleCare+": {
+        "precio": 4199,
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original (si aplica).",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "MacBook Neo": {
+      "AppleCare+": {
+        "precio": 3299,
+        "deducibles": {
+          "Pantalla o carcasa": 999,
+          "Otros daños": 2999
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "MacBook Air 13": {
+      "AppleCare+": {
+        "precio": 4799,
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "MacBook Air 15": {
+      "AppleCare+": {
+        "precio": 5299,
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "MacBook Pro 14": {
+      "AppleCare+": {
+        "precio": 6299,
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "MacBook Pro 16": {
+      "AppleCare+": {
+        "precio": 8799,
+        "deducibles": {
+          "Pantalla o carcasa": 1899,
+          "Otros daños": 6499
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Cobertura de batería cuando conserve menos del 80 % de su capacidad original.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    }
   },
-  "iPhone 12 PRO MAX": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
+  "HomePod": {
+    "HomePod mini": {
+      "AppleCare+": {
+        "precio": 429,
+        "deducibles": {
+          "Daño accidental": 879
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "HomePod": {
+      "AppleCare+": {
+        "precio": 949,
+        "deducibles": {
+          "Daño accidental": 879
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    }
   },
-  "iPhone 13": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
+  "Apple TV": {
+    "Apple TV": {
+      "AppleCare+": {
+        "precio": 799,
+        "deducibles": {
+          "Daño accidental": 380
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reparaciones con piezas originales Apple.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    }
   },
-  "iPhone 13 MINI": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 13 PRO": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 13 PRO MAX": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 14": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 14 PLUS": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 14 PRO": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 14 PRO MAX": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 15": {
-    "APPLECARE": 3699.0,
-    "ROBO_PERDIDA": 5299.0
-  },
-  "iPhone 15 PLUS": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 15 PRO": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 15 PRO MAX": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 16": {
-    "APPLECARE": 3699.0,
-    "ROBO_PERDIDA": 5299.0
-  },
-  "iPhone 16 PLUS": {
-    "APPLECARE": 4299.0,
-    "ROBO_PERDIDA": 5899.0
-  },
-  "iPhone 16 PRO": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 16 PRO MAX": {
-    "APPLECARE": null,
-    "ROBO_PERDIDA": null
-  },
-  "iPhone 16e": {
-    "APPLECARE": 2999.0,
-    "ROBO_PERDIDA": 4599.0
-  },
-  "iPhone 17e": {
-    "APPLECARE": 2999.0,
-    "ROBO_PERDIDA": 4599.0
-  },
-  "iPhone 17": {
-    "APPLECARE": 3699.0,
-    "ROBO_PERDIDA": 5299.0
-  },
-  "iPhone 17 PRO": {
-    "APPLECARE": 4799.0,
-    "ROBO_PERDIDA": 6399.0
-  },
-  "iPhone 17 PRO MAX": {
-    "APPLECARE": 4799.0,
-    "ROBO_PERDIDA": 6399.0
-  },
-  "iPhone Air": {
-    "APPLECARE": 4799.0,
-    "ROBO_PERDIDA": 6399.0
-  },
-  "iPhone Duo": {
-    "APPLECARE": 6999.0,
-    "ROBO_PERDIDA": 8599.0
-  },
-  "iPhone 18 PRO MAX": {
-    "APPLECARE": 4799.0,
-    "ROBO_PERDIDA": 6399.0
-  },
-  "iPhone 18 PRO": {
-    "APPLECARE": 4799.0,
-    "ROBO_PERDIDA": 6399.0
+  "AirPods": {
+    "AirPods 4": {
+      "AppleCare+": {
+        "precio": 649,
+        "deducibles": {
+          "Daño accidental": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reemplazo con productos o piezas originales Apple.",
+          "Cobertura de batería.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "AirPods Pro 3": {
+      "AppleCare+": {
+        "precio": 849,
+        "deducibles": {
+          "Daño accidental": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reemplazo con productos o piezas originales Apple.",
+          "Cobertura de batería.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "AirPods Max 2": {
+      "AppleCare+": {
+        "precio": 1299,
+        "deducibles": {
+          "Daño accidental": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reemplazo con productos o piezas originales Apple.",
+          "Cobertura de batería.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    },
+    "Beats": {
+      "AppleCare+": {
+        "precio": 649,
+        "deducibles": {
+          "Daño accidental": 559
+        },
+        "cubre": [
+          "Daños accidentales ilimitados.",
+          "Reemplazo con productos o piezas originales Apple.",
+          "Cobertura de batería.",
+          "Soporte técnico prioritario."
+        ]
+      }
+    }
   }
 }
