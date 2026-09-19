@@ -570,6 +570,84 @@
         "PANTALLA": "No Aplica",
         "B Y P": "No Aplica"
       }
+    },
+    "iPhone 18 PRO": {
+      "256 GB": {
+        "ÓPTIMO": "$23,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "512 GB": {
+        "ÓPTIMO": "$26,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "1 TB": {
+        "ÓPTIMO": "$30,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "2 TB": {
+        "ÓPTIMO": "$36,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      }
+    },
+    "iPhone 18 PRO MAX": {
+      "256 GB": {
+        "ÓPTIMO": "$25,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "512 GB": {
+        "ÓPTIMO": "$28,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "1 TB": {
+        "ÓPTIMO": "$32,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "2 TB": {
+        "ÓPTIMO": "$40,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      }
+    },
+    "iPhone DUO": {
+      "256 GB": {
+        "ÓPTIMO": "$40,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "512 GB": {
+        "ÓPTIMO": "$43,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "1 TB": {
+        "ÓPTIMO": "$48,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      },
+      "2 TB": {
+        "ÓPTIMO": "$53,000",
+        "BATERÍA": "No Aplica",
+        "PANTALLA": "No Aplica",
+        "B Y P": "No Aplica"
+      }
     }
     
   },
@@ -1702,170 +1780,10 @@
     }
   },
   "Apple Watch": {
-    "SE 3ª gen": {
-      "40 MM": {
-        "Aluminio": {
-          "ÓPTIMO": "$3,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "40 MM +Cell": {
-        "Aluminio": {
-          "ÓPTIMO": "$4,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "44 MM": {
-        "Aluminio": {
-          "ÓPTIMO": "$3,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "44 MM +Cell": {
-        "Aluminio": {
-          "ÓPTIMO": "$4,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      }
-    },
-    "SE 2ª gen": {
-      "40 MM": {
-        "Aluminio": {
-          "ÓPTIMO": "$1,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "40 MM +Cell": {
-        "Aluminio": {
-          "ÓPTIMO": "$1,500",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "44 MM": {
-        "Aluminio": {
-          "ÓPTIMO": "$1,500",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "44 MM +Cell": {
-        "Aluminio": {
-          "ÓPTIMO": "$2,500",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      }
-    },
-    "Series 7": {
-      "41 MM": {
-        "Aluminio": {
-          "ÓPTIMO": "$2,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "41 MM +Cell": {
-        "Aluminio": {
-          "ÓPTIMO": "$2,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        },
-        "Acero": {
-          "ÓPTIMO": "$2,500",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "45 MM": {
-        "Aluminio": {
-          "ÓPTIMO": "$2,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "45 MM +Cell": {
-        "Aluminio": {
-          "ÓPTIMO": "$2,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        },
-        "Acero": {
-          "ÓPTIMO": "$2,500",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      }
-    },
-    "Series 8": {
-      "41 MM": {
-        "Aluminio": {
-          "ÓPTIMO": "$2,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "41 MM +Cell": {
-        "Aluminio": {
-          "ÓPTIMO": "$2,500",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        },
-        "Acero": {
-          "ÓPTIMO": "$3,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "45 MM": {
-        "Aluminio": {
-          "ÓPTIMO": "$2,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      },
-      "45 MM +Cell": {
-        "Aluminio": {
-          "ÓPTIMO": "$3,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        },
-        "Acero": {
-          "ÓPTIMO": "$3,000",
-          "BATERÍA": "No Aplica",
-          "PANTALLA": "No Aplica",
-          "B Y P": "No Aplica"
-        }
-      }
-    },
     "Series 9": {
       "41 MM": {
         "Aluminio": {
-          "ÓPTIMO": "$2,500",
+          "ÓPTIMO": "$2,000",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
@@ -1873,13 +1791,13 @@
       },
       "41 MM +Cell": {
         "Aluminio": {
-          "ÓPTIMO": "$3,000",
+          "ÓPTIMO": "$2,500",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
         },
         "Acero": {
-          "ÓPTIMO": "$4,000",
+          "ÓPTIMO": "$3,000",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
@@ -1901,7 +1819,7 @@
           "B Y P": "No Aplica"
         },
         "Acero": {
-          "ÓPTIMO": "$4,000",
+          "ÓPTIMO": "$3,000",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
@@ -1911,13 +1829,35 @@
     "Series 10": {
       "42 MM": {
         "Aluminio": {
-          "ÓPTIMO": "$4,000",
+          "ÓPTIMO": "$3,000",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
         }
       },
       "42 MM +Cell": {
+        "Aluminio": {
+          "ÓPTIMO": "$3,500",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        },
+        "Titanio": {
+          "ÓPTIMO": "$4,000",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
+      },
+      "46 MM": {
+        "Aluminio": {
+          "ÓPTIMO": "$3,500",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
+      },
+      "46 MM +Cell": {
         "Aluminio": {
           "ÓPTIMO": "$4,000",
           "BATERÍA": "No Aplica",
@@ -1930,8 +1870,10 @@
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
         }
-      },
-      "46 MM": {
+      }
+    },
+    "Series 11": {
+      "42 MM": {
         "Aluminio": {
           "ÓPTIMO": "$4,000",
           "BATERÍA": "No Aplica",
@@ -1939,7 +1881,7 @@
           "B Y P": "No Aplica"
         }
       },
-      "46 MM +Cell": {
+      "42 MM +Cell": {
         "Aluminio": {
           "ÓPTIMO": "$5,000",
           "BATERÍA": "No Aplica",
@@ -1952,9 +1894,31 @@
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
         }
+      },
+      "46 MM": {
+        "Aluminio": {
+          "ÓPTIMO": "$4,500",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
+      },
+      "46 MM +Cell": {
+        "Aluminio": {
+          "ÓPTIMO": "$6,000",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        },
+        "Titanio": {
+          "ÓPTIMO": "$6,000",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
       }
     },
-    "Series 11": {
+    "Series 12": {
       "42 MM": {
         "Aluminio": {
           "ÓPTIMO": "$5,000",
@@ -1971,7 +1935,7 @@
           "B Y P": "No Aplica"
         },
         "Titanio": {
-          "ÓPTIMO": "$7,000",
+          "ÓPTIMO": "$12,000",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
@@ -1979,7 +1943,7 @@
       },
       "46 MM": {
         "Aluminio": {
-          "ÓPTIMO": "$5,000",
+          "ÓPTIMO": "$6,000",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
@@ -1993,7 +1957,41 @@
           "B Y P": "No Aplica"
         },
         "Titanio": {
-          "ÓPTIMO": "$8,000",
+          "ÓPTIMO": "$13,000",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
+      }
+    },
+    "Series SE3": {
+      "40 MM": {
+        "Aluminio": {
+          "ÓPTIMO": "$3,000",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
+      },
+      "40 MM +Cell": {
+        "Aluminio": {
+          "ÓPTIMO": "$4,000",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
+      },
+      "44 MM": {
+        "Aluminio": {
+          "ÓPTIMO": "$3,000",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
+      },
+      "44 MM +Cell": {
+        "Aluminio": {
+          "ÓPTIMO": "$4,000",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
@@ -2013,7 +2011,17 @@
     "Ultra 3": {
       "49 MM": {
         "Titanio": {
-          "ÓPTIMO": "$11,000",
+          "ÓPTIMO": "$10,000",
+          "BATERÍA": "No Aplica",
+          "PANTALLA": "No Aplica",
+          "B Y P": "No Aplica"
+        }
+      }
+    },
+    "Ultra 4": {
+      "49 MM": {
+        "Titanio": {
+          "ÓPTIMO": "$14,000",
           "BATERÍA": "No Aplica",
           "PANTALLA": "No Aplica",
           "B Y P": "No Aplica"
