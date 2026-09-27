@@ -1,21 +1,21 @@
 {
   "iPhone": {
-    "imagen": "imágenes/tradein/iPhone.PNG", 
+    "imagen": "imagenes/tradein/iphone.png",
     "color1": "#eef3f8",
     "color2": "#c9dcea"
   },
   "iPad": {
-    "imagen": "imágenes/tradein/iPad.PNG",
+    "imagen": "imagenes/tradein/ipad.png",
     "color1": "#efeaf8",
     "color2": "#d3c3ee"
   },
   "Apple Watch": {
-    "imagen": "imágenes/tradein/Apple Watch.PNG",
+    "imagen": "imagenes/tradein/applewatch.png",
     "color1": "#e6f6ee",
     "color2": "#b9e6cd"
   },
   "Mac": {
-    "imagen": "imágenes/tradein/Mac.PNG",
+    "imagen": "imagenes/tradein/mac.png",
     "color1": "#eef1f3",
     "color2": "#c7d0d6"
   }
