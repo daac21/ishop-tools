@@ -1043,6 +1043,23 @@ function getNodeAtPath(path) {
   return node;
 }
 
+// Normaliza espacios "raros" (como el espacio de no separación U+00A0 que a
+// veces mete el teclado del iPhone al renombrar archivos o escribir en el
+// JSON) a espacios normales, y quita espacios de más. Así, aunque una clave
+// en tradein.json tenga ese carácter invisible, sigue encontrando su tarjeta
+// visual en tradein_categorias.json.
+function normalizarClave(str) {
+  return String(str).replace(/\s+/g, " ").trim();
+}
+
+function buscarVisual(key) {
+  if (!TRADEIN_VISUAL) return null;
+  if (TRADEIN_VISUAL[key]) return TRADEIN_VISUAL[key];
+  const target = normalizarClave(key);
+  const found = Object.keys(TRADEIN_VISUAL).find(k => normalizarClave(k) === target);
+  return found ? TRADEIN_VISUAL[found] : null;
+}
+
 function isPriceLeaf(node) {
   return node && typeof node === "object" && Object.prototype.hasOwnProperty.call(node, "ÓPTIMO");
 }
@@ -1110,7 +1127,7 @@ function buildTradeNode(path) {
     const grid = document.createElement("div");
     grid.className = "tradein-grid";
     Object.keys(node).forEach(key => {
-      const visual = (TRADEIN_VISUAL || {})[key];
+      const visual = buscarVisual(key);
       if (visual) {
         const card = document.createElement("button");
         card.className = "tradein-card";
