@@ -5,17 +5,17 @@
     "color2": "#c9dcea"
   },
   "iPad": {
-    "imagen": "imágenes/tradein/iPad.JPG",
+    "imagen": "imágenes/tradein/iPad.PNG",
     "color1": "#efeaf8",
     "color2": "#d3c3ee"
   },
   "Apple Watch": {
-    "imagen": "imagenes/tradein/Applewatch.JPG",
+    "imagen": "imágenes/tradein/Applewatch.PNG",
     "color1": "#e6f6ee",
     "color2": "#b9e6cd"
   },
   "Mac": {
-    "imagen": "imagenes/tradein/Mac.JPG",
+    "imagen": "imágenes/tradein/Mac.PNG",
     "color1": "#eef1f3",
     "color2": "#c7d0d6"
   }
