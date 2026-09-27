@@ -86,6 +86,7 @@ const AC_CATEGORY_META = {
 };
 
 let TRADEIN_DATA = null;
+let TRADEIN_VISUAL = null;
 let PRECIOS_IPHONE = null;
 let APPLECARE_DATA = null;
 let SWITCHUP_MODELOS = null;
@@ -126,8 +127,9 @@ function findApplecareForModel(modelName) {
 
 async function loadAllData() {
   try {
-    const [t, p, a, s, f, c, aci, esc, caj] = await Promise.all([
+    const [t, tv, p, a, s, f, c, aci, esc, caj] = await Promise.all([
       fetch("datos/tradein.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("datos/tradein_categorias.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/precios_iphone.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/applecare.json", { cache: "no-store" }).then(r => r.json()),
       fetch("datos/switchup_modelos.json", { cache: "no-store" }).then(r => r.json()),
@@ -138,6 +140,7 @@ async function loadAllData() {
       fetch("datos/codigos_cajas.json", { cache: "no-store" }).then(r => r.json()),
     ]);
     TRADEIN_DATA = t;
+    TRADEIN_VISUAL = tv;
     PRECIOS_IPHONE = p;
     APPLECARE_DATA = buildApplecareByModel(a);
     SWITCHUP_MODELOS = s;
@@ -146,12 +149,13 @@ async function loadAllData() {
     APPLECARE_INFO = aci;
     ESCANER_DATA = esc;
     CODIGOS_CAJAS = caj;
-    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci, escaner: esc, codigos_cajas: caj }));
+    localStorage.setItem("ishop_data_cache", JSON.stringify({ tradein: t, tradein_categorias: tv, precios_iphone: p, applecare: a, switchup_modelos: s, financiamiento: f, cobertura: c, applecare_info: aci, escaner: esc, codigos_cajas: caj }));
   } catch (e) {
     const cached = localStorage.getItem("ishop_data_cache");
     if (cached) {
       const data = JSON.parse(cached);
       TRADEIN_DATA = data.tradein || {};
+      TRADEIN_VISUAL = data.tradein_categorias || {};
       PRECIOS_IPHONE = data.precios_iphone || {};
       APPLECARE_DATA = buildApplecareByModel(data.applecare || {});
       SWITCHUP_MODELOS = data.switchup_modelos || [];
@@ -162,6 +166,7 @@ async function loadAllData() {
       CODIGOS_CAJAS = data.codigos_cajas || {};
     } else {
       TRADEIN_DATA = {};
+      TRADEIN_VISUAL = {};
       PRECIOS_IPHONE = {};
       APPLECARE_DATA = {};
       SWITCHUP_MODELOS = [];
@@ -1095,6 +1100,47 @@ function buildTradeNode(path) {
   heading.innerHTML = `<h2>${path.length === 0 ? "Selecciona un tipo" : label}</h2>`;
   wrap.appendChild(heading);
 
+  // El menú raíz ("Selecciona un tipo") se ve como tarjetas con imagen. El
+  // aspecto (imagen/colores) sale de TRADEIN_VISUAL (datos/tradein_categorias.json),
+  // un archivo separado de tradein.json: así, cuando se reemplaza tradein.json
+  // con precios nuevos, este menú no se ve afectado y sigue mostrándose igual.
+  // Las claves (qué categorías existen y a dónde navegan) siguen saliendo de
+  // tradein.json; si una clave nueva no tiene entrada visual, cae a un botón simple.
+  if (path.length === 0) {
+    const grid = document.createElement("div");
+    grid.className = "tradein-grid";
+    Object.keys(node).forEach(key => {
+      const visual = (TRADEIN_VISUAL || {})[key];
+      if (visual) {
+        const card = document.createElement("button");
+        card.className = "tradein-card";
+        card.style.setProperty("--tc1", visual.color1 || "#eef1f4");
+        card.style.setProperty("--tc2", visual.color2 || "#d5dbe1");
+        card.innerHTML = `
+          <img class="tradein-card-img" src="${visual.imagen}" alt="${key}">
+          <span class="tradein-card-row">
+            <span class="tradein-card-label">${key}</span>
+            <span class="chev"></span>
+          </span>
+        `;
+        card.addEventListener("click", () => {
+          navigate({ screen: "tradeNode", path: [...path, key], title: key });
+        });
+        grid.appendChild(card);
+      } else {
+        const btn = document.createElement("button");
+        btn.className = "sub-btn";
+        btn.innerHTML = `<span>${key}</span><span class="chev"></span>`;
+        btn.addEventListener("click", () => {
+          navigate({ screen: "tradeNode", path: [...path, key], title: key });
+        });
+        grid.appendChild(btn);
+      }
+    });
+    wrap.appendChild(grid);
+    return wrap;
+  }
+
   const list = document.createElement("div");
   list.className = "sub-list";
   Object.keys(node).forEach(key => {
@@ -1763,3 +1809,4 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").catch(() => {});
   });
 }
+
