@@ -67,6 +67,18 @@ function acInfoModelsForCoverage(category) {
   return list;
 }
 
+// Dado un modelo de AppleCare+ (applecare_info.json), devuelve la categoría
+// de "¿Qué cubre?" (cobertura.json) que le corresponde, o null si no hay.
+function coverageCategoryForAc(acCategory, model) {
+  if (!COBERTURA_DATA) return null;
+  const key = Object.keys(COBERTURA_TO_AC_INFO).find(k =>
+    COBERTURA_TO_AC_INFO[k].source === acCategory &&
+    COBERTURA_DATA[k] &&
+    acInfoModelsForCoverage(k).some(m => m.name === model)
+  );
+  return key || null;
+}
+
 function coverageYears(category, extra) {
   const t = `${category || ""} ${extra || ""}`.toLowerCase();
   if (t.includes("herm") || t.includes("edition")) return 3;
@@ -289,7 +301,7 @@ function buildScreen(entry) {
   } else if (entry.screen === "coverageVariant") {
     el.appendChild(buildCoverageVariantList(entry.category));
   } else if (entry.screen === "coverageDetail") {
-    el.appendChild(buildCoverageDetail(entry.category, entry.variant));
+    el.appendChild(buildCoverageDetail(entry.category, entry.variant, entry.preModel));
   } else if (entry.screen === "tradeNode") {
     el.appendChild(buildTradeNode(entry.path));
   } else if (entry.screen === "quoteSelectNew") {
@@ -553,7 +565,7 @@ function buildCoverageVariantList(category) {
   return wrap;
 }
 
-function buildCoverageDetail(category, variant) {
+function buildCoverageDetail(category, variant, preModel) {
   const wrap = document.createElement("div");
   const data = COBERTURA_DATA?.[category]?.[variant];
   const isRobo = /robo/i.test(variant);
@@ -639,6 +651,7 @@ function buildCoverageDetail(category, variant) {
     modelSelect.className = "alt-finance-select";
     modelSelect.style.marginBottom = "10px";
     modelSelect.innerHTML = acModels.map(m => `<option value="${m.name}">${m.name}</option>`).join("");
+    if (preModel && acModels.some(m => m.name === preModel)) modelSelect.value = preModel;
     box.appendChild(modelSelect);
 
     let tipoSelect = null;
@@ -1579,6 +1592,21 @@ function buildAcDetail(category, model, variant) {
     deduc.innerHTML = `<h4 style="margin:0 0 2px;font-size:12px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;">Deducibles</h4>`
       + Object.entries(info.deducibles).map(([k, v]) => `<div class="plan-phase"><span>${k}</span><strong>${money(v)}</strong></div>`).join("");
     wrap.appendChild(deduc);
+  }
+
+  // Acceso a "¿Qué cubre?" de este mismo equipo (no duplica datos: abre la
+  // pantalla existente con el modelo ya seleccionado).
+  const covCat = coverageCategoryForAc(category, model);
+  if (covCat) {
+    const covVariant = Object.keys(COBERTURA_DATA[covCat])[0];
+    const covBtn = document.createElement("button");
+    covBtn.className = "sub-btn";
+    covBtn.style.marginTop = "14px";
+    covBtn.innerHTML = `<span>🛠️ Ver qué cubre</span><span class="chev"></span>`;
+    covBtn.addEventListener("click", () => {
+      navigate({ screen: "coverageDetail", category: covCat, variant: covVariant, preModel: model, title: covCat });
+    });
+    wrap.appendChild(covBtn);
   }
 
   return wrap;
