@@ -22,6 +22,7 @@ const ARCADE_GAMES = [
   { id: "tetris", icon: "🧱", label: "Tetris",     color: "#0071e3" },
   { id: "snake",  icon: "🐍", label: "Snake",      color: "#34c759" },
   { id: "mines",  icon: "💣", label: "Buscaminas", color: "#3a3a3c" },
+  { id: "dino",   icon: "🦖", label: "Dino Run",   color: "#ff9500" },
 ];
 
 // Iconos y color por categoría de cobertura
@@ -340,6 +341,8 @@ function buildScreen(entry) {
     el.appendChild(buildTetris());
   } else if (entry.screen === "snake") {
     el.appendChild(buildSnake());
+  } else if (entry.screen === "dino") {
+    el.appendChild(buildDino());
   } else if (entry.screen === "tool") {
     const meta = MENU.find(m => m.id === entry.id);
     el.appendChild(buildPlaceholder(entry.title, meta ? meta.icon : "🔧",
