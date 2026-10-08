@@ -1597,6 +1597,14 @@ function buildAcDetail(category, model, variant) {
     wrap.appendChild(deduc);
   }
 
+  if (info.sinAppleCare && Object.keys(info.sinAppleCare).length) {
+    const sinAc = document.createElement("div");
+    sinAc.className = "plan-result";
+    sinAc.innerHTML = `<h4 style="margin:0 0 2px;font-size:12px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;">Reparación sin AppleCare+</h4>`
+      + Object.entries(info.sinAppleCare).map(([k, v]) => `<div class="plan-phase"><span>${k}</span><strong>${money(v)}</strong></div>`).join("");
+    wrap.appendChild(sinAc);
+  }
+
   // Acceso a "¿Qué cubre?" de este mismo equipo (no duplica datos: abre la
   // pantalla existente con el modelo ya seleccionado).
   const covCat = coverageCategoryForAc(category, model);
