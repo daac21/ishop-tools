@@ -9,6 +9,14 @@
           "Otros daños": 1899,
           "Robo o extravío": 3299
         },
+        "sinAppleCare": {
+          "Servicio de batería": 2799,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 5599,
+          "Daño de la pantalla": 8499,
+          "Daño de la pantalla y de la parte posterior de vidrio": 10499,
+          "Otro daño": 20999
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -26,6 +34,14 @@
           "Pantalla": 559,
           "Otros daños": 1899,
           "Robo o extravío": 3299
+        },
+        "sinAppleCare": {
+          "Servicio de batería": 2799,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 5599,
+          "Daño de la pantalla": 7399,
+          "Daño de la pantalla y de la parte posterior de vidrio": 9399,
+          "Otro daño": 19899
         },
         "cubre": [
           "Daños accidentales ilimitados.",
@@ -63,6 +79,14 @@
           "Otros daños": 1899,
           "Robo o extravío": 3299
         },
+        "sinAppleCare": {
+          "Servicio de batería": 2599,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 5599,
+          "Daño de la pantalla": 8499,
+          "Daño de la pantalla y de la parte posterior de vidrio": 10499,
+          "Otro daño": 20999
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -80,6 +104,14 @@
           "Pantalla": 559,
           "Otros daños": 1899,
           "Robo o extravío": 3299
+        },
+        "sinAppleCare": {
+          "Servicio de batería": 2599,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 5599,
+          "Daño de la pantalla": 7399,
+          "Daño de la pantalla y de la parte posterior de vidrio": 9399,
+          "Otro daño": 19899
         },
         "cubre": [
           "Daños accidentales ilimitados.",
@@ -99,6 +131,14 @@
           "Otros daños": 1899,
           "Robo o extravío": 3299
         },
+        "sinAppleCare": {
+          "Servicio de batería": 2149,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 3899,
+          "Daño de la pantalla": 7399,
+          "Daño de la pantalla y de la parte posterior de vidrio": 9399,
+          "Otro daño": 15119
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -116,6 +156,14 @@
           "Pantalla": 559,
           "Otros daños": 1899,
           "Robo o extravío": 3299
+        },
+        "sinAppleCare": {
+          "Servicio de batería": 2149,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 3319,
+          "Daño de la pantalla": 5699,
+          "Daño de la pantalla y de la parte posterior de vidrio": 7679,
+          "Otro daño": 12569
         },
         "cubre": [
           "Daños accidentales ilimitados.",
@@ -135,6 +183,14 @@
           "Otros daños": 1899,
           "Robo o extravío": 3299
         },
+        "sinAppleCare": {
+          "Servicio de batería": 2599,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 3899,
+          "Daño de la pantalla": 7399,
+          "Daño de la pantalla y de la parte posterior de vidrio": 9399,
+          "Otro daño": 17729
+        },
         "cubre": [
           "Daños accidentales ilimitados.",
           "Reparaciones con piezas originales Apple.",
@@ -152,6 +208,14 @@
           "Pantalla": 559,
           "Otros daños": 1899,
           "Robo o extravío": 3299
+        },
+        "sinAppleCare": {
+          "Servicio de batería": 2149,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 3899,
+          "Daño de la pantalla": 6299,
+          "Daño de la pantalla y de la parte posterior de vidrio": 8299,
+          "Otro daño": 13819
         },
         "cubre": [
           "Daños accidentales ilimitados.",
@@ -206,6 +270,14 @@
           "Pantalla": 559,
           "Otros daños": 1899,
           "Robo o extravío": 3299
+        },
+        "sinAppleCare": {
+          "Servicio de batería": 2149,
+          "Daño de la parte posterior de vidrio": 3499,
+          "Daño de la cámara trasera": 3899,
+          "Daño de la pantalla": 6299,
+          "Daño de la pantalla y de la parte posterior de vidrio": 8299,
+          "Otro daño": 13619
         },
         "cubre": [
           "Daños accidentales ilimitados.",
